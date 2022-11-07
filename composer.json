@@ -13,6 +13,7 @@
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.12",
+        "ergebnis/composer-normalize": "^2.28",
         "fakerphp/faker": "^1.9.1",
         "laravel/breeze": "^1.14",
         "laravel/pint": "^1.0",
@@ -59,7 +60,8 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "allow-plugins": {
-            "pestphp/pest-plugin": true
+            "pestphp/pest-plugin": true,
+            "ergebnis/composer-normalize": true
         }
     },
     "minimum-stability": "dev",
