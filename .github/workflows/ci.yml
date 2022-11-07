@@ -1,0 +1,82 @@
+---
+
+name: CI
+
+on:  # yamllint disable-line rule:truthy
+  pull_request:
+    branches:
+      - master
+      - develop
+
+jobs:
+  integration:
+    name: PHP ${{ matrix.php }} - ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: true
+      matrix:
+        os: ["ubuntu-22.04"]
+        php: ["8.1"]
+    steps:
+      - name: Check out the codebase
+        uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: dom, curl, libxml, mbstring, zip, fileinfo, gd, xdebug
+          ini-values: error_reporting=E_ALL
+          tools: composer:v2
+          coverage: xdebug
+
+      - name: Setup problem matchers
+        run: |
+          echo "::add-matcher::${{ runner.tool_cache }}/php.json"
+          echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
+
+      - name: Load cached backend dependencies
+        id: cached-composer-dependencies
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: vendor-${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
+
+      - name: Install backend dependencies
+        if: steps.cached-composer-dependencies.outputs.cache-hit != 'true'
+        run: composer install
+
+      - name: Prepare environment
+        run: |
+          cp .env.example .env
+          mkdir -p ./build/phpunit
+
+      - name: Generate secret application key
+        run: php artisan key:generate
+
+      - name: Create Laravel symlinks
+        run: php artisan storage:link
+
+      - name: Run coding standards task
+        run: |
+          make prepare
+          composer run cs-diff
+
+      - name: Run static analysis using phpstan
+        run: composer run stan
+        env:
+          PHPSTAN_OUTPUT_FORMAT: github
+
+      - name: Execute phpunit and pest tests
+        run: composer run test-cc
+
+      - name: Upload coverage results to Codecov.io
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true
+          verbose: true
+          directory: ./build
+          files: ./build/coverage.xml
+
+...
