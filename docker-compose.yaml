@@ -1,0 +1,80 @@
+---
+
+version: '3.9'
+
+services:
+  app:
+    image: wayofdev/php-dev:8.1-fpm-alpine-latest
+    container_name: ${COMPOSE_PROJECT_NAME}_app
+    restart: on-failure
+    networks:
+      - default
+      - platform
+    depends_on:
+      - database
+    links:
+      - database
+    external_links:
+      - "rabbit.${APP_DOMAIN}.alias:rabbit"
+    environment:
+      APP_NAME: $APP_NAME
+      COMPOSER_AUTH: $COMPOSER_AUTH
+    volumes:
+      - ./app:/app:rw,cached
+      - ./.env:/app/.env
+      - ~/.composer:/.composer
+
+  web:
+    image: wayofdev/nginx:dev-k8s-latest
+    container_name: ${COMPOSE_PROJECT_NAME}_web
+    restart: on-failure
+    networks:
+      default:
+      shared:
+      platform:
+        aliases:
+          - ${SERVICE_NAME}.${APP_DOMAIN}.alias
+    depends_on:
+      - app
+    links:
+      - app
+    volumes:
+      - ./app:/app:rw,cached
+      - ./.env:/app/.env
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.web-${SERVICE_NAME}${APP_DOMAIN_UNDERLINED}-secure.rule=Host(`${SERVICE_NAME}.${APP_DOMAIN}.docker`)
+      - traefik.http.routers.web-${SERVICE_NAME}${APP_DOMAIN_UNDERLINED}-secure.entrypoints=websecure
+      - traefik.http.routers.web-${SERVICE_NAME}${APP_DOMAIN_UNDERLINED}-secure.tls=true
+      - traefik.http.services.web-${SERVICE_NAME}${APP_DOMAIN_UNDERLINED}-secure.loadbalancer.server.port=8443
+      - traefik.http.services.web-${SERVICE_NAME}${APP_DOMAIN_UNDERLINED}-secure.loadbalancer.server.scheme=https
+
+  database:
+    image: wayofdev/postgres:15-alpine-latest
+    container_name: ${COMPOSE_PROJECT_NAME}_database
+    restart: on-failure
+    networks:
+      platform:
+        aliases:
+          - database.${SERVICE_NAME}.${APP_DOMAIN}.alias
+    ports:
+      - '${FORWARD_DB_PORT:-5432}:5432'
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE}
+    volumes:
+      - database_data:/var/lib/postgresql/data:cached
+
+volumes:
+  database_data:
+
+networks:
+  shared:
+    external: true
+    name: ss_shared_network
+  platform:
+    external: true
+    name: system.${APP_DOMAIN}
+
+...

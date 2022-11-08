@@ -3,6 +3,9 @@
 name: CI
 
 on:  # yamllint disable-line rule:truthy
+  push:
+    branches:
+      - master
   pull_request:
     branches:
       - master
@@ -52,7 +55,7 @@ jobs:
 
       - name: Prepare environment
         run: |
-          cp .env.example .env
+          cp ../.env.example .env
           mkdir -p ./build/phpunit
 
       - name: Generate secret application key
