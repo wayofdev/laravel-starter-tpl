@@ -8,6 +8,10 @@ on:  # yamllint disable-line rule:truthy
       - master
       - develop
 
+defaults:
+  run:
+    working-directory: app
+
 jobs:
   integration:
     name: PHP ${{ matrix.php }} - ${{ matrix.os }}

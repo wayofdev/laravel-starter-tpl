@@ -1,9 +1,10 @@
 <br>
 
 <div align="center">
-<img width="456" src="https://raw.githubusercontent.com/wayofdev/laravel-starter-tpl/master/.assets/logo.gh-light-mode-only.png#gh-light-mode-only">
-<img width="456" src="https://raw.githubusercontent.com/wayofdev/laravel-starter-tpl/master/.assets/logo.gh-dark-mode-only.png#gh-dark-mode-only">
+<img width="456" src="https://raw.githubusercontent.com/wayofdev/laravel-starter-tpl/master/assets/logo.gh-light-mode-only.png#gh-light-mode-only">
+<img width="456" src="https://raw.githubusercontent.com/wayofdev/laravel-starter-tpl/master/assets/logo.gh-dark-mode-only.png#gh-dark-mode-only">
 </div>
+
 
 
 <br>
