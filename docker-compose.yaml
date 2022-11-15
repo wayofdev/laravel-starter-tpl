@@ -15,17 +15,16 @@ services:
     links:
       - database
     external_links:
-      - "rabbit.${APP_DOMAIN}.alias:rabbit"
+      - "rabbitmq.${PROJECT_SERVICES_NAMESPACE}.alias:rabbitmq"
     environment:
       APP_NAME: $APP_NAME
-      COMPOSER_AUTH: $COMPOSER_AUTH
     volumes:
       - ./app:/app:rw,cached
       - ./.env:/app/.env
       - ~/.composer:/.composer
 
   web:
-    image: wayofdev/nginx:dev-k8s-latest
+    image: wayofdev/nginx:k8s-alpine-latest
     container_name: ${COMPOSE_PROJECT_NAME}_web
     restart: on-failure
     networks:
@@ -33,7 +32,7 @@ services:
       shared:
       platform:
         aliases:
-          - ${SERVICE_NAME}.${APP_DOMAIN}.alias
+          - ${APP_NAME}.${COMPOSE_PROJECT_NAME}.alias
     depends_on:
       - app
     links:
@@ -41,13 +40,14 @@ services:
     volumes:
       - ./app:/app:rw,cached
       - ./.env:/app/.env
+      - ./certs:/etc/nginx/ssl
     labels:
       - traefik.enable=true
-      - traefik.http.routers.web-${SERVICE_NAME}${APP_DOMAIN_UNDERLINED}-secure.rule=Host(`${SERVICE_NAME}.${APP_DOMAIN}.docker`)
-      - traefik.http.routers.web-${SERVICE_NAME}${APP_DOMAIN_UNDERLINED}-secure.entrypoints=websecure
-      - traefik.http.routers.web-${SERVICE_NAME}${APP_DOMAIN_UNDERLINED}-secure.tls=true
-      - traefik.http.services.web-${SERVICE_NAME}${APP_DOMAIN_UNDERLINED}-secure.loadbalancer.server.port=8443
-      - traefik.http.services.web-${SERVICE_NAME}${APP_DOMAIN_UNDERLINED}-secure.loadbalancer.server.scheme=https
+      - traefik.http.routers.api-${APP_NAME}-${COMPOSE_PROJECT_NAME}-secure.rule=Host(`api.${APP_NAME}.${PROJECT_SERVICES_NAMESPACE}.docker`)
+      - traefik.http.routers.api-${APP_NAME}-${COMPOSE_PROJECT_NAME}-secure.entrypoints=websecure
+      - traefik.http.routers.api-${APP_NAME}-${COMPOSE_PROJECT_NAME}-secure.tls=true
+      - traefik.http.services.api-${APP_NAME}-${COMPOSE_PROJECT_NAME}-secure.loadbalancer.server.port=8443
+      - traefik.http.services.api-${APP_NAME}-${COMPOSE_PROJECT_NAME}-secure.loadbalancer.server.scheme=https
 
   database:
     image: wayofdev/postgres:15-alpine-latest
@@ -56,7 +56,7 @@ services:
     networks:
       platform:
         aliases:
-          - database.${SERVICE_NAME}.${APP_DOMAIN}.alias
+          - database.${APP_NAME}.${COMPOSE_PROJECT_NAME}.alias
     ports:
       - '${FORWARD_DB_PORT:-5432}:5432'
     environment:
@@ -72,9 +72,9 @@ volumes:
 networks:
   shared:
     external: true
-    name: ss_shared_network
+    name: ${SHARED_SERVICES_NETWORK}
   platform:
     external: true
-    name: system.${APP_DOMAIN}
+    name: project.${PROJECT_SERVICES_NAMESPACE}
 
 ...

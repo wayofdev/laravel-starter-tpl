@@ -15,7 +15,7 @@ services:
     links:
       - database
     external_links:
-      - "rabbit.${APP_DOMAIN}.alias:rabbit"
+      - "rabbitmq.${PROJECT_SERVICES_NAMESPACE}.alias:rabbitmq"
     environment:
       APP_NAME: $APP_NAME
       COMPOSER_AUTH: $COMPOSER_AUTH
@@ -25,8 +25,8 @@ services:
       - ~/.composer:/.composer
     labels:
       - traefik.enable=true
-      - traefik.http.routers.supervisor-${SERVICE_NAME}${APP_DOMAIN_UNDERLINED}.rule=Host(`supervisor.${SERVICE_NAME}.${APP_DOMAIN}.docker`)
-      - traefik.http.routers.supervisor-${SERVICE_NAME}${APP_DOMAIN_UNDERLINED}.entrypoints=supervisor
-      - traefik.http.services.supervisor-${SERVICE_NAME}${APP_DOMAIN_UNDERLINED}.loadbalancer.server.port=80
+      - traefik.http.routers.supervisor-${APP_NAME}-${COMPOSE_PROJECT_NAME}.rule=Host(`supervisor.${APP_NAME}.${PROJECT_SERVICES_NAMESPACE}.docker`)
+      - traefik.http.routers.supervisor-${APP_NAME}-${COMPOSE_PROJECT_NAME}.entrypoints=supervisor
+      - traefik.http.services.supervisor-${APP_NAME}-${COMPOSE_PROJECT_NAME}.loadbalancer.server.port=80
 
 ...
