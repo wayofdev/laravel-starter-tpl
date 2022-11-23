@@ -55,10 +55,16 @@ jobs:
 
       - name: Prepare environment
         run: |
-          cp ../.env.example .env
+          cd ../ && make env && cd app
+          cp ../.env .env
           mkdir -p ./.build/php-cs-fixer
           mkdir -p ./.build/phpstan
           mkdir -p ./.build/phpunit
+        env:
+          APP_NAME: tpl
+          SYSTEM_SERVICES_NAMESPACE: ss
+          PROJECT_SERVICES_NAMESPACE: wod
+          COMPOSE_PROJECT_NAME: starter
 
       - name: Generate secret application key
         run: php artisan key:generate
@@ -80,7 +86,7 @@ jobs:
         run: |
           php vendor/bin/phpunit --coverage-clover coverage.xml ./tests
         env:
-          APP_KEY: "base64:hIM6yUU1TWlJhOX1Lfd34C2a1rYUwAYIPUtfCU+zwkA="
+
           XDEBUG_MODE: "coverage"
 
       - name: Upload coverage results to Codecov.io
