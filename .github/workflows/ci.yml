@@ -84,7 +84,7 @@ jobs:
 
       - name: Execute phpunit and pest tests
         run: |
-          php vendor/bin/phpunit --coverage-clover coverage.xml ./tests
+          composer run test-cc
         env:
 
           XDEBUG_MODE: "coverage"
@@ -95,7 +95,7 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true
           verbose: true
-          directory: ./
-          files: ./coverage.xml
+          directory: ./.build
+          files: ./.build/coverage.xml
 
 ...
