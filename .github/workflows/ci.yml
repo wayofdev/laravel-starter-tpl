@@ -78,7 +78,7 @@ jobs:
 
       - name: Execute phpunit and pest tests
         run: |
-          php vendor/bin/phpunit --coverage-clover .build/coverage.xml
+          php vendor/bin/phpunit --coverage-clover coverage.xml
         env:
           APP_KEY: "base64:hIM6yUU1TWlJhOX1Lfd34C2a1rYUwAYIPUtfCU+zwkA="
           XDEBUG_MODE: "coverage"
@@ -89,7 +89,7 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true
           verbose: true
-          directory: ./build
-          files: ./.build/coverage.xml
+          directory: ./
+          files: ./coverage.xml
 
 ...
