@@ -164,7 +164,7 @@ pull: ## Pull and update docker images in this project
 .PHONY: pull
 
 
-# Code Quality, Git, Linting
+# Code Quality, Git, Linting, Testing
 # ------------------------------------------------------------------------------------
 hooks: ## Install git hooks from pre-commit-config
 	pre-commit install
@@ -186,6 +186,14 @@ cs-fix:
 stan:
 	$(APP_COMPOSER) run-script stan
 .PHONY: stan
+
+test: ## Run project php-unit and pest tests
+	$(APP_COMPOSER) test
+.PHONY: test
+
+test-cc: ## Run project php-unit and pest tests in coverage mode and build report
+	$(APP_COMPOSER) test-cc
+.PHONY: test-cc
 
 
 # Composer Commands
