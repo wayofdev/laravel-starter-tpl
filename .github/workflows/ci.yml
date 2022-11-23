@@ -86,7 +86,6 @@ jobs:
         run: |
           composer run test-cc
         env:
-
           XDEBUG_MODE: "coverage"
 
       - name: Upload coverage results to Codecov.io
@@ -96,6 +95,6 @@ jobs:
           fail_ci_if_error: true
           verbose: true
           directory: ./.build
-          files: ./.build/coverage.xml
+          files: ./coverage.xml
 
 ...
