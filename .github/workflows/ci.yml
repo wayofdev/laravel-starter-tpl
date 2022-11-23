@@ -78,7 +78,7 @@ jobs:
 
       - name: Execute phpunit and pest tests
         run: |
-          php vendor/bin/phpunit --coverage-clover coverage.xml
+          vendor/bin/pest --coverage-clover .coverage.xml ./tests
         env:
           APP_KEY: "base64:hIM6yUU1TWlJhOX1Lfd34C2a1rYUwAYIPUtfCU+zwkA="
           XDEBUG_MODE: "coverage"
