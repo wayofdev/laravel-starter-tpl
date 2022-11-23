@@ -66,7 +66,7 @@ jobs:
 
       - name: Run coding standards task
         run: |
-          make prepare
+          mkdir -p .build/php-cs-fixer
           composer run cs-diff
 
       - name: Run static analysis using phpstan
