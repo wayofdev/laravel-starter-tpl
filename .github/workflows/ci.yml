@@ -75,7 +75,9 @@ jobs:
           PHPSTAN_OUTPUT_FORMAT: github
 
       - name: Execute phpunit and pest tests
-        run: php vendor/bin/pest --coverage-clover ./build/coverage.xml -vvv
+        run: |
+          mkdir -p .build/
+          php vendor/bin/pest --coverage-clover ./build/coverage.xml
         env:
           APP_KEY: "base64:hIM6yUU1TWlJhOX1Lfd34C2a1rYUwAYIPUtfCU+zwkA="
 
