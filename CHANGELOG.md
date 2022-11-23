@@ -1,5 +1,36 @@
 # Changelog
 
+## [2.0.0](https://github.com/wayofdev/laravel-starter-tpl/compare/v1.0.1...v2.0.0) (2022-11-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* changing project structure
+
+### Features
+
+* add template sync workflow ([f6f295f](https://github.com/wayofdev/laravel-starter-tpl/commit/f6f295f5ed84f3bfaea9f6968c6ba626fafc784c))
+* added env variables related to local network ([59d4001](https://github.com/wayofdev/laravel-starter-tpl/commit/59d4001838afe33fb00e760f6a0fff79a9c6695d))
+* codebase upgrade ([59d4001](https://github.com/wayofdev/laravel-starter-tpl/commit/59d4001838afe33fb00e760f6a0fff79a9c6695d))
+* dockerizing application ([d2ebf68](https://github.com/wayofdev/laravel-starter-tpl/commit/d2ebf68167b7a5d7a1761bf08d3e5fc26b781f73))
+* upgrading Makefile ([59d4001](https://github.com/wayofdev/laravel-starter-tpl/commit/59d4001838afe33fb00e760f6a0fff79a9c6695d))
+
+
+### Bug Fixes
+
+* traefik integration ([59d4001](https://github.com/wayofdev/laravel-starter-tpl/commit/59d4001838afe33fb00e760f6a0fff79a9c6695d))
+
+
+### Tests
+
+* add php pest for laravel ([4c98109](https://github.com/wayofdev/laravel-starter-tpl/commit/4c98109a3c6e38ecff2335c4d6061f6e77d2ab99))
+
+
+### Code Refactoring
+
+* changing project structure ([fee699b](https://github.com/wayofdev/laravel-starter-tpl/commit/fee699b19d1177efb601b99023218ed4e9efde66))
+* default structure cleanup, apply our cs-fixer rules ([2428f09](https://github.com/wayofdev/laravel-starter-tpl/commit/2428f09a68b8f43ce310570e5e5c8e47cd373903))
+
 ## [1.0.1](https://github.com/wayofdev/laravel-starter-tpl/compare/v1.0.0...v1.0.1) (2022-11-07)
 
 
