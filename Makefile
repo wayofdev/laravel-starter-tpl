@@ -128,6 +128,10 @@ mkcert: ## Generate DH param and SSL certs
 	openssl dhparam -out certs/dhparam.pem 2048
 .PHONY: mkcert
 
+prepare:
+	mkdir -p .build/php-cs-fixer
+.PHONY: prepare
+
 
 # Docker Actions
 # ------------------------------------------------------------------------------------
