@@ -7,7 +7,7 @@ on:  # yamllint disable-line rule:truthy
     branches:
       - master
 
-name: release-please
+name: Release please
 
 jobs:
   release-please:
