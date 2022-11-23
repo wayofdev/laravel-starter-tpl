@@ -75,8 +75,9 @@ jobs:
           PHPSTAN_OUTPUT_FORMAT: github
 
       - name: Execute phpunit and pest tests
-        # run: composer run test-cc
-        run: php vendor/bin/phpstan analyse --memory-limit=2G
+        run: php vendor/bin/pest --coverage-clover ./build/coverage.xml -vvv
+        env:
+          APP_KEY: "base64:hIM6yUU1TWlJhOX1Lfd34C2a1rYUwAYIPUtfCU+zwkA="
 
       - name: Upload coverage results to Codecov.io
         uses: codecov/codecov-action@v3
