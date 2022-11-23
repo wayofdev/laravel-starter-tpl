@@ -58,8 +58,7 @@
         "cs-diff": "php vendor/bin/php-cs-fixer fix --dry-run -v --diff",
         "test": "php vendor/bin/pest",
         "test-cc": "php vendor/bin/pest --coverage-clover .build/coverage.xml",
-        "stan": "php vendor/bin/phpstan analyse --memory-limit=2G",
-        "stan-ci": "php vendor/bin/phpstan analyse --memory-limit=2G --error-format=github"
+        "stan": "php vendor/bin/phpstan analyse --memory-limit=2G"
     },
     "extra": {
         "laravel": {

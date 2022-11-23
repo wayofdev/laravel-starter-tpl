@@ -78,9 +78,11 @@ jobs:
 
       - name: Execute phpunit and pest tests
         run: |
-          php vendor/bin/pest --coverage-clover ./.build/coverage.xml
+          composer run test-cc
+          php vendor/bin/phpunit --coverage-clover .build/coverage.xml
         env:
           APP_KEY: "base64:hIM6yUU1TWlJhOX1Lfd34C2a1rYUwAYIPUtfCU+zwkA="
+          XDEBUG_MODE: "coverage"
 
       - name: Upload coverage results to Codecov.io
         uses: codecov/codecov-action@v3
