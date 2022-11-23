@@ -56,6 +56,9 @@ jobs:
       - name: Prepare environment
         run: |
           cp ../.env.example .env
+          mkdir -p ./.build/php-cs-fixer
+          mkdir -p ./.build/phpstan
+          mkdir -p ./.build/phpunit
 
       - name: Generate secret application key
         run: php artisan key:generate
@@ -65,20 +68,17 @@ jobs:
 
       - name: Run coding standards task
         run: |
-          mkdir -p ./build/php-cs-fixer
           composer run cs-diff
 
       - name: Run static analysis using phpstan
         run: |
-          mkdir -p ./build/phpstan
           composer run stan
         env:
           PHPSTAN_OUTPUT_FORMAT: github
 
       - name: Execute phpunit and pest tests
         run: |
-          mkdir -p ./build/phpunit
-          php vendor/bin/pest --coverage-clover ./build/coverage.xml
+          php vendor/bin/pest --coverage-clover ./.build/coverage.xml
         env:
           APP_KEY: "base64:hIM6yUU1TWlJhOX1Lfd34C2a1rYUwAYIPUtfCU+zwkA="
 
@@ -89,6 +89,6 @@ jobs:
           fail_ci_if_error: true
           verbose: true
           directory: ./build
-          files: ./build/coverage.xml
+          files: ./.build/coverage.xml
 
 ...
