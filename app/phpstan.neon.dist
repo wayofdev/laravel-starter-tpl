@@ -1,0 +1,19 @@
+includes:
+    - phpstan-baseline.neon
+
+parameters:
+    # The level 9 is the highest level
+    level: 6
+
+    paths:
+        - bootstrap/
+        - app/
+        - tests/
+        - config/
+        - routes/
+
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+    checkModelProperties: true
+
+    tmpDir: .build/phpstan/
