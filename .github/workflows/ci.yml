@@ -75,7 +75,8 @@ jobs:
           PHPSTAN_OUTPUT_FORMAT: github
 
       - name: Execute phpunit and pest tests
-        run: composer run test-cc
+        # run: composer run test-cc
+        run: php vendor/bin/phpstan analyse --memory-limit=2G
 
       - name: Upload coverage results to Codecov.io
         uses: codecov/codecov-action@v3
