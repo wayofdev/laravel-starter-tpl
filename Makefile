@@ -42,7 +42,11 @@ WAITER ?= $(BUILDER_WIRED) wait4x
 # Shorthand envsubst command, executed through build-deps
 ENVSUBST ?= $(BUILDER) envsubst
 
+APP_RUNNER ?= $(DOCKER_COMPOSE) run --rm --no-deps app
 APP_EXEC ?= $(DOCKER_COMPOSE) run app
+APP_CONSOLE ?= $(APP_RUNNER) php artisan
+APP_COMPOSER = $(APP_RUNNER) composer
+
 
 # Self documenting Makefile code
 # ------------------------------------------------------------------------------------
@@ -124,6 +128,10 @@ mkcert: ## Generate DH param and SSL certs
 	openssl dhparam -out certs/dhparam.pem 2048
 .PHONY: mkcert
 
+prepare:
+	mkdir -p .build/php-cs-fixer
+.PHONY: prepare
+
 
 # Docker Actions
 # ------------------------------------------------------------------------------------
@@ -156,7 +164,7 @@ pull: ## Pull and update docker images in this project
 .PHONY: pull
 
 
-# Code Quality, Git, Linting
+# Code Quality, Git, Linting, Testing
 # ------------------------------------------------------------------------------------
 hooks: ## Install git hooks from pre-commit-config
 	pre-commit install
@@ -166,3 +174,41 @@ hooks: ## Install git hooks from pre-commit-config
 lint: ## Lints yaml files inside project
 	yamllint .
 .PHONY: lint
+
+cs-diff:
+	$(APP_COMPOSER) cs-diff
+.PHONY: cs-diff
+
+cs-fix:
+	$(APP_COMPOSER) cs-fix
+.PHONY: cs-fix
+
+stan:
+	$(APP_COMPOSER) run-script stan
+.PHONY: stan
+
+test: ## Run project php-unit and pest tests
+	$(APP_COMPOSER) test
+.PHONY: test
+
+test-cc: ## Run project php-unit and pest tests in coverage mode and build report
+	$(APP_COMPOSER) test-cc
+.PHONY: test-cc
+
+
+# Composer Commands
+# ------------------------------------------------------------------------------------
+install: ## Install composer dependencies
+	$(APP_COMPOSER) install
+.PHONY: install
+
+update: ## Update composer dependencies
+	$(APP_COMPOSER) update $(package)
+.PHONY: update
+
+show: ## Shows information about installed composer packages
+	$(APP_COMPOSER) show
+.PHONY: show
+
+
+

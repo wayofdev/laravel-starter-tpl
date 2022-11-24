@@ -55,8 +55,16 @@ jobs:
 
       - name: Prepare environment
         run: |
-          cp ../.env.example .env
-          mkdir -p ./build/phpunit
+          cd ../ && make env && cd app
+          cp ../.env .env
+          mkdir -p ./.build/php-cs-fixer
+          mkdir -p ./.build/phpstan
+          mkdir -p ./.build/phpunit
+        env:
+          APP_NAME: tpl
+          SYSTEM_SERVICES_NAMESPACE: ss
+          PROJECT_SERVICES_NAMESPACE: wod
+          COMPOSE_PROJECT_NAME: starter
 
       - name: Generate secret application key
         run: php artisan key:generate
@@ -66,16 +74,19 @@ jobs:
 
       - name: Run coding standards task
         run: |
-          make prepare
           composer run cs-diff
 
       - name: Run static analysis using phpstan
-        run: composer run stan
+        run: |
+          composer run stan
         env:
           PHPSTAN_OUTPUT_FORMAT: github
 
       - name: Execute phpunit and pest tests
-        run: composer run test-cc
+        run: |
+          composer run test-cc
+        env:
+          XDEBUG_MODE: "coverage"
 
       - name: Upload coverage results to Codecov.io
         uses: codecov/codecov-action@v3
@@ -83,7 +94,6 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true
           verbose: true
-          directory: ./build
-          files: ./build/coverage.xml
+          files: coverage.xml
 
 ...
