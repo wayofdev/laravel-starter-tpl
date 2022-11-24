@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/wayofdev/laravel-starter-tpl/compare/v2.0.0...v2.1.0) (2022-11-24)
+
+
+### Features
+
+* updating codebase ([#4](https://github.com/wayofdev/laravel-starter-tpl/issues/4)) ([f1f7263](https://github.com/wayofdev/laravel-starter-tpl/commit/f1f7263fa8bdcad392b4b4f72ceadc1fa822c6d4))
+
 ## [2.0.0](https://github.com/wayofdev/laravel-starter-tpl/compare/v1.0.1...v2.0.0) (2022-11-23)
 
 
