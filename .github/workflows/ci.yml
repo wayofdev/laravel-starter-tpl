@@ -94,7 +94,7 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true
           verbose: true
-          directory: ./.build
-          files: ./.build/coverage.xml
+          directory: .build
+          files: coverage.xml
 
 ...
