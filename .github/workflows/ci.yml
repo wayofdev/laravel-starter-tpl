@@ -95,6 +95,6 @@ jobs:
           fail_ci_if_error: true
           verbose: true
           directory: .build
-          files: coverage.xml
+          files: coverage.xml,.build/coverage.xml,app/.build/coverage.xml
 
 ...
