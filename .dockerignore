@@ -1,0 +1,8 @@
+.git
+.gitignore
+Makefile
+README.md
+assets
+.editorconfig
+.dockerignore
+CHANGELOG.md
