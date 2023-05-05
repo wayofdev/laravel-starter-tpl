@@ -163,7 +163,7 @@ lint-yaml: ## Lints yaml files inside project
 .PHONY: lint-yaml
 
 lint-php: ## Lints php files inside project using php-cs-fixer
-	$(APP_COMPOSER) lint-php
+	$(APP_COMPOSER) run-script lint-php
 .PHONY: cs-fix
 
 lint-stan:
