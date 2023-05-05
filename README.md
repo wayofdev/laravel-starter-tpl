@@ -7,6 +7,7 @@ Features:
 - Added
   - wayofdev/cs-fixer-config
   - phpstan and its extensions
+  - added `declare(strict_types=1);` to all php files
 
 
 ## Installation

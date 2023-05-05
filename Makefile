@@ -167,8 +167,12 @@ lint-yaml: ## Lints yaml files inside project
 .PHONY: lint-yaml
 
 lint-php: ## Lints php files inside project using php-cs-fixer
-	$(APP_COMPOSER) run-script lint-php
-.PHONY: cs-fix
+	$(APP_COMPOSER) run-script cs:fix
+.PHONY: lint-php
+
+lint-diff: ## Shows diff of php-cs-fixer
+	$(APP_COMPOSER) run-script cs:diff
+.PHONY: lint-diff
 
 lint-stan:
 	$(APP_COMPOSER) run-script stan
@@ -179,7 +183,7 @@ test: ## Run project php-unit and pest tests
 .PHONY: test
 
 test-cc: ## Run project php-unit and pest tests in coverage mode and build report
-	$(APP_COMPOSER) test-cc
+	$(APP_COMPOSER) test:cc
 .PHONY: test-cc
 
 
