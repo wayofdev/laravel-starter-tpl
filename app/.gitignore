@@ -1,0 +1,12 @@
+/node_modules
+/vendor
+
+/public/build
+/public/storage
+/public/hot
+
+/.build
+/storage/*.key
+
+npm-debug.log
+yarn-error.log
