@@ -4,6 +4,11 @@ Features:
   - removed laravel sail
   - removed laravel pint
 
+- Added
+  - wayofdev/cs-fixer-config
+  - phpstan and its extensions
+
+
 ## Installation
 
 1. Create `.env` file:

@@ -115,6 +115,10 @@ key: ## Runs artisan command to create app encryption key
 	$(APP_RUNNER) php artisan key:generate
 .PHONY: key
 
+prepare:
+	mkdir -p app/.build/php-cs-fixer
+.PHONY: prepare
+
 
 # Docker Actions
 # ------------------------------------------------------------------------------------
