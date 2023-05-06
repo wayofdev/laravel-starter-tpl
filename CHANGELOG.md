@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/wayofdev/laravel-starter-tpl/compare/v1.0.0...v1.1.0) (2023-05-06)
+
+
+### Features
+
+* enable auto-merge ([4e31ab4](https://github.com/wayofdev/laravel-starter-tpl/commit/4e31ab42b606841c8e487e52c5b1912fae80d69b))
+
 ## 1.0.0 (2023-05-06)
 
 
