@@ -1,0 +1,100 @@
+---
+
+on:  # yamllint disable-line rule:truthy
+  push:
+    branches:
+      - master
+      - develop
+  pull_request:
+    branches:
+      - master
+      - develop
+
+name: 🔍 Continuous integration
+
+defaults:
+  run:
+    working-directory: app
+
+jobs:
+  integration:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: true
+      matrix:
+        os: ["ubuntu-22.04"]
+        php: ["8.1", "8.2"]
+
+    steps:
+      - name: 📦 Check out the codebase
+        uses: actions/checkout@v3
+
+      - name: 🛠️ Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: dom, curl, libxml, mbstring, zip, fileinfo, gd, xdebug
+          ini-values: error_reporting=E_ALL
+          tools: composer:v2
+          coverage: xdebug
+
+      - name: 🛠️ Setup problem matchers
+        run: |
+          echo "::add-matcher::${{ runner.tool_cache }}/php.json"
+          echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
+
+      - name: ♻️ Restore cached backend dependencies
+        id: cached-composer-dependencies
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: vendor-${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
+
+      - name: 📥 Install backend dependencies
+        if: steps.cached-composer-dependencies.outputs.cache-hit != 'true'
+        run: composer install
+
+      - name: 🛠️ Prepare environment
+        run: |
+          cd ../ && make env && cd app
+          cp ../.env .env
+          mkdir -p ./.build/php-cs-fixer
+          mkdir -p ./.build/phpstan
+          mkdir -p ./.build/phpunit
+        env:
+          APP_NAME: laravel
+          SHARED_SERVICES_NAMESPACE: ss
+          PROJECT_SERVICES_NAMESPACE: wod
+          COMPOSE_PROJECT_NAME: laravel-starter-tpl
+
+      - name: 🔑 Generate secret application key
+        run: php artisan key:generate
+
+      - name: 🔗 Create laravel storage symlinks
+        run: php artisan storage:link
+
+      - name: 🔍 Run coding standards task
+        run: |
+          composer run cs:diff
+
+      - name: 🔍 Run static analysis using phpstan
+        run: |
+          composer run stan
+        env:
+          PHPSTAN_OUTPUT_FORMAT: github
+
+      - name: 🧪 Execute phpunit and pest tests
+        run: |
+          composer run test:cc
+        env:
+          XDEBUG_MODE: "coverage"
+
+      - name: 📤 Upload coverage results to Codecov.io
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true
+          verbose: true
+          files: coverage.xml
+
+...

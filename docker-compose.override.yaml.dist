@@ -1,0 +1,31 @@
+---
+
+version: '3.9'
+
+services:
+  worker:
+    image: wayofdev/php-dev:8.1-supervisord-alpine-latest
+    container_name: ${COMPOSE_PROJECT_NAME}-worker
+    restart: on-failure
+    networks:
+      - default
+    depends_on:
+      - database
+    links:
+      - database
+    external_links:
+      - "rabbitmq.${PROJECT_SERVICES_NAMESPACE}.alias:rabbitmq"
+    environment:
+      APP_NAME: ${APP_NAME}
+      COMPOSER_AUTH: ${COMPOSER_AUTH}
+    volumes:
+      - ./app:/app:rw,cached
+      - ./.env:/app/.env
+      - ~/.composer:/.composer
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.supervisor-${COMPOSE_PROJECT_NAME}.rule=Host(`supervisor.${COMPOSE_PROJECT_NAME}.docker`)
+      - traefik.http.routers.supervisor-${COMPOSE_PROJECT_NAME}.entrypoints=supervisor
+      - traefik.http.services.supervisor-${COMPOSE_PROJECT_NAME}.loadbalancer.server.port=80
+
+...
