@@ -61,14 +61,4 @@ jobs:
           DEPLOYER_PROD_HOST: "prod.laravel-starter-tpl.wayof.dev"
           DEPLOYER_PROD_BRANCH: "master"
 
-      - name: 📦 Create sentry release
-        uses: getsentry/action-release@v1
-        env:
-          SENTRY_AUTH_TOKEN: ${{ secrets.DEPLOYER_SENTRY_TOKEN }}
-          SENTRY_ORG: ${{ secrets.DEPLOYER_SENTRY_ORG }}
-          SENTRY_PROJECT: ${{ secrets.DEPLOYER_SENTRY_PROJECT }}
-          SENTRY_URL: ${{ secrets.DEPLOYER_SENTRY_SERVER }}
-        with:
-          environment: staging
-
 ...
