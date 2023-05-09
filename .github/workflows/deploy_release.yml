@@ -4,11 +4,8 @@ on:  # yamllint disable-line rule:truthy
   release:
     types:
       - released
-  push:
-    tags:
-      - 'v*'
 
-name: 📦 Deploy to production
+name: 🚀 Deploy to production
 
 jobs:
   deployment:
