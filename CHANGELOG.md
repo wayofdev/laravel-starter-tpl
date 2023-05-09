@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.2.0](https://github.com/wayofdev/laravel-starter-tpl/compare/v1.1.1...v1.2.0) (2023-05-09)
+
+
+### Features
+
+* add deployer ([3adffe5](https://github.com/wayofdev/laravel-starter-tpl/commit/3adffe5e9c645ca37ac0e816dda1f2bb612d2ac8))
+* separate deployment workflows ([1386622](https://github.com/wayofdev/laravel-starter-tpl/commit/138662290b879a91a8c4be43c9531960f17bac92))
+
+
+### Bug Fixes
+
+* deployer ([#13](https://github.com/wayofdev/laravel-starter-tpl/issues/13)) ([9fd71fc](https://github.com/wayofdev/laravel-starter-tpl/commit/9fd71fc0c8f185f37a3b105e5df8e55def998cf3))
+* **deps:** update dependency laravel/framework to v10.10.0 ([4a65820](https://github.com/wayofdev/laravel-starter-tpl/commit/4a6582062d2f221bbcce691481a4243d8c499da9))
+* move deployer in composer ([ea0139a](https://github.com/wayofdev/laravel-starter-tpl/commit/ea0139a700c1661b03423880be3f977f4be1f560))
+* run deployment only once ([8204113](https://github.com/wayofdev/laravel-starter-tpl/commit/82041131f2bbfbec04115cb7f157982f5291ab01))
+* sentry error ([af63827](https://github.com/wayofdev/laravel-starter-tpl/commit/af63827052ceca9293a030d617a24698b20488cf))
+
+
+### Miscellaneous
+
+* **deps:** update dependency spatie/laravel-ignition to v2.1.2 ([a82667f](https://github.com/wayofdev/laravel-starter-tpl/commit/a82667ffa1e78bd662a5c2f4d42feeb59cfb65b0))
+* update deps ([5c0c839](https://github.com/wayofdev/laravel-starter-tpl/commit/5c0c83922a5240c625de4f5c8d272fe42c73d32d))
+
 ## [1.1.1](https://github.com/wayofdev/laravel-starter-tpl/compare/v1.1.0...v1.1.1) (2023-05-08)
 
 
