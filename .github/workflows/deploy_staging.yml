@@ -1,7 +1,13 @@
 ---
 
 on:  # yamllint disable-line rule:truthy
+#  push:
+#    branches:
+#      - develop
   push:
+    branches:
+      - develop
+  pull_request:
     branches:
       - develop
 
@@ -12,7 +18,7 @@ defaults:
     working-directory: app
 
 jobs:
-  integration:
+  deployment:
     runs-on: "ubuntu-22.04"
     strategy:
       fail-fast: true

@@ -18,7 +18,7 @@ defaults:
     working-directory: app
 
 jobs:
-  integration:
+  deployment:
     runs-on: "ubuntu-22.04"
     strategy:
       fail-fast: true
