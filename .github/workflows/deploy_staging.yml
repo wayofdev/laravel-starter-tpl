@@ -1,13 +1,7 @@
 ---
 
 on:  # yamllint disable-line rule:truthy
-#  push:
-#    branches:
-#      - develop
   push:
-    branches:
-      - develop
-  pull_request:
     branches:
       - develop
 
