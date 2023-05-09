@@ -4,9 +4,14 @@ on:  # yamllint disable-line rule:truthy
   push:
     branches:
       - master
-      - develop
+  # release:
+  #   types:
+  #     - released
+  # push:
+  #   tags:
+  #     - 'v*'
 
-name: 📦 Deploy to server
+name: 📦 Deploy to production
 
 defaults:
   run:
@@ -14,12 +19,12 @@ defaults:
 
 jobs:
   integration:
-    needs:
-      - integration
-      - shellcheck
     runs-on: "ubuntu-22.04"
     strategy:
       fail-fast: true
+    environment:
+      name: production
+      url: https://prod.laravel-starter-tpl.wayof.dev
 
     steps:
       - name: 📦 Check out the codebase
@@ -29,14 +34,8 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: "8.2"
-          extensions: dom, curl, libxml, mbstring, zip, fileinfo, xdebug
           ini-values: error_reporting=E_ALL
           tools: composer:v2
-
-      - name: 🛠️ Setup problem matchers
-        run: |
-          echo "::add-matcher::${{ runner.tool_cache }}/php.json"
-          echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
 
       - name: ♻️ Restore cached backend dependencies
         id: cached-composer-dependencies
@@ -49,24 +48,11 @@ jobs:
         if: steps.cached-composer-dependencies.outputs.cache-hit != 'true'
         run: composer install
 
-      - name: 🛠️ Prepare environment
-        run: |
-          cd ../ && make env && cd app
-          cp ../.env .env
-          mkdir -p ./.build/php-cs-fixer
-          mkdir -p ./.build/phpstan
-          mkdir -p ./.build/phpunit
-        env:
-          APP_NAME: laravel
-          SHARED_SERVICES_NAMESPACE: ss
-          PROJECT_SERVICES_NAMESPACE: wod
-          COMPOSE_PROJECT_NAME: laravel-starter-tpl
-
-      - name: 📤 Deploy ${{ github.ref == 'refs/heads/master' && 'production' || 'staging' }} environment
+      - name: 📤 Deploy production environment
         uses: deployphp/action@v1
         with:
           private-key: ${{ secrets.DEPLOYER_PRIVATE_KEY }}
-          dep: deploy ${{ github.ref == 'refs/heads/master' && 'prod' || 'staging' }}
+          dep: deploy prod
         env:
           DEPLOYER_STAGING_SLACK_WEBHOOK: ${{ secrets.DEPLOYER_STAGING_SLACK_WEBHOOK }}
           DEPLOYER_STAGING_REMOTE_USER: ${{ secrets.DEPLOYER_STAGING_REMOTE_USER }}
@@ -76,7 +62,15 @@ jobs:
           DEPLOYER_PROD_REMOTE_USER: ${{ secrets.DEPLOYER_PROD_REMOTE_USER }}
           DEPLOYER_PROD_HOST: "prod.laravel-starter-tpl.wayof.dev"
           DEPLOYER_PROD_BRANCH: "master"
-          DEPLOYER_SENTRY_TOKEN: ${{ secrets.DEPLOYER_SENTRY_TOKEN }}
-          DEPLOYER_SENTRY_ORG: "wayofdev"
-          DEPLOYER_SENTRY_PROJECT: "laravel-starter-tpl"
-          DEPLOYER_SENTRY_SERVER: "https://wayofdev.sentry.io"
+
+      - name: 📦 Create sentry release
+        uses: getsentry/action-release@v1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.DEPLOYER_SENTRY_TOKEN }}
+          SENTRY_ORG: ${{ secrets.DEPLOYER_SENTRY_ORG }}
+          SENTRY_PROJECT: ${{ secrets.DEPLOYER_SENTRY_PROJECT }}
+        with:
+          environment: ${{ github.ref == 'refs/heads/master' && 'production' || 'staging' }}
+          set_commits: auto
+
+...
