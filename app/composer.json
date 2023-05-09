@@ -8,9 +8,11 @@
         "php": "^8.1",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.8",
-        "laravel/tinker": "^2.8"
+        "laravel/tinker": "^2.8",
+        "sentry/sentry-laravel": "^3.3"
     },
     "require-dev": {
+        "deployer/deployer": "^7.3",
         "ergebnis/composer-normalize": "^2.31",
         "fakerphp/faker": "^1.9.1",
         "mockery/mockery": "^1.4.4",

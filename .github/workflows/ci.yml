@@ -97,4 +97,23 @@ jobs:
           verbose: true
           files: coverage.xml
 
+      - name: 📤 Deploy ${{ github.ref == 'refs/heads/master' && 'production' || 'staging' }} environment
+        uses: deployphp/action@v1
+        with:
+          private-key: ${{ secrets.DEPLOYER_PRIVATE_KEY }}
+          dep: deploy ${{ github.ref == 'refs/heads/master' && 'prod' || 'staging' }}
+        env:
+          DEPLOYER_STAGING_SLACK_WEBHOOK: ${{ secrets.DEPLOYER_STAGING_SLACK_WEBHOOK }}
+          DEPLOYER_STAGING_REMOTE_USER: ${{ secrets.DEPLOYER_STAGING_REMOTE_USER }}
+          DEPLOYER_STAGING_HOST: "staging.laravel-starter-tpl.wayof.dev"
+          DEPLOYER_STAGING_BRANCH: "develop"
+          DEPLOYER_PROD_SLACK_WEBHOOK: ${{ secrets.DEPLOYER_PROD_SLACK_WEBHOOK }}
+          DEPLOYER_PROD_REMOTE_USER: ${{ secrets.DEPLOYER_PROD_REMOTE_USER }}
+          DEPLOYER_PROD_HOST: "prod.laravel-starter-tpl.wayof.dev"
+          DEPLOYER_PROD_BRANCH: "master"
+          DEPLOYER_SENTRY_TOKEN: ${{ secrets.DEPLOYER_SENTRY_TOKEN }}
+          DEPLOYER_SENTRY_ORG: "wayofdev"
+          DEPLOYER_SENTRY_PROJECT: "laravel-starter-tpl"
+          DEPLOYER_SENTRY_SERVER: "https://wayofdev.sentry.io"
+
 ...
