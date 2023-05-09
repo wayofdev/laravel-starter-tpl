@@ -13,9 +13,9 @@ on:  # yamllint disable-line rule:truthy
 
 name: 📦 Deploy to staging
 
-#defaults:
-#  run:
-#    working-directory: app
+defaults:
+  run:
+    working-directory: app
 
 jobs:
   deployment:
