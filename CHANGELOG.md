@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/wayofdev/laravel-starter-tpl/compare/v1.1.0...v1.1.1) (2023-05-08)
+
+
+### Miscellaneous
+
+* **deps:** lock file maintenance ([ee666c6](https://github.com/wayofdev/laravel-starter-tpl/commit/ee666c6e9f4b26f580a0b8c66fe3886575659ee4))
+
 ## [1.1.0](https://github.com/wayofdev/laravel-starter-tpl/compare/v1.0.0...v1.1.0) (2023-05-06)
 
 
