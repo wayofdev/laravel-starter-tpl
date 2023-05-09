@@ -59,6 +59,7 @@ jobs:
         with:
           private-key: ${{ secrets.DEPLOYER_PRIVATE_KEY }}
           dep: deploy staging
+          deployer-binary: "vendor/bin/dep"
         env:
           DEPLOYER_STAGING_SLACK_WEBHOOK: ${{ secrets.DEPLOYER_STAGING_SLACK_WEBHOOK }}
           DEPLOYER_STAGING_REMOTE_USER: ${{ secrets.DEPLOYER_STAGING_REMOTE_USER }}
