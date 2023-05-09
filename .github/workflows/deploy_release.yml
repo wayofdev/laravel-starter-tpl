@@ -48,6 +48,12 @@ jobs:
         if: steps.cached-composer-dependencies.outputs.cache-hit != 'true'
         run: composer install
 
+      - name: ls
+        run: |
+          ls -la
+          ls -la vendor
+          ls -la vendor/bin
+
       - name: 📤 Deploy production environment
         uses: deployphp/action@v1
         with:
