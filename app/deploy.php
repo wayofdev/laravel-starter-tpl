@@ -7,10 +7,6 @@ namespace Deployer;
 require 'recipe/laravel.php';
 require 'contrib/slack.php';
 
-if (getenv('DEPLOYER_SENTRY_TOKEN')) {
-    require 'contrib/sentry.php';
-}
-
 set('application', 'laravel-starter-tpl');
 set('repository', 'git@github.com:wayofdev/laravel-starter-tpl.git');
 set('base_deploy_path', '/home/ploi');
@@ -46,15 +42,6 @@ host('prod')
     ->set('slack_webhook', getDefaultEnv('DEPLOYER_PROD_SLACK_WEBHOOK'))
     ->set('sub_directory', 'app');
 
-if (getenv('DEPLOYER_SENTRY_TOKEN')) {
-    set('sentry', [
-        'organization' => getDefaultEnv('DEPLOYER_SENTRY_ORG', 'wayofdev'),
-        'projects' => [getDefaultEnv('DEPLOYER_SENTRY_PROJECT', 'laravel-starter-tpl')],
-        'token' => getDefaultEnv('DEPLOYER_SENTRY_TOKEN'),
-        'sentry_server' => getDefaultEnv('DEPLOYER_SENTRY_SERVER', 'https://sentry.io/'),
-    ]);
-}
-
 before('deploy', 'slack:notify');
 
 task('deploy', [
@@ -69,13 +56,7 @@ task('deploy', [
     'deploy:publish',
 ]);
 
-after('deploy:failed', [
-    'deploy:unlock',
-    'slack:notify:failure',
-]);
+after('deploy:failed', 'deploy:unlock');
+after('deploy:failed', 'slack:notify:failure');
 
 after('deploy:success', 'slack:notify:success');
-
-if (getenv('DEPLOYER_SENTRY_TOKEN')) {
-    after('deploy', 'deploy:sentry');
-}
