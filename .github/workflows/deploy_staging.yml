@@ -13,9 +13,9 @@ on:  # yamllint disable-line rule:truthy
 
 name: 📦 Deploy to staging
 
-defaults:
-  run:
-    working-directory: app
+#defaults:
+#  run:
+#    working-directory: app
 
 jobs:
   deployment:
@@ -49,6 +49,7 @@ jobs:
 
       - name: 📤 Deploy staging environment
         uses: deployphp/action@v1
+        working-directory: ./app
         with:
           private-key: ${{ secrets.DEPLOYER_PRIVATE_KEY }}
           dep: deploy staging
