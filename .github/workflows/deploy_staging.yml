@@ -13,15 +13,14 @@ on:  # yamllint disable-line rule:truthy
 
 name: 📦 Deploy to staging
 
-defaults:
-  run:
-    working-directory: app
-
 jobs:
   deployment:
-    runs-on: "ubuntu-22.04"
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: true
+      matrix:
+        os: ["ubuntu-22.04"]
+        php: ["8.1"]
     environment:
       name: staging
       url: https://staging.laravel-starter-tpl.wayof.dev
@@ -33,13 +32,21 @@ jobs:
       - name: 🛠️ Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: "8.1"
+          php-version: ${{ matrix.php }}
           extensions: dom, curl, libxml, mbstring, zip, fileinfo
           ini-values: error_reporting=E_ALL
           tools: composer:v2
 
+      - name: ♻️ Restore cached backend dependencies
+        id: cached-composer-dependencies
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: vendor-${{ runner.os }}-${{ hashFiles('**/composer.lock') }}-${{ matrix.php }}
+
       - name: 📥 Install backend dependencies
-        run: composer install
+        if: steps.cached-composer-dependencies.outputs.cache-hit != 'true'
+        run: cd app && composer install
 
       - name: 📤 Deploy staging environment
         uses: deployphp/action@v1
