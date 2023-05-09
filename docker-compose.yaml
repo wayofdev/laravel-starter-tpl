@@ -15,13 +15,20 @@ services:
       - database
     external_links:
       - "rabbitmq.${PROJECT_SERVICES_NAMESPACE}.alias:rabbitmq"
-    environment:
-      APP_NAME: ${APP_NAME}
-      FAKETIME: "+2h"
     volumes:
       - ./app:/app:rw,cached
       - ./.env:/app/.env
       - ~/.composer:/.composer
+      # SSH agent forwarding on unix sockets won't work
+      # https://medium.com/@vanuan/ssh-and-docker-compose-7bce10b67765
+      # Reverting to mounting the ssh folder
+      - ~/.ssh:/home/www-data/.ssh
+    environment:
+      FAKETIME: "+2h"
+    env_file:
+      - .env
+    dns:
+      8.8.8.8
 
   web:
     image: wayofdev/nginx:k8s-alpine-latest
@@ -38,6 +45,8 @@ services:
       - ./app:/app:rw,cached
       - ./.env:/app/.env
       - ./certs:/etc/nginx/ssl
+    env_file:
+      - .env
     labels:
       - traefik.enable=true
       - traefik.http.routers.api-${COMPOSE_PROJECT_NAME}-secure.rule=Host(`api.${COMPOSE_PROJECT_NAME}.docker`)
@@ -71,4 +80,5 @@ networks:
     name: network.${SHARED_SERVICES_NAMESPACE}
   default:
     name: project.${COMPOSE_PROJECT_NAME}
+
 ...

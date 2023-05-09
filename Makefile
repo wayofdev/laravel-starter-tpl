@@ -200,3 +200,22 @@ update: ## Update composer dependencies
 show: ## Shows information about installed composer packages
 	$(APP_COMPOSER) show
 .PHONY: show
+
+
+# Deployer Commands
+# ------------------------------------------------------------------------------------
+dep-staging:
+	$(APP_EXEC) vendor/bin/dep deploy staging
+.PHONY: dep-staging
+
+dep-prod:
+	$(APP_EXEC) vendor/bin/dep deploy prod
+.PHONY: dep-prod
+
+ssh-staging:
+	$(APP_EXEC) vendor/bin/dep ssh staging
+.PHONY: ssh-staging
+
+ssh-prod:
+	$(APP_EXEC) vendor/bin/dep ssh prod
+.PHONY: ssh-prod
