@@ -1,0 +1,74 @@
+---
+
+on:  # yamllint disable-line rule:truthy
+  push:
+    branches:
+      - develop
+
+name: 📦 Deploy to staging
+
+jobs:
+  deployment:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: true
+      matrix:
+        os: ["ubuntu-22.04"]
+        php: ["8.1"]
+    environment:
+      name: staging
+      url: https://staging.laravel-starter-tpl.wayof.dev
+
+    steps:
+      - name: 📦 Check out the codebase
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: 🛠️ Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: dom, curl, libxml, mbstring, zip, fileinfo
+          ini-values: error_reporting=E_ALL
+          tools: composer:v2
+
+      - name: ♻️ Restore cached backend dependencies
+        id: cached-composer-dependencies
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: vendor-${{ runner.os }}-${{ hashFiles('**/composer.lock') }}-${{ matrix.php }}
+
+      - name: 📥 Install backend dependencies
+        if: steps.cached-composer-dependencies.outputs.cache-hit != 'true'
+        run: cd app && composer install
+
+      - name: 📤 Deploy staging environment
+        uses: deployphp/action@v1
+        with:
+          private-key: ${{ secrets.DEPLOYER_PRIVATE_KEY }}
+          dep: deploy staging
+          deployer-version: 7.3.1
+          sub-directory: app
+        env:
+          DEPLOYER_STAGING_SLACK_WEBHOOK: ${{ secrets.DEPLOYER_STAGING_SLACK_WEBHOOK }}
+          DEPLOYER_STAGING_REMOTE_USER: ${{ secrets.DEPLOYER_STAGING_REMOTE_USER }}
+          DEPLOYER_STAGING_HOST: "staging.laravel-starter-tpl.wayof.dev"
+          DEPLOYER_STAGING_BRANCH: "develop"
+          DEPLOYER_PROD_SLACK_WEBHOOK: ${{ secrets.DEPLOYER_PROD_SLACK_WEBHOOK }}
+          DEPLOYER_PROD_REMOTE_USER: ${{ secrets.DEPLOYER_PROD_REMOTE_USER }}
+          DEPLOYER_PROD_HOST: "prod.laravel-starter-tpl.wayof.dev"
+          DEPLOYER_PROD_BRANCH: "master"
+
+      - name: 📦 Create sentry release
+        uses: getsentry/action-release@v1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.DEPLOYER_SENTRY_TOKEN }}
+          SENTRY_ORG: ${{ secrets.DEPLOYER_SENTRY_ORG }}
+          SENTRY_PROJECT: ${{ secrets.DEPLOYER_SENTRY_PROJECT }}
+        with:
+          environment: ${{ github.ref == 'refs/heads/master' && 'production' || 'staging' }}
+          set_commits: auto
+
+...
