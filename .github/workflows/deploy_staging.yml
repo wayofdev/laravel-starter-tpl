@@ -5,7 +5,7 @@ on:  # yamllint disable-line rule:truthy
     branches:
       - develop
 
-name: 📦 Deploy to staging
+name: 🚀 Deploy to staging
 
 jobs:
   deployment:
