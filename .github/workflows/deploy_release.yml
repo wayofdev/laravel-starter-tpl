@@ -1,27 +1,23 @@
 ---
 
 on:  # yamllint disable-line rule:truthy
+  release:
+    types:
+      - released
   push:
-    branches:
-      - master
-  # release:
-  #   types:
-  #     - released
-  # push:
-  #   tags:
-  #     - 'v*'
+    tags:
+      - 'v*'
 
 name: 📦 Deploy to production
 
-defaults:
-  run:
-    working-directory: app
-
 jobs:
-  integration:
+  deployment:
     runs-on: "ubuntu-22.04"
     strategy:
       fail-fast: true
+      matrix:
+        os: ["ubuntu-22.04"]
+        php: ["8.1"]
     environment:
       name: production
       url: https://prod.laravel-starter-tpl.wayof.dev
@@ -33,7 +29,8 @@ jobs:
       - name: 🛠️ Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: "8.2"
+          php-version: ${{ matrix.php }}
+          extensions: dom, curl, libxml, mbstring, zip, fileinfo
           ini-values: error_reporting=E_ALL
           tools: composer:v2
 
@@ -42,17 +39,19 @@ jobs:
         uses: actions/cache@v3
         with:
           path: vendor
-          key: vendor-${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
+          key: vendor-${{ runner.os }}-${{ hashFiles('**/composer.lock') }}-${{ matrix.php }}
 
       - name: 📥 Install backend dependencies
         if: steps.cached-composer-dependencies.outputs.cache-hit != 'true'
-        run: composer install
+        run: cd app && composer install
 
       - name: 📤 Deploy production environment
         uses: deployphp/action@v1
         with:
           private-key: ${{ secrets.DEPLOYER_PRIVATE_KEY }}
           dep: deploy prod
+          deployer-version: 7.3.1
+          sub-directory: app
         env:
           DEPLOYER_STAGING_SLACK_WEBHOOK: ${{ secrets.DEPLOYER_STAGING_SLACK_WEBHOOK }}
           DEPLOYER_STAGING_REMOTE_USER: ${{ secrets.DEPLOYER_STAGING_REMOTE_USER }}
