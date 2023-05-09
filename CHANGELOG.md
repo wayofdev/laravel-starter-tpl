@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.2.1](https://github.com/wayofdev/laravel-starter-tpl/compare/v1.2.0...v1.2.1) (2023-05-09)
+
+
+### Bug Fixes
+
+* remove sentry release for staging ([ac9c72a](https://github.com/wayofdev/laravel-starter-tpl/commit/ac9c72a874abfd4ddbffc1df3722e4545454eb9d))
+* sentry ([51a4f8a](https://github.com/wayofdev/laravel-starter-tpl/commit/51a4f8a1def705d019d1ad7c5bdaccb1748861cc))
+* trigger deployment only on release created ([3d01707](https://github.com/wayofdev/laravel-starter-tpl/commit/3d017078b65a95055f432097010add18e0114e3e))
+
 ## [1.2.0](https://github.com/wayofdev/laravel-starter-tpl/compare/v1.1.1...v1.2.0) (2023-05-09)
 
 
