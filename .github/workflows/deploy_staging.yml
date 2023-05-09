@@ -5,7 +5,7 @@ on:  # yamllint disable-line rule:truthy
     branches:
       - develop
 
-name: 📦 Deploy to staging
+name: 🚀 Deploy to staging
 
 jobs:
   deployment:
@@ -60,15 +60,5 @@ jobs:
           DEPLOYER_PROD_REMOTE_USER: ${{ secrets.DEPLOYER_PROD_REMOTE_USER }}
           DEPLOYER_PROD_HOST: "prod.laravel-starter-tpl.wayof.dev"
           DEPLOYER_PROD_BRANCH: "master"
-
-      - name: 📦 Create sentry release
-        uses: getsentry/action-release@v1
-        env:
-          SENTRY_AUTH_TOKEN: ${{ secrets.DEPLOYER_SENTRY_TOKEN }}
-          SENTRY_ORG: ${{ secrets.DEPLOYER_SENTRY_ORG }}
-          SENTRY_PROJECT: ${{ secrets.DEPLOYER_SENTRY_PROJECT }}
-        with:
-          environment: ${{ github.ref == 'refs/heads/master' && 'production' || 'staging' }}
-          set_commits: auto
 
 ...

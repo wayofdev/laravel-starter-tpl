@@ -4,11 +4,8 @@ on:  # yamllint disable-line rule:truthy
   release:
     types:
       - released
-  push:
-    tags:
-      - 'v*'
 
-name: 📦 Deploy to production
+name: 🚀 Deploy to production
 
 jobs:
   deployment:
@@ -70,8 +67,8 @@ jobs:
           SENTRY_AUTH_TOKEN: ${{ secrets.DEPLOYER_SENTRY_TOKEN }}
           SENTRY_ORG: ${{ secrets.DEPLOYER_SENTRY_ORG }}
           SENTRY_PROJECT: ${{ secrets.DEPLOYER_SENTRY_PROJECT }}
+          SENTRY_URL: ${{ secrets.DEPLOYER_SENTRY_SERVER }}
         with:
-          environment: ${{ github.ref == 'refs/heads/master' && 'production' || 'staging' }}
-          set_commits: auto
+          environment: production
 
 ...
