@@ -6,7 +6,7 @@ namespace Laravel\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
-class Kernel extends HttpKernel
+final class Kernel extends HttpKernel
 {
     /**
      * The application's global HTTP middleware stack.
@@ -16,7 +16,7 @@ class Kernel extends HttpKernel
      * @var array<int, class-string|string>
      */
     protected $middleware = [
-        // \Laravel\Http\Middleware\TrustHosts::class,
+        \Laravel\Http\Middleware\TrustHosts::class,
         \Laravel\Http\Middleware\TrustProxies::class,
         \Illuminate\Http\Middleware\HandleCors::class,
         \Laravel\Http\Middleware\PreventRequestsDuringMaintenance::class,

@@ -11,9 +11,9 @@
 |
 */
 
-$app = new Illuminate\Foundation\Application(
+$app = (new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
-);
+))->useAppPath('src/Bridge/Laravel');
 
 /*
 |--------------------------------------------------------------------------

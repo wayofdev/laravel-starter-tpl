@@ -88,7 +88,7 @@ help: ## Show this menu
 # Default action
 # Defines default command when `make` is executed without additional parameters
 # ------------------------------------------------------------------------------------
-all: help
+all: hooks key prepare up
 .PHONY: all
 
 
