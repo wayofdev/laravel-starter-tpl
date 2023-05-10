@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Middleware;
+namespace Laravel\Http\Middleware;
 
 use Illuminate\Http\Middleware\TrustHosts as Middleware;
 
