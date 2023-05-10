@@ -6,7 +6,7 @@ parameters:
     level: 8
 
     paths:
-        - app/
+        - src/
         - tests/
         - config/
         - routes/
