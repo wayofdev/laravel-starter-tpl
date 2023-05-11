@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.4.0](https://github.com/wayofdev/laravel-starter-tpl/compare/v1.3.0...v1.4.0) (2023-05-11)
+
+
+### Features
+
+* project structure changed and readme added ([022e719](https://github.com/wayofdev/laravel-starter-tpl/commit/022e719702db2f036cab49428e8a1f3573058b29))
+
+
+### Miscellaneous
+
+* **deps:** update dependency wayofdev/cs-fixer-config to v1.2.2 ([a5c24a0](https://github.com/wayofdev/laravel-starter-tpl/commit/a5c24a0cb2a48467b2bc10e6e41c57a995259041))
+
 ## [1.3.0](https://github.com/wayofdev/laravel-starter-tpl/compare/v1.2.1...v1.3.0) (2023-05-10)
 
 
