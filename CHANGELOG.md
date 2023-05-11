@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.2](https://github.com/wayofdev/laravel-starter-tpl/compare/v1.5.1...v1.5.2) (2023-05-11)
+
+
+### Documentation
+
+* readme changes ([4beaf10](https://github.com/wayofdev/laravel-starter-tpl/commit/4beaf104ae04c3d9da7add064e02670ad79f0069))
+
 ## [1.5.1](https://github.com/wayofdev/laravel-starter-tpl/compare/v1.5.0...v1.5.1) (2023-05-11)
 
 
