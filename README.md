@@ -26,7 +26,7 @@ This is an **opinionated** modified version of the Laravel framework which aims 
 
 ## 📄 About
 
-Laravel is a popular PHP web framework that provides an easy and efficient way to build web applications. However, the default structure of Laravel, coupled with Eloquent's active record pattern, may not always fit the needs of a project that requires a Domain-Driven Design (DDD) architecture. Eloquent's active record pattern can sometimes break DDD principles and make it difficult to separate your business logic from your infrastructure code.
+Laravel is a popular PHP web framework that provides an easy and efficient way to build web applications. However, the default structure of Laravel, coupled with Eloquent's active record pattern, may not always fit the needs of a project that requires a Domain-Driven Design (DDD) architecture. Eloquent's active record pattern breaks DDD principles and make it difficult to separate your business logic from your infrastructure code.
 
 This repository provides a modified file structure for Laravel that follows DDD principles and tries to adhere to best practices, such as those outlined in Spatie's Laravel Beyond CRUD. The goal is to provide a starting point for building Laravel applications using a DDD approach, while still leveraging the power and convenience of the Laravel framework.
 
@@ -139,7 +139,10 @@ To use this repository, you need to meet the following requirements:
 
 ## 🧱 Credits and Useful Resources
 
-* Inspired from [Laravel Beyond CRUD](https://spatie.be/products/laravel-beyond-crud)
+Useful resources about Laravel and DDD approach:
+
+* [Laravel Beyond CRUD](https://spatie.be/products/laravel-beyond-crud)
+* [Laravel Skeleton](https://romanzipp.github.io/Laravel-Skeleton/) by [romanzipp](https://github.com/romanzipp)
 
 <br>
 
@@ -158,3 +161,5 @@ We are open to all kinds of contributions. If you want to:
 - 🐛 Report an issue
 - 📖 Improve documentation
 - 👨‍💻 Contribute to the code
+
+<br>
