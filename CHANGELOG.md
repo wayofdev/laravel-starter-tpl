@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.5.0](https://github.com/wayofdev/laravel-starter-tpl/compare/v1.4.0...v1.5.0) (2023-05-11)
+
+
+### Features
+
+* add code-see diagrams ([e503880](https://github.com/wayofdev/laravel-starter-tpl/commit/e503880b1360bdf34c44fe08331600e899dcc25d))
+* add code-see diagrams ([e852440](https://github.com/wayofdev/laravel-starter-tpl/commit/e852440b5b7d524a44d53ca1c647b19437f21364))
+
+
+### Bug Fixes
+
+* **ci:** file naming ([f0149fb](https://github.com/wayofdev/laravel-starter-tpl/commit/f0149fb18fe0b832e6a7bedfa0760fd9516654f0))
+* unable to detect app namespace ([828d94b](https://github.com/wayofdev/laravel-starter-tpl/commit/828d94be5e8f11c9bef13be3b2cbe0273b7fc1cc))
+
 ## [1.4.0](https://github.com/wayofdev/laravel-starter-tpl/compare/v1.3.0...v1.4.0) (2023-05-11)
 
 
