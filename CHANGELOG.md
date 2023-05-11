@@ -1,5 +1,33 @@
 # Changelog
 
+## [1.3.0](https://github.com/wayofdev/laravel-starter-tpl/compare/v1.2.1...v1.3.0) (2023-05-10)
+
+
+### Features
+
+* change project structure ([d100215](https://github.com/wayofdev/laravel-starter-tpl/commit/d100215689191db7f9c5a0090ce9d6c780e25b93))
+
+
+### Bug Fixes
+
+* **ci:** remove triggers ([2223b84](https://github.com/wayofdev/laravel-starter-tpl/commit/2223b84f07df458504ea7f5cec804206b9292698))
+* phpstan ([7969357](https://github.com/wayofdev/laravel-starter-tpl/commit/7969357d215685270bf6e94c68ad08e664ca6fe3))
+* phpunit coverage ([bc2d4f7](https://github.com/wayofdev/laravel-starter-tpl/commit/bc2d4f7bc3016621c989374d738cf8c135763e54))
+
+
+### Miscellaneous
+
+* **deps:** update dependency wayofdev/cs-fixer-config to v1.2.1 ([607aa06](https://github.com/wayofdev/laravel-starter-tpl/commit/607aa062c41b94be055cd0a5ba129ed07b9dd16c))
+
+## [1.2.1](https://github.com/wayofdev/laravel-starter-tpl/compare/v1.2.0...v1.2.1) (2023-05-09)
+
+
+### Bug Fixes
+
+* remove sentry release for staging ([ac9c72a](https://github.com/wayofdev/laravel-starter-tpl/commit/ac9c72a874abfd4ddbffc1df3722e4545454eb9d))
+* sentry ([51a4f8a](https://github.com/wayofdev/laravel-starter-tpl/commit/51a4f8a1def705d019d1ad7c5bdaccb1748861cc))
+* trigger deployment only on release created ([3d01707](https://github.com/wayofdev/laravel-starter-tpl/commit/3d017078b65a95055f432097010add18e0114e3e))
+
 ## [1.2.0](https://github.com/wayofdev/laravel-starter-tpl/compare/v1.1.1...v1.2.0) (2023-05-09)
 
 
