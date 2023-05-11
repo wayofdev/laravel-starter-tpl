@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.1](https://github.com/wayofdev/laravel-starter-tpl/compare/v1.5.0...v1.5.1) (2023-05-11)
+
+
+### Bug Fixes
+
+* change how app is initialized ([33961d2](https://github.com/wayofdev/laravel-starter-tpl/commit/33961d2ac7efd2fbff901c3e0413d3ad1c5db50c))
+
 ## [1.5.0](https://github.com/wayofdev/laravel-starter-tpl/compare/v1.4.0...v1.5.0) (2023-05-11)
 
 
