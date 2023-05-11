@@ -23,7 +23,7 @@ jobs:
         uses: AndreasAugustin/actions-template-sync@v0.8.0
         with:
           github_token: ${{ secrets.WORKFLOW_TOKEN }}
-          source_repo_path: wayofdev/next-starter-tpl
+          source_repo_path: wayofdev/laravel-starter-tpl
           upstream_branch: master
           pr_labels: 'type: maintenance'
 
