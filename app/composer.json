@@ -29,10 +29,10 @@
     },
     "autoload": {
         "psr-4": {
-            "Laravel\\": "src/Bridge/Laravel",
-            "Application\\": "src/Application",
-            "Domain\\": "src/Domain",
-            "Infrastructure\\": "src/Infrastructure",
+            "Laravel\\": "src/Bridge/Laravel/",
+            "Application\\": "src/Application/",
+            "Domain\\": "src/Domain/",
+            "Infrastructure\\": "src/Infrastructure/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }
