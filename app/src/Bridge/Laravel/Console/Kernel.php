@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Laravel\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
-use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Foundation\Console\Kernel as BaseConsoleKernel;
 
-class Kernel extends ConsoleKernel
+final class Kernel extends BaseConsoleKernel
 {
     /**
      * Define the application's command schedule.
@@ -23,7 +23,5 @@ class Kernel extends ConsoleKernel
     protected function commands(): void
     {
         $this->load(__DIR__ . '/Commands');
-
-        require base_path('routes/console.php');
     }
 }
