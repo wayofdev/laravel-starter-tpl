@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.5.3](https://github.com/wayofdev/laravel-starter-tpl/compare/v1.5.2...v1.5.3) (2023-05-18)
+
+
+### Bug Fixes
+
+* **deps:** update dependency guzzlehttp/guzzle to v7.5.2 ([f455dd0](https://github.com/wayofdev/laravel-starter-tpl/commit/f455dd0d488abdb7c0f09239bb539ded1a4fffd2))
+* **deps:** update dependency guzzlehttp/guzzle to v7.6.0 ([c86ac45](https://github.com/wayofdev/laravel-starter-tpl/commit/c86ac4531efa456a53b6a5dd4d374d0ec2cbda9d))
+* **deps:** update dependency guzzlehttp/guzzle to v7.6.1 ([ed0b3a7](https://github.com/wayofdev/laravel-starter-tpl/commit/ed0b3a75480fb5cae9fed13fce2c5940205dea5c))
+* **deps:** update dependency laravel/framework to v10.10.1 ([61a3bf3](https://github.com/wayofdev/laravel-starter-tpl/commit/61a3bf3599bd5252031890df2c49cb68b421ed9e))
+* **deps:** update dependency laravel/framework to v10.11.0 ([7f5be60](https://github.com/wayofdev/laravel-starter-tpl/commit/7f5be60c7574239e6779dc344c3f838d10c4d412))
+
+
+### Miscellaneous
+
+* **deps:** lock file maintenance ([d145331](https://github.com/wayofdev/laravel-starter-tpl/commit/d14533148573b92026afd38c3a49d9e666e8824f))
+* **deps:** update dependency fakerphp/faker to v1.22.0 ([dbc56fd](https://github.com/wayofdev/laravel-starter-tpl/commit/dbc56fd25a73d183298663d4e63fa03b320c89a6))
+* **deps:** update wayofdev/php-dev docker tag to v8.2 ([c88fc90](https://github.com/wayofdev/laravel-starter-tpl/commit/c88fc900a8dd09ed37c7fa8ec6213d7554421630))
+
 ## [1.5.2](https://github.com/wayofdev/laravel-starter-tpl/compare/v1.5.1...v1.5.2) (2023-05-11)
 
 
