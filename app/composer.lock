@@ -11819,16 +11819,16 @@
         },
         {
             "name": "wayofdev/cs-fixer-config",
-            "version": "v1.2.7",
+            "version": "v1.2.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wayofdev/php-cs-fixer-config.git",
-                "reference": "9a994f36136af606e89f805fcbccd4d8fd298a72"
+                "reference": "aec853c4975d0eb0150a3b139ad6ef4672c5e78d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wayofdev/php-cs-fixer-config/zipball/9a994f36136af606e89f805fcbccd4d8fd298a72",
-                "reference": "9a994f36136af606e89f805fcbccd4d8fd298a72",
+                "url": "https://api.github.com/repos/wayofdev/php-cs-fixer-config/zipball/aec853c4975d0eb0150a3b139ad6ef4672c5e78d",
+                "reference": "aec853c4975d0eb0150a3b139ad6ef4672c5e78d",
                 "shasum": ""
             },
             "require": {
@@ -11879,7 +11879,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-05-28T17:31:00+00:00"
+            "time": "2023-06-05T07:51:31+00:00"
         }
     ],
     "aliases": [],
