@@ -44,6 +44,18 @@ final class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\ThrottleRequests::class . ':api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+
+        'api-public' => [
+            // ThrottleRequests::class . ':api',
+            // AcceptsJson::class,
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ],
+
+        'api-admin' => [
+            // ThrottleRequests::class . ':api',
+            // AcceptsJson::class,
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ],
     ];
 
     /**

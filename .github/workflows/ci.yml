@@ -77,12 +77,10 @@ jobs:
         run: php artisan storage:link
 
       - name: 🔍 Run coding standards task
-        run: |
-          composer run cs:diff
+        run: composer run cs:diff
 
       - name: 🔍 Run static analysis using phpstan
-        run: |
-          composer run stan
+        run: composer run stan
         env:
           PHPSTAN_OUTPUT_FORMAT: github
 
