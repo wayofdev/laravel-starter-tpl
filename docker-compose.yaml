@@ -9,6 +9,7 @@ services:
     restart: on-failure
     networks:
       - default
+      - shared
     depends_on:
       - database
     links:
@@ -25,8 +26,6 @@ services:
       - ~/.ssh:/home/www-data/.ssh
     environment:
       FAKETIME: "+2h"
-    env_file:
-      - .env
     dns:
       8.8.8.8
 
@@ -62,7 +61,7 @@ services:
     networks:
       - default
     ports:
-      - '${FORWARD_DB_PORT:-5432}:5432'
+      - '${DB_FORWARD_PORT:-5432}:5432'
     environment:
       POSTGRES_USER: ${DB_USERNAME}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
