@@ -62,7 +62,7 @@ services:
     networks:
       - default
     ports:
-      - '${FORWARD_DB_PORT:-5432}:5432'
+      - '${DB_FORWARD_PORT:-5432}:5432'
     environment:
       POSTGRES_USER: ${DB_USERNAME}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
