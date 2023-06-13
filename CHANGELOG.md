@@ -1,5 +1,51 @@
 # Changelog
 
+## [1.5.3](https://github.com/wayofdev/laravel-starter-tpl/compare/v1.5.2...v1.5.3) (2023-05-18)
+
+
+### Bug Fixes
+
+* **deps:** update dependency guzzlehttp/guzzle to v7.5.2 ([f455dd0](https://github.com/wayofdev/laravel-starter-tpl/commit/f455dd0d488abdb7c0f09239bb539ded1a4fffd2))
+* **deps:** update dependency guzzlehttp/guzzle to v7.6.0 ([c86ac45](https://github.com/wayofdev/laravel-starter-tpl/commit/c86ac4531efa456a53b6a5dd4d374d0ec2cbda9d))
+* **deps:** update dependency guzzlehttp/guzzle to v7.6.1 ([ed0b3a7](https://github.com/wayofdev/laravel-starter-tpl/commit/ed0b3a75480fb5cae9fed13fce2c5940205dea5c))
+* **deps:** update dependency laravel/framework to v10.10.1 ([61a3bf3](https://github.com/wayofdev/laravel-starter-tpl/commit/61a3bf3599bd5252031890df2c49cb68b421ed9e))
+* **deps:** update dependency laravel/framework to v10.11.0 ([7f5be60](https://github.com/wayofdev/laravel-starter-tpl/commit/7f5be60c7574239e6779dc344c3f838d10c4d412))
+
+
+### Miscellaneous
+
+* **deps:** lock file maintenance ([d145331](https://github.com/wayofdev/laravel-starter-tpl/commit/d14533148573b92026afd38c3a49d9e666e8824f))
+* **deps:** update dependency fakerphp/faker to v1.22.0 ([dbc56fd](https://github.com/wayofdev/laravel-starter-tpl/commit/dbc56fd25a73d183298663d4e63fa03b320c89a6))
+* **deps:** update wayofdev/php-dev docker tag to v8.2 ([c88fc90](https://github.com/wayofdev/laravel-starter-tpl/commit/c88fc900a8dd09ed37c7fa8ec6213d7554421630))
+
+## [1.5.2](https://github.com/wayofdev/laravel-starter-tpl/compare/v1.5.1...v1.5.2) (2023-05-11)
+
+
+### Documentation
+
+* readme changes ([4beaf10](https://github.com/wayofdev/laravel-starter-tpl/commit/4beaf104ae04c3d9da7add064e02670ad79f0069))
+
+## [1.5.1](https://github.com/wayofdev/laravel-starter-tpl/compare/v1.5.0...v1.5.1) (2023-05-11)
+
+
+### Bug Fixes
+
+* change how app is initialized ([33961d2](https://github.com/wayofdev/laravel-starter-tpl/commit/33961d2ac7efd2fbff901c3e0413d3ad1c5db50c))
+
+## [1.5.0](https://github.com/wayofdev/laravel-starter-tpl/compare/v1.4.0...v1.5.0) (2023-05-11)
+
+
+### Features
+
+* add code-see diagrams ([e503880](https://github.com/wayofdev/laravel-starter-tpl/commit/e503880b1360bdf34c44fe08331600e899dcc25d))
+* add code-see diagrams ([e852440](https://github.com/wayofdev/laravel-starter-tpl/commit/e852440b5b7d524a44d53ca1c647b19437f21364))
+
+
+### Bug Fixes
+
+* **ci:** file naming ([f0149fb](https://github.com/wayofdev/laravel-starter-tpl/commit/f0149fb18fe0b832e6a7bedfa0760fd9516654f0))
+* unable to detect app namespace ([828d94b](https://github.com/wayofdev/laravel-starter-tpl/commit/828d94be5e8f11c9bef13be3b2cbe0273b7fc1cc))
+
 ## [1.4.0](https://github.com/wayofdev/laravel-starter-tpl/compare/v1.3.0...v1.4.0) (2023-05-11)
 
 
