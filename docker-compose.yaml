@@ -44,8 +44,6 @@ services:
       - ./app:/app:rw,cached
       - ./.env:/app/.env
       - ./certs:/etc/nginx/ssl
-    env_file:
-      - .env
     labels:
       - traefik.enable=true
       - traefik.http.routers.api-${COMPOSE_PROJECT_NAME}-secure.rule=Host(`api.${COMPOSE_PROJECT_NAME}.docker`)
@@ -60,6 +58,7 @@ services:
     restart: on-failure
     networks:
       - default
+      - shared
     ports:
       - '${DB_FORWARD_PORT:-5432}:5432'
     environment:

@@ -48,11 +48,13 @@ task('deploy', [
     'deploy:prepare',
     'deploy:vendors',
     'artisan:storage:link',
+    'artisan:cache:clear',
     'artisan:config:cache',
     'artisan:route:cache',
     'artisan:view:cache',
     'artisan:event:cache',
     'artisan:migrate',
+    // 'artisan:db:seed',
     'deploy:publish',
 ]);
 

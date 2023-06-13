@@ -6,7 +6,7 @@
     "license": "MIT",
     "require": {
         "ext-pdo": "*",
-        "php": "^8.1",
+        "php": "^8.2",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.8",
         "laravel/tinker": "^2.8",
@@ -60,7 +60,10 @@
         "cs:diff": "php vendor/bin/php-cs-fixer fix --dry-run -v --diff",
         "test": "php vendor/bin/pest",
         "test:cc": "XDEBUG_MODE=coverage php vendor/bin/pest --coverage-clover coverage.xml",
-        "stan": "php vendor/bin/phpstan analyse --memory-limit=2G"
+        "stan": "php vendor/bin/phpstan analyse --memory-limit=2G",
+        "deptrac": "php vendor/bin/deptrac analyse --config-file=deptrac.yaml -v --cache-file=.build/.deptrac.cache",
+        "deptrac:ci": "php vendor/bin/deptrac analyse --config-file=deptrac.yaml -v --cache-file=.build/.deptrac.cache --formatter github-actions",
+        "deptrac:gv": "php vendor/bin/deptrac analyse --config-file=deptrac.yaml -v --cache-file=.build/.deptrac.cache --formatter graphviz-image --output ../assets/deptrac.svg"
     },
     "extra": {
         "laravel": {
@@ -82,6 +85,6 @@
             "phpstan/extension-installer": true
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }
