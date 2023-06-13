@@ -124,7 +124,7 @@ prepare:
 # ------------------------------------------------------------------------------------
 up: # Creates and starts containers, defined in docker-compose and override file
 	$(DOCKER_COMPOSE) up --remove-orphans -d
-	$(DOCKER_COMPOSE) exec app wait4x tcp database:5432 -t 1m
+	$(DOCKER_COMPOSE) exec app wait4x postgresql 'postgres://${DB_USERNAME}:${DB_PASSWORD}@database:5432/${DB_DATABASE}?sslmode=disable' -t 1m
 .PHONY: up
 
 down: # Stops and removes containers of this project
@@ -178,6 +178,10 @@ lint-stan:
 	$(APP_COMPOSER) run-script stan
 .PHONY: lint-stan
 
+lint-deps:
+	$(APP_COMPOSER) run-script deptrac
+.PHONY: lint-deps
+
 test: ## Run project php-unit and pest tests
 	$(APP_COMPOSER) test
 .PHONY: test
@@ -185,6 +189,10 @@ test: ## Run project php-unit and pest tests
 test-cc: ## Run project php-unit and pest tests in coverage mode and build report
 	$(APP_COMPOSER) test:cc
 .PHONY: test-cc
+
+api-docs: ## Generate openapi docs specification file
+	$(APP_EXEC) php artisan open-docs:generate
+.PHONY: api-docs
 
 
 # Composer Commands
@@ -197,9 +205,24 @@ update: ## Update composer dependencies
 	$(APP_COMPOSER) update $(package)
 .PHONY: update
 
+du: ## Dump composer autoload
+	$(APP_COMPOSER) dump-autoload
+.PHONY: du
+
 show: ## Shows information about installed composer packages
 	$(APP_COMPOSER) show
 .PHONY: show
+
+
+# Database Commands
+# ------------------------------------------------------------------------------------
+db-wipe: ## Wipe database
+	$(APP_EXEC) php artisan db:wipe
+.PHONY: db-wipe
+
+db-refresh: ## Delete migration files, wipe database, create new migrations, run them and seed database
+	$(APP_EXEC) php artisan migrate:fresh
+.PHONY: db-refresh
 
 
 # Deployer Commands
