@@ -16,5 +16,4 @@ use Spatie\RouteAttributes\Attributes\Resource;
 )]
 final class UserController extends Controller
 {
-
 }
