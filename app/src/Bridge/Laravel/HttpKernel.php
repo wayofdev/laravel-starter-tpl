@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Laravel\Http;
+namespace Laravel;
 
-use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Illuminate\Foundation\Http\Kernel;
 
-final class Kernel extends HttpKernel
+final class HttpKernel extends Kernel
 {
     /**
      * The application's global HTTP middleware stack.

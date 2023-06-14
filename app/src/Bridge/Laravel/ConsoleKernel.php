@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Laravel\Console;
+namespace Laravel;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as BaseConsoleKernel;
 
-final class Kernel extends BaseConsoleKernel
+final class ConsoleKernel extends BaseConsoleKernel
 {
     /**
      * Define the application's command schedule.
@@ -22,6 +22,6 @@ final class Kernel extends BaseConsoleKernel
      */
     protected function commands(): void
     {
-        $this->load(__DIR__ . '/Commands');
+        $this->load(__DIR__ . '/Console/Commands');
     }
 }

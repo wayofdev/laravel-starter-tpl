@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laravel\Http\Controllers;
+namespace Laravel\Http;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
