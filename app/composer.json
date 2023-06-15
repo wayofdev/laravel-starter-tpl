@@ -12,7 +12,9 @@
         "laravel/framework": "^10.13",
         "laravel/tinker": "^2.8",
         "sentry/sentry-laravel": "^3.4",
-        "spatie/laravel-route-attributes": "^1.18"
+        "spatie/laravel-query-builder": "^5.2",
+        "spatie/laravel-route-attributes": "^1.18",
+        "wayofdev/laravel-open-docs": "^2.0"
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.31",
