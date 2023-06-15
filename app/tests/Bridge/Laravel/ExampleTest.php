@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature;
+namespace Tests\Bridge\Laravel;
 
 // use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;

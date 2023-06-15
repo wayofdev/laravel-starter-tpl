@@ -6,9 +6,7 @@ namespace Laravel\Admin\Category\Queries;
 
 use Domain\Category\Models\Category;
 use Illuminate\Http\Request;
-use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
-use Support\Filters\FuzzyFilter;
 
 final class IndexQuery extends QueryBuilder
 {
@@ -18,10 +16,6 @@ final class IndexQuery extends QueryBuilder
 
         parent::__construct($query, $request);
 
-        $this->allowedFilters([
-            AllowedFilter::custom('search', new FuzzyFilter(
-                'name',
-            )),
-        ]);
+        $this->allowedFilters(['name']);
     }
 }
