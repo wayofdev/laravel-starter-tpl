@@ -17,7 +17,6 @@ return [
     'directories' => [
         app_path('Admin') => [
             'prefix' => 'api/admin',
-            'middleware' => 'auth:api',
         ],
         app_path('Public') => [
             'prefix' => 'api/public',
