@@ -1,5 +1,59 @@
 # Changelog
 
+## [1.6.0](https://github.com/wayofdev/laravel-starter-tpl/compare/v1.5.3...v1.6.0) (2023-06-15)
+
+
+### Features
+
+* dumy domain entities ([49918ac](https://github.com/wayofdev/laravel-starter-tpl/commit/49918ac7a7a91d83f853d5651a9c36e183827057))
+* example structure ([2be7e57](https://github.com/wayofdev/laravel-starter-tpl/commit/2be7e57669b562526af0010d44762dbee21cdc04))
+* structure ([e12b0d2](https://github.com/wayofdev/laravel-starter-tpl/commit/e12b0d2a05cc92123beef5ecb6722eebc2db103f))
+* update dep files ([f3cb374](https://github.com/wayofdev/laravel-starter-tpl/commit/f3cb3742619e9ce1ee1e6ecc19390b29676c2dda))
+* update github actions ([9726a76](https://github.com/wayofdev/laravel-starter-tpl/commit/9726a7631c27fc5875ccb1bc97c9c0dd88abd212))
+
+
+### Bug Fixes
+
+* **deps:** update dependency guzzlehttp/guzzle to v7.7.0 ([82eb3f3](https://github.com/wayofdev/laravel-starter-tpl/commit/82eb3f33af2c504de364f765ede6af1b79b81cbd))
+* **deps:** update dependency laravel/framework to v10.12.0 ([837a1ea](https://github.com/wayofdev/laravel-starter-tpl/commit/837a1ea06ecdcf060d28479b57f3a53c9305a850))
+* **deps:** update dependency laravel/framework to v10.13.0 ([99f59e0](https://github.com/wayofdev/laravel-starter-tpl/commit/99f59e07a87a9e4784f288c1b2a055603cb67e01))
+* **deps:** update dependency laravel/framework to v10.13.1 ([120f929](https://github.com/wayofdev/laravel-starter-tpl/commit/120f929507f4a73ca598e1608b3295277119d9d6))
+* **deps:** update dependency laravel/framework to v10.13.2 ([6f3f9e7](https://github.com/wayofdev/laravel-starter-tpl/commit/6f3f9e72c4510b8b1198344a3b6ea53e7b1f64f6))
+* **deps:** update dependency laravel/framework to v10.13.5 ([b9951e6](https://github.com/wayofdev/laravel-starter-tpl/commit/b9951e6deb5d4863fa67f46ffd5b3a136c79748d))
+* **deps:** update dependency sentry/sentry-laravel to v3.4.1 ([97b56de](https://github.com/wayofdev/laravel-starter-tpl/commit/97b56dedb692433c4635ff3d658b0b6afd892d64))
+* env ([455ae28](https://github.com/wayofdev/laravel-starter-tpl/commit/455ae28b64b82ff8ae9d389693e22542871db072))
+
+
+### Miscellaneous
+
+* **deps:** lock file maintenance ([edc5384](https://github.com/wayofdev/laravel-starter-tpl/commit/edc538481d26b543d57ad28e7f946714590aead7))
+* **deps:** lock file maintenance ([3a1668d](https://github.com/wayofdev/laravel-starter-tpl/commit/3a1668db4ebdd5026c1a2fbac57a95a1e24e107b))
+* **deps:** lock file maintenance ([f1aabfd](https://github.com/wayofdev/laravel-starter-tpl/commit/f1aabfd0676048b3de49b6edb4bd513f407b5340))
+* **deps:** lock file maintenance ([48dfaf7](https://github.com/wayofdev/laravel-starter-tpl/commit/48dfaf79bfd2e5f883813a11279234e1a301e4a4))
+* **deps:** lock file maintenance ([129845d](https://github.com/wayofdev/laravel-starter-tpl/commit/129845d37983b2e7883bbf30cc73189dec44bfad))
+* **deps:** update dependency fakerphp/faker to v1.23.0 ([a244d25](https://github.com/wayofdev/laravel-starter-tpl/commit/a244d2560de88dc3a7cb5c02ec329ef06a8e2d65))
+* **deps:** update dependency mockery/mockery to v1.6.0 ([06660b6](https://github.com/wayofdev/laravel-starter-tpl/commit/06660b64367ae20d18379b60b50ac659248ce9c4))
+* **deps:** update dependency mockery/mockery to v1.6.1 ([b61aca2](https://github.com/wayofdev/laravel-starter-tpl/commit/b61aca29bfda35786fec41ece97742fb159b88be))
+* **deps:** update dependency mockery/mockery to v1.6.2 ([27c117a](https://github.com/wayofdev/laravel-starter-tpl/commit/27c117a572f4779e2c757db0cc5ea40058242986))
+* **deps:** update dependency nunomaduro/larastan to v2.6.1 ([c2602b3](https://github.com/wayofdev/laravel-starter-tpl/commit/c2602b34e817d0df4d88e5722ebe95602d85f2e6))
+* **deps:** update dependency nunomaduro/larastan to v2.6.2 ([8cd3802](https://github.com/wayofdev/laravel-starter-tpl/commit/8cd3802c580559824a1ca0e6545d6fc4c2564728))
+* **deps:** update dependency nunomaduro/larastan to v2.6.3 ([72ed65d](https://github.com/wayofdev/laravel-starter-tpl/commit/72ed65d67f6ebad7106e8d2f6b86dc8f3cd9d806))
+* **deps:** update dependency phpstan/extension-installer to v1.3.1 ([f9d400d](https://github.com/wayofdev/laravel-starter-tpl/commit/f9d400dde7703319c838f6021de6145dabab4277))
+* **deps:** update dependency phpunit/phpunit to v10.2.2 ([d6c6de1](https://github.com/wayofdev/laravel-starter-tpl/commit/d6c6de1961cc604d3111c9055fad6a3e2103da88))
+* **deps:** update dependency spatie/laravel-ignition to v2.1.3 ([27af06c](https://github.com/wayofdev/laravel-starter-tpl/commit/27af06cd29a3cbfc3a525f7c3887e0bab69e7e51))
+* **deps:** update dependency wayofdev/cs-fixer-config to v1.2.10 ([0de91e1](https://github.com/wayofdev/laravel-starter-tpl/commit/0de91e1d873926ada4f6ce114bcfd277913111a7))
+* **deps:** update dependency wayofdev/cs-fixer-config to v1.2.11 ([b1b3f4f](https://github.com/wayofdev/laravel-starter-tpl/commit/b1b3f4fd4dffc3189c607e0018fa6c4df0cc7bad))
+* **deps:** update dependency wayofdev/cs-fixer-config to v1.2.12 ([fdec45c](https://github.com/wayofdev/laravel-starter-tpl/commit/fdec45cc6c556de64c2ee769193f2824c158d6c2))
+* **deps:** update dependency wayofdev/cs-fixer-config to v1.2.13 ([2b12b07](https://github.com/wayofdev/laravel-starter-tpl/commit/2b12b0783a96d0f55c3f527a5c81161baf69d853))
+* **deps:** update dependency wayofdev/cs-fixer-config to v1.2.3 ([b79b45c](https://github.com/wayofdev/laravel-starter-tpl/commit/b79b45c22a2b02a8a2f4adc9154f41505b834c05))
+* **deps:** update dependency wayofdev/cs-fixer-config to v1.2.4 ([b93af3c](https://github.com/wayofdev/laravel-starter-tpl/commit/b93af3ca8176f0ae4b54a5dc39c5eaccd0f16cc5))
+* **deps:** update dependency wayofdev/cs-fixer-config to v1.2.5 ([2ef427f](https://github.com/wayofdev/laravel-starter-tpl/commit/2ef427feeae17b45b25fa9bc6b9c1cdea49c98ce))
+* **deps:** update dependency wayofdev/cs-fixer-config to v1.2.6 ([b4c1494](https://github.com/wayofdev/laravel-starter-tpl/commit/b4c14944111d9105d99268025cbf3ea0dc60542c))
+* **deps:** update dependency wayofdev/cs-fixer-config to v1.2.7 ([9b0c3c3](https://github.com/wayofdev/laravel-starter-tpl/commit/9b0c3c38260d12eee3539612a3694749933d57d5))
+* **deps:** update dependency wayofdev/cs-fixer-config to v1.2.9 ([7e7e848](https://github.com/wayofdev/laravel-starter-tpl/commit/7e7e8483c10c3656d897c9a5983a051501c1f74b))
+* latest changes ([0946a85](https://github.com/wayofdev/laravel-starter-tpl/commit/0946a8556239cb8d1e5ca49eaa46cdb905688cba))
+* update deps ([c2ba1c4](https://github.com/wayofdev/laravel-starter-tpl/commit/c2ba1c47c4ddb689fb3464ca2b90d9be3c1fddae))
+
 ## [1.5.3](https://github.com/wayofdev/laravel-starter-tpl/compare/v1.5.2...v1.5.3) (2023-05-18)
 
 
