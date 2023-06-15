@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laravel\Public\Category\Queries;
+namespace Laravel\Admin\Category\Queries;
 
 use Domain\Category\Models\Category;
 use Illuminate\Http\Request;

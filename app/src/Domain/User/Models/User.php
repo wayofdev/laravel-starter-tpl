@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Domain\User\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -55,7 +55,7 @@ final class User extends Authenticatable
         return UserFactory::new();
     }
 
-    public function roles(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function roles(): HasMany
     {
         return $this->hasMany(Role::class);
     }
