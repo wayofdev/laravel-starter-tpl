@@ -28,12 +28,12 @@ $app = (new Laravel\Application(
 
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,
-    Laravel\Http\Kernel::class
+    Laravel\HttpKernel::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
-    Laravel\Console\Kernel::class
+    Laravel\ConsoleKernel::class
 );
 
 $app->singleton(

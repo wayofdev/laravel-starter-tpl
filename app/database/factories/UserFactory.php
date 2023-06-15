@@ -12,6 +12,8 @@ use Illuminate\Support\Str;
  */
 class UserFactory extends Factory
 {
+    protected $model = \Domain\User\Models\User::class;
+
     /**
      * Define the model's default state.
      *
