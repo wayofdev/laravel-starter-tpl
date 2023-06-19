@@ -2709,16 +2709,16 @@
         },
         {
             "name": "php-http/discovery",
-            "version": "1.18.1",
+            "version": "1.19.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/discovery.git",
-                "reference": "f258b3a1d16acb7b21f3b42d7a2494a733365237"
+                "reference": "1856a119a0b0ba8da8b5c33c080aa7af8fac25b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/discovery/zipball/f258b3a1d16acb7b21f3b42d7a2494a733365237",
-                "reference": "f258b3a1d16acb7b21f3b42d7a2494a733365237",
+                "url": "https://api.github.com/repos/php-http/discovery/zipball/1856a119a0b0ba8da8b5c33c080aa7af8fac25b4",
+                "reference": "1856a119a0b0ba8da8b5c33c080aa7af8fac25b4",
                 "shasum": ""
             },
             "require": {
@@ -2781,9 +2781,9 @@
             ],
             "support": {
                 "issues": "https://github.com/php-http/discovery/issues",
-                "source": "https://github.com/php-http/discovery/tree/1.18.1"
+                "source": "https://github.com/php-http/discovery/tree/1.19.0"
             },
-            "time": "2023-05-17T08:53:10+00:00"
+            "time": "2023-06-19T08:45:36+00:00"
         },
         {
             "name": "php-http/httplug",
@@ -3976,24 +3976,24 @@
         },
         {
             "name": "sentry/sentry-laravel",
-            "version": "3.4.1",
+            "version": "3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/getsentry/sentry-laravel.git",
-                "reference": "516df9df80414a71fa5464039746e8e98b066e09"
+                "reference": "008243af3902e77bf3396a82441c0b491c3d5675"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getsentry/sentry-laravel/zipball/516df9df80414a71fa5464039746e8e98b066e09",
-                "reference": "516df9df80414a71fa5464039746e8e98b066e09",
+                "url": "https://api.github.com/repos/getsentry/sentry-laravel/zipball/008243af3902e77bf3396a82441c0b491c3d5675",
+                "reference": "008243af3902e77bf3396a82441c0b491c3d5675",
                 "shasum": ""
             },
             "require": {
                 "illuminate/support": "^6.0 | ^7.0 | ^8.0 | ^9.0 | ^10.0",
                 "nyholm/psr7": "^1.0",
                 "php": "^7.2 | ^8.0",
-                "sentry/sdk": "^3.3",
-                "sentry/sentry": "^3.16",
+                "sentry/sdk": "^3.4",
+                "sentry/sentry": "^3.19",
                 "symfony/psr-http-message-bridge": "^1.0 | ^2.0"
             },
             "require-dev": {
@@ -4050,7 +4050,7 @@
             ],
             "support": {
                 "issues": "https://github.com/getsentry/sentry-laravel/issues",
-                "source": "https://github.com/getsentry/sentry-laravel/tree/3.4.1"
+                "source": "https://github.com/getsentry/sentry-laravel/tree/3.5.0"
             },
             "funding": [
                 {
@@ -4062,7 +4062,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2023-05-31T10:43:06+00:00"
+            "time": "2023-06-19T12:33:03+00:00"
         },
         {
             "name": "spatie/fractalistic",
