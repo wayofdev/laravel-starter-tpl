@@ -7261,16 +7261,16 @@
         },
         {
             "name": "wayofdev/laravel-open-docs",
-            "version": "v2.0.37",
+            "version": "v2.0.38",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wayofdev/laravel-open-docs.git",
-                "reference": "81182092c9cb6788ce9fd3d3620c45925c83603a"
+                "reference": "a14ab8595aab5e70aa64de4a60443bc3d6d5e516"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wayofdev/laravel-open-docs/zipball/81182092c9cb6788ce9fd3d3620c45925c83603a",
-                "reference": "81182092c9cb6788ce9fd3d3620c45925c83603a",
+                "url": "https://api.github.com/repos/wayofdev/laravel-open-docs/zipball/a14ab8595aab5e70aa64de4a60443bc3d6d5e516",
+                "reference": "a14ab8595aab5e70aa64de4a60443bc3d6d5e516",
                 "shasum": ""
             },
             "require": {
@@ -7332,7 +7332,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-07-14T09:35:44+00:00"
+            "time": "2023-07-16T17:14:41+00:00"
         },
         {
             "name": "webmozart/assert",
