@@ -11,7 +11,7 @@
         "guzzlehttp/guzzle": "^7.7",
         "laravel/framework": "^10.13",
         "laravel/tinker": "^2.8",
-        "sentry/sentry-laravel": "^3.4",
+        "sentry/sentry-laravel": "^4.0",
         "spatie/laravel-fractal": "^6.0",
         "spatie/laravel-query-builder": "^5.2",
         "spatie/laravel-route-attributes": "^1.18",
