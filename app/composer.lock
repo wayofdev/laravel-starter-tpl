@@ -3947,26 +3947,26 @@
         },
         {
             "name": "spatie/laravel-route-attributes",
-            "version": "1.20.1",
+            "version": "1.21.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-route-attributes.git",
-                "reference": "57e62a71abd97e531b23cec9ef4e5444e9ba1ae1"
+                "reference": "a45dcde315df331e3766a0c84cfd922552a3363f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-route-attributes/zipball/57e62a71abd97e531b23cec9ef4e5444e9ba1ae1",
-                "reference": "57e62a71abd97e531b23cec9ef4e5444e9ba1ae1",
+                "url": "https://api.github.com/repos/spatie/laravel-route-attributes/zipball/a45dcde315df331e3766a0c84cfd922552a3363f",
+                "reference": "a45dcde315df331e3766a0c84cfd922552a3363f",
                 "shasum": ""
             },
             "require": {
-                "illuminate/contracts": "^8.70|^9.0|^10.0",
-                "nesbot/carbon": "^2.63",
+                "illuminate/contracts": "^10.0|^11.0",
+                "nesbot/carbon": "^2.63|^3.0",
                 "php": "^8.0"
             },
             "require-dev": {
-                "orchestra/testbench": "^6.25|^7.0|^8.0",
-                "phpunit/phpunit": "^9.5.10"
+                "orchestra/testbench": "^8.0|^9.0",
+                "phpunit/phpunit": "^9.5.10|^10.5"
             },
             "type": "library",
             "extra": {
@@ -4002,7 +4002,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-route-attributes/issues",
-                "source": "https://github.com/spatie/laravel-route-attributes/tree/1.20.1"
+                "source": "https://github.com/spatie/laravel-route-attributes/tree/1.21.0"
             },
             "funding": [
                 {
@@ -4014,7 +4014,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2023-12-18T14:59:02+00:00"
+            "time": "2024-02-29T08:41:39+00:00"
         },
         {
             "name": "symfony/console",
