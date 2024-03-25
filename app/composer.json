@@ -9,7 +9,7 @@
         "ext-pdo": "*",
         "deployer/deployer": "^7.3",
         "guzzlehttp/guzzle": "^7.7",
-        "laravel/framework": "^10.13",
+        "laravel/framework": "^11.0",
         "laravel/tinker": "^2.8",
         "sentry/sentry-laravel": "^4.0",
         "spatie/laravel-fractal": "^6.0",
