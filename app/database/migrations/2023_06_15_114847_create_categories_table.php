@@ -14,8 +14,15 @@ return new class() extends Migration {
     {
         Schema::create('categories', function (Blueprint $table): void {
             $table->id();
+            $table->uuid()->unique();
+
             $table->string('name');
+            $table->enum('gender', ['male', 'female', 'other']);
+
             $table->timestamps();
+            $table->json('created_by')->nullable();
+            $table->json('updated_by')->nullable();
+            $table->json('deleted_by')->nullable();
         });
     }
 

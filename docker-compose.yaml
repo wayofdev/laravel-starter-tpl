@@ -1,10 +1,8 @@
 ---
 
-version: '3.9'
-
 services:
   app:
-    image: wayofdev/php-dev:8.2-fpm-alpine-latest
+    image: wayofdev/php-dev:8.3-fpm-alpine-latest
     container_name: ${COMPOSE_PROJECT_NAME}-app
     restart: on-failure
     networks:
@@ -15,7 +13,7 @@ services:
     links:
       - database
     external_links:
-      - "rabbitmq.${PROJECT_SERVICES_NAMESPACE}.alias:rabbitmq"
+      - 'rabbitmq.${PROJECT_SERVICES_NAMESPACE}.alias:rabbitmq'
     volumes:
       - ./app:/app:rw,cached
       - ./.env:/app/.env
@@ -25,9 +23,12 @@ services:
       # Reverting to mounting the ssh folder
       - ~/.ssh:/home/www-data/.ssh
     environment:
-      FAKETIME: "+2h"
+      FAKETIME: '+2h'
+      XDEBUG_MODE: '${XDEBUG_MODE:-off}'
     dns:
       8.8.8.8
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
 
   web:
     image: wayofdev/nginx:k8s-alpine-latest
@@ -43,14 +44,13 @@ services:
     volumes:
       - ./app:/app:rw,cached
       - ./.env:/app/.env
-      - ./certs:/etc/nginx/ssl
     labels:
       - traefik.enable=true
       - traefik.http.routers.api-${COMPOSE_PROJECT_NAME}-secure.rule=Host(`api.${COMPOSE_PROJECT_NAME}.docker`)
       - traefik.http.routers.api-${COMPOSE_PROJECT_NAME}-secure.entrypoints=websecure
       - traefik.http.routers.api-${COMPOSE_PROJECT_NAME}-secure.tls=true
-      - traefik.http.services.api-${COMPOSE_PROJECT_NAME}-secure.loadbalancer.server.port=8443
-      - traefik.http.services.api-${COMPOSE_PROJECT_NAME}-secure.loadbalancer.server.scheme=https
+      - traefik.http.services.api-${COMPOSE_PROJECT_NAME}-secure.loadbalancer.server.port=8880
+      - traefik.docker.network=network.${SHARED_SERVICES_NAMESPACE}
 
   database:
     image: wayofdev/postgres:15-alpine-latest
@@ -68,9 +68,46 @@ services:
     volumes:
       - database-data:/var/lib/postgresql/data:cached
 
+  redis:
+    image: redis:7.2.4-alpine3.19
+    container_name: ${COMPOSE_PROJECT_NAME}-redis
+    restart: on-failure
+    networks:
+      - default
+      - shared
+    ports:
+      - '${REDIS_FORWARD_PORT:-6379}:6379'
+    volumes:
+      - redis-data:/data:cached
+
+  mail:
+    image: axllent/mailpit:latest
+    container_name: ${COMPOSE_PROJECT_NAME}-mail
+    restart: on-failure
+    networks:
+      default:
+      shared:
+        aliases:
+          - mail.${COMPOSE_PROJECT_NAME}.alias
+    ports:
+      - "${FORWARD_MAILPIT_PORT:-1025}:1025"
+    volumes:
+      - mail-data:/data
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.mail-${COMPOSE_PROJECT_NAME}-secure.rule=Host(`mail.${COMPOSE_PROJECT_NAME}.docker`)
+      - traefik.http.routers.mail-${COMPOSE_PROJECT_NAME}-secure.entrypoints=websecure
+      - traefik.http.routers.mail-${COMPOSE_PROJECT_NAME}-secure.tls=true
+      - traefik.http.services.mail-${COMPOSE_PROJECT_NAME}-secure.loadbalancer.server.port=8025
+      - traefik.docker.network=network.${SHARED_SERVICES_NAMESPACE}
+
 volumes:
   database-data:
     name: ${COMPOSE_PROJECT_NAME}-database-data
+  redis-data:
+    name: ${COMPOSE_PROJECT_NAME}-redis-data
+  mail-data:
+    name: ${COMPOSE_PROJECT_NAME}-mail-data
 
 networks:
   shared:

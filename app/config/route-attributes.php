@@ -17,7 +17,6 @@ return [
     'directories' => [
         app_path('Admin') => [
             'prefix' => 'api/admin',
-            'middleware' => 'auth:api',
         ],
         app_path('Public') => [
             'prefix' => 'api/public',
@@ -28,6 +27,6 @@ return [
      * This middleware will be applied to all routes.
      */
     'middleware' => [
-        \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        Illuminate\Routing\Middleware\SubstituteBindings::class,
     ],
 ];
