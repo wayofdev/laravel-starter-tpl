@@ -16,12 +16,12 @@ final class HttpKernel extends Kernel
      * @var array<int, class-string|string>
      */
     protected $middleware = [
-        \Laravel\Http\Middleware\TrustHosts::class,
-        \Laravel\Http\Middleware\TrustProxies::class,
+        Http\Middleware\TrustHosts::class,
+        Http\Middleware\TrustProxies::class,
         \Illuminate\Http\Middleware\HandleCors::class,
-        \Laravel\Http\Middleware\PreventRequestsDuringMaintenance::class,
+        Http\Middleware\PreventRequestsDuringMaintenance::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
-        \Laravel\Http\Middleware\TrimStrings::class,
+        Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
     ];
 
@@ -32,11 +32,11 @@ final class HttpKernel extends Kernel
      */
     protected $middlewareGroups = [
         'web' => [
-            \Laravel\Http\Middleware\EncryptCookies::class,
+            Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            \Laravel\Http\Middleware\VerifyCsrfToken::class,
+            Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
 
@@ -66,14 +66,14 @@ final class HttpKernel extends Kernel
      * @var array<string, class-string|string>
      */
     protected $middlewareAliases = [
-        'auth' => \Laravel\Http\Middleware\Authenticate::class,
+        'auth' => Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest' => \Laravel\Http\Middleware\RedirectIfAuthenticated::class,
+        'guest' => Http\Middleware\RedirectIfAuthenticated::class,
         'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
-        'signed' => \Laravel\Http\Middleware\ValidateSignature::class,
+        'signed' => Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
     ];

@@ -29,7 +29,7 @@ final class CategoryServiceProvider extends ServiceProvider
             /** @var Category|null $category */
             $category = Category::where('uuid', $value)->first();
 
-            if (null === $category) {
+            if ($category === null) {
                 throw new CategoryNotFoundException();
             }
 
