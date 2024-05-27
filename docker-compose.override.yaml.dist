@@ -1,7 +1,5 @@
 ---
 
-version: '3.9'
-
 services:
   worker:
     image: wayofdev/php-dev:8.1-supervisord-alpine-latest
