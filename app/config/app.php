@@ -129,17 +129,17 @@ return [
         /*
          * Application Service Providers...
          */
-        \Laravel\Providers\AppServiceProvider::class,
-        \Laravel\Providers\AuthServiceProvider::class,
-        \Laravel\Providers\EventServiceProvider::class,
-        \Laravel\Providers\RouteServiceProvider::class,
+        Laravel\Providers\AppServiceProvider::class,
+        Laravel\Providers\AuthServiceProvider::class,
+        Laravel\Providers\EventServiceProvider::class,
+        Laravel\Providers\RouteServiceProvider::class,
 
         /*
          * Domain Service Providers
          */
-        \Laravel\Providers\Domain\UserServiceProvider::class,
-        \Laravel\Providers\Domain\CategoryServiceProvider::class,
-        \Laravel\Providers\Domain\ProductServiceProvider::class,
+        Laravel\Providers\Domain\UserServiceProvider::class,
+        Laravel\Providers\Domain\CategoryServiceProvider::class,
+        Laravel\Providers\Domain\ProductServiceProvider::class,
     ])->toArray(),
 
     /*

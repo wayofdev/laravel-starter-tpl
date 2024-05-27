@@ -30,7 +30,7 @@ final class UserServiceProvider extends ServiceProvider
             // phpstan-ignore-next-line
             $category = User::where('uuid', $value)->first();
 
-            if (null === $category) {
+            if ($category === null) {
                 throw new UserNotFoundException();
             }
 

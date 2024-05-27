@@ -29,7 +29,7 @@ final class ProductServiceProvider extends ServiceProvider
             /** @var Product|null $category */
             $category = Product::where('uuid', $value)->first();
 
-            if (null === $category) {
+            if ($category === null) {
                 throw new ProductNotFoundException();
             }
 
