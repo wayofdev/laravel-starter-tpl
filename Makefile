@@ -5,15 +5,18 @@
 # https://docs.docker.com/compose/environment-variables/envvars/
 export DOCKER_BUILDKIT ?= 1
 
+# Docker binary to use, when executing docker tasks
+DOCKER ?= docker
+
 # Binary to use, when executing docker-compose tasks
-DOCKER_COMPOSE ?= docker compose
+DOCKER_COMPOSE ?= $(DOCKER) compose
 
 # Support image with all needed binaries, like envsubst, mkcert, wait4x
 SUPPORT_IMAGE ?= wayofdev/build-deps:alpine-latest
 
 APP_RUNNER ?= $(DOCKER_COMPOSE) run --rm --no-deps app
-APP_EXEC ?= $(DOCKER_COMPOSE) exec app
 APP_COMPOSER ?= $(APP_RUNNER) composer
+APP_EXEC ?= $(DOCKER_COMPOSE) exec app
 
 BUILDER_PARAMS ?= docker run --rm -i \
 	--env-file ./.env \
@@ -32,6 +35,26 @@ WAITER ?= $(BUILDER_WIRED) wait4x
 # Shorthand envsubst command, executed through build-deps
 ENVSUBST ?= $(BUILDER) envsubst
 
+# Yamllint docker image
+YAML_LINT_RUNNER ?= $(DOCKER) run --rm $$(tty -s && echo "-it" || echo) \
+	-v $(PWD):/data \
+	cytopia/yamllint:latest \
+	-c ./.github/.yamllint.yaml \
+	-f colored .
+
+ACTION_LINT_RUNNER ?= $(DOCKER) run --rm $$(tty -s && echo "-it" || echo) \
+	-v $(shell pwd):/repo \
+	 --workdir /repo \
+	 rhysd/actionlint:latest \
+	 -color
+
+MARKDOWN_LINT_RUNNER ?= $(DOCKER) run --rm $$(tty -s && echo "-it" || echo) \
+	-v $(shell pwd):/app \
+	--workdir /app \
+	davidanson/markdownlint-cli2-rules:latest
+
+PHIVE_RUNNER ?= $(DOCKER_COMPOSE) run --rm --no-deps app
+
 EXPORT_VARS = '\
 	$${APP_NAME} \
 	$${COMPOSE_PROJECT_NAME} \
@@ -39,7 +62,7 @@ EXPORT_VARS = '\
 	$${SHARED_SERVICES_NAMESPACE} \
 	$${COMPOSER_AUTH}'
 
-
+#
 # Self documenting Makefile code
 # ------------------------------------------------------------------------------------
 ifneq ($(TERM),)
@@ -63,35 +86,35 @@ else
 	WHITE := ""
 	RST := ""
 endif
-MAKE_LOGFILE = /tmp/laravel-starter-tpl.log
+MAKE_LOGFILE = /tmp/wayofdev-laravel-starter-tpl.log
 MAKE_CMD_COLOR := $(BLUE)
 
 default: all
 
 help: ## Show this menu
-	echo ${MAKEFILE_LIST}
-
-	@echo 'Management commands for package:'
+	@echo 'Management commands for project:'
 	@echo 'Usage:'
 	@echo '    ${MAKE_CMD_COLOR}make${RST}                       Prepares and spins up project with default settings'
 	@grep -E '^[a-zA-Z_0-9%-]+:.*?## .*$$' Makefile | awk 'BEGIN {FS = ":.*?## "}; {printf "    ${MAKE_CMD_COLOR}make %-21s${RST} %s\n", $$1, $$2}'
 	@echo
 	@echo '    📑 Logs are stored in      $(MAKE_LOGFILE)'
 	@echo
-	@echo '    📦 Package                 laravel-starter-tpl (github.com/wayofdev/laravel-starter-tpl)'
-	@echo '    🤠 Author                  Andrij Orlenko (github.com/lotyp)'
-	@echo '    🏢 ${YELLOW}Org                     wayofdev (github.com/wayofdev)${RST}'
+	@echo '    📦 Project                 laravel-starter-tpl (https://github.com/wayofdev/laravel-starter-tpl)'
+	@echo '    🤠 Author                  Andrij Orlenko (https://github.com/lotyp)'
+	@echo '    🏢 ${YELLOW}Org                     wayofdev (https://github.com/wayofdev)${RST}'
+	@echo
 .PHONY: help
 
 .EXPORT_ALL_VARIABLES:
 
+#
 # Default action
 # Defines default command when `make` is executed without additional parameters
 # ------------------------------------------------------------------------------------
 all: hooks install key prepare up
 .PHONY: all
 
-
+#
 # System Actions
 # ------------------------------------------------------------------------------------
 override-create: ## Generate override file from dist
@@ -119,11 +142,12 @@ prepare:
 	mkdir -p app/.build/php-cs-fixer
 .PHONY: prepare
 
-
+#
 # Docker Actions
 # ------------------------------------------------------------------------------------
 up: # Creates and starts containers, defined in docker-compose and override file
 	$(DOCKER_COMPOSE) up --remove-orphans -d
+	@sleep 1
 	$(DOCKER_COMPOSE) exec app wait4x postgresql 'postgres://${DB_USERNAME}:${DB_PASSWORD}@database:5432/${DB_DATABASE}?sslmode=disable' -t 1m
 .PHONY: up
 
@@ -131,11 +155,18 @@ down: # Stops and removes containers of this project
 	$(DOCKER_COMPOSE) down --remove-orphans
 .PHONY: down
 
+purge: ## Stops and removes containers, volumes, networks and images
+	$(DOCKER_COMPOSE) down --remove-orphans --volumes
+	$(DOCKER) network prune --force
+	$(DOCKER) volume prune --force
+	$(DOCKER) image prune --force
+.PHONY: purge
+
 restart: down up ## Runs down and up commands
 .PHONY: restart
 
-clean: ## Stops containers if required and removes from system
-	$(DOCKER_COMPOSE) rm --force --stop
+clean: ## Stops and removes containers of this project together with volumes
+	$(DOCKER_COMPOSE) rm --force --stop --volumes
 .PHONY: clean
 
 ps: ## List running project containers
@@ -154,51 +185,7 @@ ssh: ## Login inside running docker container
 	$(APP_EXEC) sh
 .PHONY: ssh
 
-
-# Code Quality, Git, Linting, Testing
-# ------------------------------------------------------------------------------------
-hooks: ## Install git hooks from pre-commit-config
-	pre-commit install
-	pre-commit autoupdate
-.PHONY: hooks
-
-lint-yaml: ## Lints yaml files inside project
-	yamllint .
-.PHONY: lint-yaml
-
-lint-php: ## Lints php files inside project using php-cs-fixer
-	$(APP_COMPOSER) cs:fix
-.PHONY: lint-php
-
-lint-diff: ## Shows diff of php-cs-fixer
-	$(APP_COMPOSER) cs:diff
-.PHONY: lint-diff
-
-lint-stan:
-	$(APP_COMPOSER) stan
-.PHONY: lint-stan
-
-lint-stan-baseline: ## Runs phpstan to update its baseline
-	$(APP_COMPOSER) stan:baseline
-.PHONY: lint-stan-baseline
-
-lint-deps:
-	$(APP_COMPOSER) deptrac
-.PHONY: lint-deps
-
-test: ## Run project php-unit and pest tests
-	$(APP_COMPOSER) test
-.PHONY: test
-
-test-cc: ## Run project php-unit and pest tests in coverage mode and build report
-	$(APP_COMPOSER) test:cc
-.PHONY: test-cc
-
-api-docs: ## Generate openapi docs specification file
-	$(APP_EXEC) php artisan open-docs:generate
-.PHONY: api-docs
-
-
+#
 # Composer Commands
 # ------------------------------------------------------------------------------------
 install: ## Install composer dependencies
@@ -216,6 +203,90 @@ du: ## Dump composer autoload
 show: ## Shows information about installed composer packages
 	$(APP_COMPOSER) show
 .PHONY: show
+
+phive: ## Installs dependencies with phive
+	$(APP_RUNNER) /usr/local/bin/phive install --trust-gpg-keys 0xC00543248C87FB13,0x033E5F8D801A2F8D,0x47436587D82C4A39
+.PHONY: phive
+
+#
+# Code Quality, Git, Linting
+# ------------------------------------------------------------------------------------
+hooks: ## Install git hooks from pre-commit-config
+	pre-commit install
+	pre-commit install --hook-type commit-msg
+	pre-commit autoupdate
+.PHONY: hooks
+
+lint: lint-yaml lint-actions lint-md lint-php lint-stan lint-composer lint-audit ## Runs all linting commands
+.PHONY: lint
+
+lint-yaml: ## Lints yaml files inside project
+	@$(YAML_LINT_RUNNER) | tee -a $(MAKE_LOGFILE)
+.PHONY: lint-yaml
+
+lint-actions: ## Lint all github actions
+	@$(ACTION_LINT_RUNNER) | tee -a $(MAKE_LOGFILE)
+.PHONY: lint-actions
+
+lint-md: ## Lint all markdown files using markdownlint-cli2
+	@$(MARKDOWN_LINT_RUNNER) --fix "**/*.md" "!CHANGELOG.md" "!app/vendor" "!app/node_modules" | tee -a $(MAKE_LOGFILE)
+.PHONY: lint-md
+
+lint-md-dry: ## Lint all markdown files using markdownlint-cli2 in dry-run mode
+	@$(MARKDOWN_LINT_RUNNER) "**/*.md" "!CHANGELOG.md" "!app/vendor" "!app/node_modules" | tee -a $(MAKE_LOGFILE)
+.PHONY: lint-md-dry
+
+lint-php: ## Lints php files inside project using php-cs-fixer
+	$(APP_COMPOSER) cs:fix
+.PHONY: lint-php
+
+lint-diff: ## Shows diff of php-cs-fixer
+	$(APP_COMPOSER) cs:diff
+.PHONY: lint-diff
+
+lint-stan:
+	$(APP_COMPOSER) stan
+.PHONY: lint-stan
+
+lint-stan-baseline: ## Runs phpstan to update its baseline
+	$(APP_COMPOSER) stan:baseline
+.PHONY: lint-stan-baseline
+
+lint-deps: ## Runs composer-require-checker – checks for dependencies that are not used
+	$(APP_RUNNER) .phive/composer-require-checker check \
+		--config-file=/app/composer-require-checker.json \
+		--verbose
+.PHONY: lint-deps
+
+lint-ddd-deps:
+	$(APP_RUNNER) .phive/deptrac
+.PHONY: lint-ddd-deps
+
+lint-composer: ## Normalize composer.json and composer.lock files
+	$(APP_RUNNER) .phive/composer-normalize normalize
+.PHONY: lint-composer
+
+lint-audit: ## Runs security checks for composer dependencies
+	$(APP_COMPOSER) audit
+.PHONY: lint-security
+
+#
+# Testing
+# ------------------------------------------------------------------------------------
+test: ## Run project php-unit and pest tests
+	$(APP_COMPOSER) test
+.PHONY: test
+
+test-cc: ## Run project php-unit and pest tests in coverage mode and build report
+	$(APP_COMPOSER) test:cc
+.PHONY: test-cc
+
+api-docs: ## Generate openapi docs specification file
+	$(APP_EXEC) php artisan open-docs:generate
+.PHONY: api-docs
+
+
+
 
 
 # Database Commands

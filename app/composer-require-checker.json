@@ -1,0 +1,6 @@
+{
+    "symbol-whitelist": [
+        "Symfony\\Component\\HttpFoundation\\Request",
+        "Symfony\\Component\\HttpFoundation\\Response"
+    ]
+}

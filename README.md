@@ -71,11 +71,11 @@ This starter template includes several added, changed, and removed features:
 
 To use this repository, you need to meet the following requirements:
 
-- **macOS** Monterey+ or **Linux**
-- Docker 20.10 or newer
-  - [How To Install and Use Docker on Ubuntu 22.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04)
-- Installed **dnsmasq** service, running in the system. You can use [ansible-role-dnsmasq](https://github.com/wayofdev/ansible-role-dnsmasq) to install and configure this service.
-- **Cloned, configured and running** [docker-shared-services](https://github.com/wayofdev/docker-shared-services) to support system-wide DNS, routing, and TLS support via Traefik.
+* **macOS** Monterey+ or **Linux**
+* Docker 20.10 or newer
+  * [How To Install and Use Docker on Ubuntu 22.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04)
+* Installed **dnsmasq** service, running in the system. You can use [ansible-role-dnsmasq](https://github.com/wayofdev/ansible-role-dnsmasq) to install and configure this service.
+* **Cloned, configured and running** [docker-shared-services](https://github.com/wayofdev/docker-shared-services) to support system-wide DNS, routing, and TLS support via Traefik.
 
 <br>
 
@@ -88,7 +88,7 @@ To use this repository, you need to meet the following requirements:
    After forking or creating generating repository from template, you can clone it to your local machine. In this example we will use `laravel-starter-tpl` repository as starting point.
 
    ```bash
-   $ git clone git@github.com:wayofdev/laravel-starter-tpl.git
+   git clone git@github.com:wayofdev/laravel-starter-tpl.git
    ```
 
 2. **Generate** `.env` file
@@ -157,9 +157,9 @@ This repository was created in **2022** by [lotyp / wayofdev](https://github.com
 Thank you for considering contributing to the wayofdev community!
 We are open to all kinds of contributions. If you want to:
 
-- 🤔 Suggest a feature
-- 🐛 Report an issue
-- 📖 Improve documentation
-- 👨‍💻 Contribute to the code
+* 🤔 Suggest a feature
+* 🐛 Report an issue
+* 📖 Improve documentation
+* 👨‍💻 Contribute to the code
 
 <br>
