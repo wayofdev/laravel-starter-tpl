@@ -19,7 +19,7 @@ final class HttpKernel extends Kernel
         Http\Middleware\TrustHosts::class,
         Http\Middleware\TrustProxies::class,
         \Illuminate\Http\Middleware\HandleCors::class,
-        Http\Middleware\PreventRequestsDuringMaintenance::class,
+        \Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
@@ -32,16 +32,11 @@ final class HttpKernel extends Kernel
      */
     protected $middlewareGroups = [
         'web' => [
-            Http\Middleware\EncryptCookies::class,
+            \Illuminate\Cookie\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            Http\Middleware\VerifyCsrfToken::class,
-            \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        ],
-
-        'api' => [
-            \Illuminate\Routing\Middleware\ThrottleRequests::class . ':api',
+            \Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
 
