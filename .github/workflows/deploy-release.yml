@@ -7,6 +7,9 @@ on:  # yamllint disable-line rule:truthy
 
 name: 🚀 Deploy to production
 
+env:
+  APP_RUNNER: 'cd app &&'
+
 concurrency: production
 
 jobs:
