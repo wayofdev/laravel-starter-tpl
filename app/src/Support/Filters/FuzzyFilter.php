@@ -19,14 +19,14 @@ class FuzzyFilter implements Filter
         $this->fields = $fields;
     }
 
-    public function __invoke(Builder $query, $value, string $property): Builder
+    public function __invoke(Builder $query, mixed $value, string $property): Builder
     {
         $query->where(function (Builder $query) use ($value): void {
             foreach ($this->fields as $field) {
                 $values = (array) $value;
 
-                foreach ($values as $value) {
-                    $query->orWhere($field, 'LIKE', "%{$value}%");
+                foreach ($values as $item) {
+                    $query->orWhere($field, 'LIKE', "%{$item}%");
                 }
             }
         });

@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="5.24.0@462c80e31c34e58cc4f750c656be3927e80e550e">
+  <file src="config/app.php">
+    <MixedArgument>
+      <code><![CDATA[env('APP_PREVIOUS_KEYS', '')]]></code>
+    </MixedArgument>
+  </file>
+  <file src="config/cache.php">
+    <MixedArgument>
+      <code><![CDATA[env('APP_NAME', 'laravel')]]></code>
+    </MixedArgument>
+  </file>
+  <file src="config/database.php">
+    <MixedArgument>
+      <code><![CDATA[env('APP_NAME', 'laravel')]]></code>
+    </MixedArgument>
+  </file>
+  <file src="config/filesystems.php">
+    <MixedOperand>
+      <code><![CDATA[env('APP_URL')]]></code>
+    </MixedOperand>
+  </file>
+  <file src="config/logging.php">
+    <MixedArgument>
+      <code><![CDATA[env('LOG_STACK', 'single')]]></code>
+    </MixedArgument>
+    <MixedOperand>
+      <code><![CDATA[env('PAPERTRAIL_PORT')]]></code>
+      <code><![CDATA[env('PAPERTRAIL_URL')]]></code>
+    </MixedOperand>
+  </file>
+  <file src="config/session.php">
+    <MixedArgument>
+      <code><![CDATA[env('APP_NAME', 'laravel')]]></code>
+    </MixedArgument>
+  </file>
+  <file src="src/Bridge/Laravel/Admin/Category/Controllers/CategoryController.php">
+    <UnusedClass>
+      <code><![CDATA[CategoryController]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Bridge/Laravel/Admin/Category/Queries/IndexQuery.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+    </PossiblyUnusedMethod>
+    <PropertyNotSetInConstructor>
+      <code><![CDATA[IndexQuery]]></code>
+      <code><![CDATA[IndexQuery]]></code>
+      <code><![CDATA[IndexQuery]]></code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="src/Bridge/Laravel/Admin/Category/Transformers/CategoryTransformer.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[transform]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Bridge/Laravel/Admin/Network/Controllers/NetworkController.php">
+    <UnusedClass>
+      <code><![CDATA[NetworkController]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Bridge/Laravel/Admin/Product/Controllers/ProductController.php">
+    <UnusedClass>
+      <code><![CDATA[ProductController]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Bridge/Laravel/Admin/User/Controllers/UserController.php">
+    <UnusedClass>
+      <code><![CDATA[UserController]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Bridge/Laravel/Application.php">
+    <UnusedClass>
+      <code><![CDATA[Application]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Bridge/Laravel/Console/Commands/DemoCommand.php">
+    <UnusedClass>
+      <code><![CDATA[DemoCommand]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Bridge/Laravel/ConsoleKernel.php">
+    <UnusedClass>
+      <code><![CDATA[ConsoleKernel]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Bridge/Laravel/Exceptions/Handler.php">
+    <RedundantCondition>
+      <code><![CDATA[app()->bound('sentry')]]></code>
+    </RedundantCondition>
+    <UnusedClass>
+      <code><![CDATA[Handler]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Bridge/Laravel/Http/Middleware/RedirectIfAuthenticated.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[handle]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Bridge/Laravel/Http/Middleware/ValidateSignature.php">
+    <PossiblyUnusedProperty>
+      <code><![CDATA[$except]]></code>
+    </PossiblyUnusedProperty>
+  </file>
+  <file src="src/Bridge/Laravel/HttpKernel.php">
+    <UnusedClass>
+      <code><![CDATA[HttpKernel]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Bridge/Laravel/Providers/AppServiceProvider.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[boot]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Bridge/Laravel/Providers/AuthServiceProvider.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[boot]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Bridge/Laravel/Providers/Domain/CategoryServiceProvider.php">
+    <MissingClosureParamType>
+      <code><![CDATA[$value]]></code>
+    </MissingClosureParamType>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[boot]]></code>
+    </PossiblyUnusedMethod>
+    <UnnecessaryVarAnnotation>
+      <code><![CDATA[Category|null]]></code>
+    </UnnecessaryVarAnnotation>
+  </file>
+  <file src="src/Bridge/Laravel/Providers/Domain/ProductServiceProvider.php">
+    <MissingClosureParamType>
+      <code><![CDATA[$value]]></code>
+    </MissingClosureParamType>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[boot]]></code>
+    </PossiblyUnusedMethod>
+    <UnnecessaryVarAnnotation>
+      <code><![CDATA[Product|null]]></code>
+    </UnnecessaryVarAnnotation>
+  </file>
+  <file src="src/Bridge/Laravel/Providers/Domain/UserServiceProvider.php">
+    <MissingClosureParamType>
+      <code><![CDATA[$value]]></code>
+    </MissingClosureParamType>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[boot]]></code>
+    </PossiblyUnusedMethod>
+    <UnnecessaryVarAnnotation>
+      <code><![CDATA[User|null]]></code>
+    </UnnecessaryVarAnnotation>
+  </file>
+  <file src="src/Bridge/Laravel/Providers/EventServiceProvider.php">
+    <NonInvariantDocblockPropertyType>
+      <code><![CDATA[$listen]]></code>
+    </NonInvariantDocblockPropertyType>
+  </file>
+  <file src="src/Bridge/Laravel/Providers/RouteServiceProvider.php">
+    <RiskyTruthyFalsyComparison>
+      <code><![CDATA[$request->user()?->id]]></code>
+    </RiskyTruthyFalsyComparison>
+  </file>
+  <file src="src/Bridge/Laravel/Public/Category/Controllers/CategoryController.php">
+    <UnusedClass>
+      <code><![CDATA[CategoryController]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Bridge/Laravel/Public/Category/Queries/IndexQuery.php">
+    <PropertyNotSetInConstructor>
+      <code><![CDATA[IndexQuery]]></code>
+      <code><![CDATA[IndexQuery]]></code>
+      <code><![CDATA[IndexQuery]]></code>
+    </PropertyNotSetInConstructor>
+    <UnusedClass>
+      <code><![CDATA[IndexQuery]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Bridge/Laravel/Public/Network/Controllers/NetworkController.php">
+    <UnusedClass>
+      <code><![CDATA[NetworkController]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Bridge/Laravel/Public/Product/Controllers/ProductController.php">
+    <UnusedClass>
+      <code><![CDATA[ProductController]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Bridge/Laravel/Public/User/Controllers/UserController.php">
+    <UnusedClass>
+      <code><![CDATA[UserController]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Domain/Category/Models/Category.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[resolveFactoryName]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Domain/Product/Models/Product.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[category]]></code>
+      <code><![CDATA[resolveFactoryName]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Domain/Shared/StringEnum.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[fromString]]></code>
+      <code><![CDATA[toArray]]></code>
+      <code><![CDATA[toString]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Domain/User/Models/User.php">
+    <NonInvariantDocblockPropertyType>
+      <code><![CDATA[$casts]]></code>
+      <code><![CDATA[$hidden]]></code>
+    </NonInvariantDocblockPropertyType>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[resolveFactoryName]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Support/Filters/FuzzyFilter.php">
+    <MissingTemplateParam>
+      <code><![CDATA[Filter]]></code>
+    </MissingTemplateParam>
+    <MixedAssignment>
+      <code><![CDATA[$value]]></code>
+    </MixedAssignment>
+  </file>
+  <file src="tests/Bridge/Laravel/Admin/Category/Controllers/CategoryControllerTest.php">
+    <MissingClosureParamType>
+      <code><![CDATA[$json]]></code>
+      <code><![CDATA[$json]]></code>
+    </MissingClosureParamType>
+    <MissingClosureReturnType>
+      <code><![CDATA[fn ($json) => $json->where('id', $category->id)]]></code>
+      <code><![CDATA[fn ($json) => $json->where('id', $category->uuid)]]></code>
+    </MissingClosureReturnType>
+    <MixedMethodCall>
+      <code><![CDATA[etc]]></code>
+      <code><![CDATA[etc]]></code>
+      <code><![CDATA[has]]></code>
+      <code><![CDATA[has]]></code>
+      <code><![CDATA[has]]></code>
+      <code><![CDATA[has]]></code>
+      <code><![CDATA[where]]></code>
+      <code><![CDATA[where]]></code>
+      <code><![CDATA[where]]></code>
+      <code><![CDATA[where]]></code>
+      <code><![CDATA[where]]></code>
+      <code><![CDATA[where]]></code>
+      <code><![CDATA[where]]></code>
+    </MixedMethodCall>
+    <MixedOperand>
+      <code><![CDATA[$category->uuid]]></code>
+    </MixedOperand>
+  </file>
+  <file src="tests/CreatesApplication.php">
+    <MixedAssignment>
+      <code><![CDATA[$app]]></code>
+    </MixedAssignment>
+    <MixedInferredReturnType>
+      <code><![CDATA[Application]]></code>
+    </MixedInferredReturnType>
+    <MixedMethodCall>
+      <code><![CDATA[bootstrap]]></code>
+      <code><![CDATA[make]]></code>
+    </MixedMethodCall>
+  </file>
+  <file src="tests/Pest.php">
+    <InternalMethod>
+      <code><![CDATA[in]]></code>
+    </InternalMethod>
+    <InvalidScope>
+      <code><![CDATA[$this]]></code>
+    </InvalidScope>
+    <MissingClosureReturnType>
+      <code><![CDATA[function () {]]></code>
+    </MissingClosureReturnType>
+  </file>
+  <file src="vendor/laravel/framework/src/Illuminate/Console/Command.php">
+    <LessSpecificReturnStatement>
+      <code><![CDATA[$this]]></code>
+    </LessSpecificReturnStatement>
+    <MixedArgument>
+      <code><![CDATA[$arguments]]></code>
+      <code><![CDATA[$options]]></code>
+      <code><![CDATA[$this->name = $name]]></code>
+    </MixedArgument>
+    <MixedArgumentTypeCoercion>
+      <code><![CDATA[(array) $this->aliases]]></code>
+    </MixedArgumentTypeCoercion>
+    <MixedAssignment>
+      <code><![CDATA[$this->name]]></code>
+    </MixedAssignment>
+    <RedundantCast>
+      <code><![CDATA[(string) $this->help]]></code>
+    </RedundantCast>
+    <RedundantCastGivenDocblockType>
+      <code><![CDATA[(array) $this->aliases]]></code>
+    </RedundantCastGivenDocblockType>
+    <UninitializedProperty>
+      <code><![CDATA[$this->name]]></code>
+    </UninitializedProperty>
+  </file>
+  <file src="vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factories/HasFactory.php">
+    <MixedArgumentTypeCoercion>
+      <code><![CDATA[is_callable($count) || is_array($count) ? $count : $state]]></code>
+      <code><![CDATA[is_callable($count) || is_array($count) ? $count : $state]]></code>
+      <code><![CDATA[is_callable($count) || is_array($count) ? $count : $state]]></code>
+    </MixedArgumentTypeCoercion>
+    <RedundantCondition>
+      <code><![CDATA[static::newFactory()]]></code>
+      <code><![CDATA[static::newFactory()]]></code>
+      <code><![CDATA[static::newFactory()]]></code>
+    </RedundantCondition>
+  </file>
+  <file src="vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php">
+    <MissingConstructor>
+      <code><![CDATA[$table]]></code>
+      <code><![CDATA[$table]]></code>
+      <code><![CDATA[$table]]></code>
+    </MissingConstructor>
+  </file>
+  <file src="vendor/laravel/framework/src/Illuminate/Foundation/Application.php">
+    <MissingConstructor>
+      <code><![CDATA[$appPath]]></code>
+      <code><![CDATA[$basePath]]></code>
+      <code><![CDATA[$bootstrapPath]]></code>
+      <code><![CDATA[$configPath]]></code>
+      <code><![CDATA[$databasePath]]></code>
+      <code><![CDATA[$environmentPath]]></code>
+      <code><![CDATA[$langPath]]></code>
+      <code><![CDATA[$publicPath]]></code>
+      <code><![CDATA[$storagePath]]></code>
+    </MissingConstructor>
+  </file>
+  <file src="vendor/laravel/framework/src/Illuminate/Foundation/Auth/Access/AuthorizesRequests.php">
+    <ArgumentTypeCoercion>
+      <code><![CDATA[$model]]></code>
+    </ArgumentTypeCoercion>
+    <MixedArgument>
+      <code><![CDATA[$ability]]></code>
+      <code><![CDATA[$ability]]></code>
+    </MixedArgument>
+    <MixedArgumentTypeCoercion>
+      <code><![CDATA[$model]]></code>
+      <code><![CDATA[$parameter]]></code>
+    </MixedArgumentTypeCoercion>
+    <MixedAssignment>
+      <code><![CDATA[$ability]]></code>
+    </MixedAssignment>
+    <MixedInferredReturnType>
+      <code><![CDATA[string]]></code>
+    </MixedInferredReturnType>
+    <PossiblyUnusedParam>
+      <code><![CDATA[$request]]></code>
+    </PossiblyUnusedParam>
+    <RiskyTruthyFalsyComparison>
+      <code><![CDATA[$parameter]]></code>
+    </RiskyTruthyFalsyComparison>
+  </file>
+  <file src="vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php">
+    <DeprecatedProperty>
+      <code><![CDATA[$this->routeMiddleware]]></code>
+    </DeprecatedProperty>
+    <MoreSpecificImplementedParamType>
+      <code><![CDATA[$request]]></code>
+      <code><![CDATA[$request]]></code>
+      <code><![CDATA[$response]]></code>
+    </MoreSpecificImplementedParamType>
+  </file>
+  <file src="vendor/laravel/framework/src/Illuminate/Foundation/Validation/ValidatesRequests.php">
+    <MixedArgument>
+      <code><![CDATA[$validator->getRulesWithoutPlaceholders()]]></code>
+      <code><![CDATA[$validator->getRulesWithoutPlaceholders()]]></code>
+    </MixedArgument>
+    <UndefinedInterfaceMethod>
+      <code><![CDATA[getRulesWithoutPlaceholders]]></code>
+      <code><![CDATA[getRulesWithoutPlaceholders]]></code>
+      <code><![CDATA[setRules]]></code>
+      <code><![CDATA[setRules]]></code>
+    </UndefinedInterfaceMethod>
+  </file>
+  <file src="vendor/spatie/laravel-query-builder/src/QueryBuilder.php">
+    <LessSpecificReturnStatement>
+      <code><![CDATA[$this]]></code>
+      <code><![CDATA[$this]]></code>
+    </LessSpecificReturnStatement>
+    <MixedArgument>
+      <code><![CDATA[InvalidSubject::make($subject)]]></code>
+    </MixedArgument>
+  </file>
+</files>

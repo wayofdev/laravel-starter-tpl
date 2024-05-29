@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phive xmlns="https://phar.io/phive">
+  <phar name="composer-normalize" version="^2.42.0" installed="2.42.0" location="./.phive/composer-normalize" copy="false"/>
+  <phar name="composer-require-checker" version="^4.11.0" installed="4.11.0" location="./.phive/composer-require-checker" copy="false"/>
+  <phar name="deptrac" version="^2.0.0" installed="2.0.0" location="./.phive/deptrac" copy="false"/>
+</phive>

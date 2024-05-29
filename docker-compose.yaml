@@ -25,6 +25,7 @@ services:
     environment:
       FAKETIME: '+2h'
       XDEBUG_MODE: '${XDEBUG_MODE:-off}'
+      PHIVE_HOME: /app/.phive
     dns:
       8.8.8.8
     extra_hosts:
@@ -67,6 +68,11 @@ services:
       POSTGRES_DB: ${DB_DATABASE}
     volumes:
       - database-data:/var/lib/postgresql/data:cached
+    healthcheck:
+      test: ['CMD', 'pg_isready', '-U', '${DB_USERNAME:-cycle}', '-d', '${DB_DATABASE:-default}']
+      interval: 3s
+      timeout: 1s
+      retries: 10
 
   redis:
     image: redis:7.2.5-alpine3.19
