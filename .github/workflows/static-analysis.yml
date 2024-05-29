@@ -1,23 +1,37 @@
 ---
 
 on:  # yamllint disable-line rule:truthy
-  push:
+  pull_request:
     branches:
+      - master
       - develop
+    paths:
+      - 'app/config/**'
+      - 'app/src/**'
+      - 'app/tests/**'
+      - 'app/.php-cs-fixer.dist.php'
+      - 'app/composer.json'
+      - 'app/composer.lock'
+      - 'app/phpstan.neon.dist'
+      - 'app/phpstan-baseline.neon'
+      - 'app/psalm.xml'
+      - 'app/psalm-baseline.xml'
 
-name: 🚀 Deploy to staging
+name: 🔍 Static analysis
 
 env:
   # Disable docker support in Makefile
   APP_RUNNER: 'cd app &&'
 
-concurrency: staging
-
 jobs:
-  deployment:
-    timeout-minutes: 8
+  stan:
+    timeout-minutes: 4
     runs-on: ${{ matrix.os }}
+    concurrency:
+      cancel-in-progress: true
+      group: stan-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
     strategy:
+      fail-fast: true
       matrix:
         os:
           - ubuntu-latest
@@ -25,27 +39,20 @@ jobs:
           - '8.3'
         dependencies:
           - locked
-    environment:
-      name: staging
-      url: https://staging.laravel-starter-tpl.wayof.dev
-
     steps:
+      - name: 📦 Check out the codebase
+        uses: actions/checkout@v4.1.6
+
       - name: 🛠️ Setup PHP
         uses: shivammathur/setup-php@2.30.4
         with:
           php-version: ${{ matrix.php-version }}
-          extensions: curl, libxml, mbstring, zip, fileinfo, decimal, pdo, pdo_mysql
+          extensions: none, ctype, dom, json, mbstring, simplexml, tokenizer, xml, xmlwriter, pdo, curl, fileinfo, pdo_mysql
           ini-values: error_reporting=E_ALL
           coverage: none
 
-      - name: 📦 Check out the codebase
-        uses: actions/checkout@v4.1.6
-        with:
-          fetch-depth: 0
-
       - name: 🛠️ Setup problem matchers
-        run: |
-          echo "::add-matcher::${{ runner.tool_cache }}/php.json"
+        run: echo "::add-matcher::${{ runner.tool_cache }}/php.json"
 
       - name: 🤖 Validate composer.json and composer.lock
         run: make validate-composer
@@ -68,17 +75,5 @@ jobs:
           working-directory: app
           dependencies: ${{ matrix.dependencies }}
 
-      - name: 📤 Deploy staging environment
-        uses: deployphp/action@v1
-        with:
-          private-key: ${{ secrets.DEPLOYER_PRIVATE_KEY }}
-          dep: deploy staging
-          deployer-version: 7.4.0
-          sub-directory: app
-        env:
-          DEPLOYER_STAGING_SLACK_WEBHOOK: ${{ secrets.DEPLOYER_STAGING_SLACK_WEBHOOK }}
-          DEPLOYER_STAGING_REMOTE_USER: ${{ secrets.DEPLOYER_STAGING_REMOTE_USER }}
-          DEPLOYER_STAGING_HOST: staging.laravel-starter-tpl.wayof.dev
-          DEPLOYER_STAGING_BRANCH: develop
-
-...
+      - name: 🔍 Run static analysis using phpstan/phpstan
+        run: make lint-stan-ci

@@ -4,17 +4,6 @@ parameters:
 			message: "#^Method Domain\\\\Product\\\\Models\\\\Product\\:\\:category\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
 			count: 1
 			path: src/Domain/Product/Models/Product.php
-
-		-
-			message: "#^Class Support\\\\Filters\\\\FuzzyFilter implements generic interface Spatie\\\\QueryBuilder\\\\Filters\\\\Filter but does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Support/Filters/FuzzyFilter.php
-
-		-
-			message: "#^Method Support\\\\Filters\\\\FuzzyFilter\\:\\:__invoke\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
-			count: 1
-			path: src/Support/Filters/FuzzyFilter.php
-
 		-
 			message: "#^Undefined variable\\: \\$this$#"
 			count: 1

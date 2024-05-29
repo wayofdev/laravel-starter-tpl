@@ -5,8 +5,14 @@ declare(strict_types=1);
 namespace Support\Filters;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Spatie\QueryBuilder\Filters\Filter;
 
+/**
+ * @template TModelClass of Model
+ *
+ * @implements Filter<TModelClass>
+ */
 class FuzzyFilter implements Filter
 {
     /**
@@ -19,6 +25,11 @@ class FuzzyFilter implements Filter
         $this->fields = $fields;
     }
 
+    /**
+     * @param Builder<TModelClass> $query
+     *
+     * @return Builder<TModelClass>
+     */
     public function __invoke(Builder $query, mixed $value, string $property): Builder
     {
         $query->where(function (Builder $query) use ($value): void {
