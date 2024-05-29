@@ -9,6 +9,7 @@ on:  # yamllint disable-line rule:truthy
 name: 🧹 Fix PHP coding standards
 
 env:
+  # Disable docker support in Makefile
   APP_RUNNER: 'cd app &&'
 
 jobs:

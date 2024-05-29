@@ -5,20 +5,31 @@ on:  # yamllint disable-line rule:truthy
     branches:
       - master
       - develop
+    paths:
+      - 'app/config/**'
+      - 'app/src/**'
+      - 'app/tests/**'
+      - 'app/.php-cs-fixer.dist.php'
+      - 'app/composer.json'
+      - 'app/composer.lock'
+      - 'app/phpstan.neon.dist'
+      - 'app/phpstan-baseline.neon'
+      - 'app/psalm.xml'
+      - 'app/psalm-baseline.xml'
 
-name: 🔐 Security analysis
+name: 🔍 Static analysis
 
 env:
   # Disable docker support in Makefile
   APP_RUNNER: 'cd app &&'
 
 jobs:
-  security-analysis:
+  stan:
     timeout-minutes: 4
     runs-on: ${{ matrix.os }}
     concurrency:
       cancel-in-progress: true
-      group: security-analysis-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+      group: stan-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
     strategy:
       fail-fast: true
       matrix:
@@ -36,7 +47,7 @@ jobs:
         uses: shivammathur/setup-php@2.30.4
         with:
           php-version: ${{ matrix.php-version }}
-          extensions: none, ctype, dom, json, mbstring, simplexml, tokenizer, xml, xmlwriter, pdo, curl, fileinfo
+          extensions: none, ctype, dom, json, mbstring, simplexml, tokenizer, xml, xmlwriter, pdo, curl, fileinfo, pdo_mysql
           ini-values: error_reporting=E_ALL
           coverage: none
 
@@ -64,5 +75,5 @@ jobs:
           working-directory: app
           dependencies: ${{ matrix.dependencies }}
 
-      - name: 🐛 Check installed packages for security vulnerability advisories
-        run: make lint-audit
+      - name: 🔍 Run static analysis using phpstan/phpstan
+        run: make lint-stan-ci

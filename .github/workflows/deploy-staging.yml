@@ -8,6 +8,7 @@ on:  # yamllint disable-line rule:truthy
 name: 🚀 Deploy to staging
 
 env:
+  # Disable docker support in Makefile
   APP_RUNNER: 'cd app &&'
 
 concurrency: staging
