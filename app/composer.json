@@ -19,8 +19,20 @@
         "laravel-ddd",
         "ddd"
     ],
+    "authors": [
+        {
+            "name": "Andrij Orlenko",
+            "email": "the@wayof.dev",
+            "homepage": "https://wayof.dev"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/wayofdev/laravel-starter-tpl/issues",
+        "source": "https://github.com/wayofdev/laravel-starter-tpl",
+        "security": "https://github.com/wayofdev/laravel-starter-tpl/blob/master/.github/SECURITY.md"
+    },
     "require": {
-        "php": "^8.2",
+        "php": "^8.3",
         "ext-pdo": "*",
         "deployer/deployer": "^7.4",
         "guzzlehttp/guzzle": "^7.8",
@@ -78,7 +90,13 @@
             "php-http/discovery": true,
             "phpstan/extension-installer": true
         },
+        "audit": {
+            "abandoned": "report"
+        },
         "optimize-autoloader": true,
+        "platform": {
+            "php": "8.3.7"
+        },
         "preferred-install": "dist",
         "sort-packages": true
     },
