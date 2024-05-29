@@ -1,9 +1,6 @@
 ---
 
 on: # yamllint disable-line rule:truthy
-  # Trigger At 00:00 on each 1st day of month
-  schedule:
-    - cron: '0 0 1 * *'
   # Manual trigger
   workflow_dispatch:
 
@@ -20,7 +17,7 @@ jobs:
           token: ${{ secrets.WORKFLOW_TOKEN }}
 
       - name: ♻️ Sync changes from upstream template
-        uses: AndreasAugustin/actions-template-sync@v2.1.0
+        uses: AndreasAugustin/actions-template-sync@v2.2.0
         with:
           github_token: ${{ secrets.WORKFLOW_TOKEN }}
           source_repo_path: wayofdev/laravel-starter-tpl
