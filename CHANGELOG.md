@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.0.0](https://github.com/wayofdev/laravel-starter-tpl/compare/v1.7.0...v2.0.0) (2024-05-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* update laravel base to 11.x
+
+### Features
+
+* laravel-11.x updates ([72225c6](https://github.com/wayofdev/laravel-starter-tpl/commit/72225c6bd693e1e307eb278edcc30fe0a4ef21ca))
+* update laravel base to 11.x ([342a519](https://github.com/wayofdev/laravel-starter-tpl/commit/342a519ac4be3fda014255471fd82a860fbcbed5))
+* update laravel configs to 11.x ([7e9a599](https://github.com/wayofdev/laravel-starter-tpl/commit/7e9a599fa0553df0443f988babbfc2ceff3aa9f0))
+
 ## [1.7.0](https://github.com/wayofdev/laravel-starter-tpl/compare/v1.6.0...v1.7.0) (2024-05-27)
 
 
