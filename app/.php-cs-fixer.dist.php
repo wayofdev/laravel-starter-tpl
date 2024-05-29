@@ -13,6 +13,7 @@ $config = ConfigBuilder::createFromRuleSet(new DefaultSet(['static_lambda' => fa
     ->inDir(__DIR__ . '/database')
     ->inDir(__DIR__ . '/tests')
     ->addFiles([__FILE__])
+    ->useParallelConfig()
     ->getConfig()
 ;
 
