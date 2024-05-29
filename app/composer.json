@@ -4,8 +4,20 @@
     "license": "MIT",
     "type": "project",
     "keywords": [
-        "framework",
-        "laravel"
+        "php",
+        "laravel",
+        "boilerplate",
+        "laravel-boilerplate",
+        "starter-template",
+        "laravel-package",
+        "starter-kit",
+        "laravel-application",
+        "starter-project",
+        "laravel-starter-template",
+        "laravel-starter-kit",
+        "laravel-api",
+        "laravel-ddd",
+        "ddd"
     ],
     "require": {
         "php": "^8.2",
@@ -17,7 +29,7 @@
         "league/fractal": "^0.20.1",
         "sentry/sentry-laravel": "^4.5",
         "spatie/laravel-fractal": "^6.2",
-        "spatie/laravel-query-builder": "^5.8",
+        "spatie/laravel-query-builder": "^6.0",
         "spatie/laravel-route-attributes": "^1.22",
         "wayofdev/laravel-open-docs": "^2.1"
     },
