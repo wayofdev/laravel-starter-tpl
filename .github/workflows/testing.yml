@@ -66,12 +66,23 @@ jobs:
           working-directory: app
           dependencies: ${{ matrix.dependencies }}
 
+      - name: 🛠️ Prepare environment
+        run: |
+          make env
+          cp -rf .env app/.env
+        env:
+          APP_NAME: laravel
+          SHARED_SERVICES_NAMESPACE: ss
+          PROJECT_SERVICES_NAMESPACE: wod
+          COMPOSE_PROJECT_NAME: laravel-starter-tpl
+
       - name: 🔑 Generate secret application key
         working-directory: app
         run: php artisan key:generate
 
       - name: 🧪 Collect code coverage with Xdebug and pestphp/pest
-        run: make test-cc
+        working-directory: app
+        run: composer test:cc
 
       - name: 📤 Upload code coverage report to Codecov
         uses: codecov/codecov-action@v4.4.1
