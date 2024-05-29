@@ -70,10 +70,6 @@ jobs:
         working-directory: app
         run: php artisan key:generate
 
-      - name: 🔗 Create laravel storage symlinks
-        working-directory: app
-        run: php artisan storage:link
-
       - name: 🧪 Collect code coverage with Xdebug and pestphp/pest
         run: make test-cc
 
