@@ -248,9 +248,25 @@ lint-stan:
 	$(APP_COMPOSER) stan
 .PHONY: lint-stan
 
+lint-stan-ci: ## Runs phpstan – static analysis tool with github output (CI mode)
+	$(APP_COMPOSER) stan:ci
+.PHONY: lint-stan-ci
+
 lint-stan-baseline: ## Runs phpstan to update its baseline
 	$(APP_COMPOSER) stan:baseline
 .PHONY: lint-stan-baseline
+
+lint-psalm: ## Runs vimeo/psalm – static analysis tool
+	$(APP_COMPOSER) psalm
+.PHONY: lint-psalm
+
+lint-psalm-ci: ## Runs vimeo/psalm – static analysis tool with github output (CI mode)
+	$(APP_COMPOSER) psalm:ci
+.PHONY: lint-psalm-ci
+
+lint-psalm-baseline: ## Runs vimeo/psalm to update its baseline
+	$(APP_COMPOSER) psalm:baseline
+.PHONY: lint-psalm-baseline
 
 lint-deps: ## Runs composer-require-checker – checks for dependencies that are not used
 	$(APP_RUNNER) .phive/composer-require-checker check \
@@ -258,9 +274,17 @@ lint-deps: ## Runs composer-require-checker – checks for dependencies that are
 		--verbose
 .PHONY: lint-deps
 
-lint-ddd-deps:
-	$(APP_RUNNER) .phive/deptrac
-.PHONY: lint-ddd-deps
+lint-deptrac: ## Runs deptrac – static analysis tool
+	$(APP_RUNNER) .phive/deptrac analyse --config-file=deptrac.yaml -v --cache-file=.build/.deptrac.cache
+.PHONY: lint-deptrac
+
+lint-deptrac-ci: ## Runs deptrac – static analysis tool with github output (CI mode)
+	$(APP_RUNNER) .phive/deptrac analyse --config-file=deptrac.yaml -v --cache-file=.build/.deptrac.cache --formatter github-actions
+.PHONY: lint-deptrac-ci
+
+lint-deptrac-gv: ## Runs deptrac – static analysis tool and generates graphviz image
+	$(APP_RUNNER) .phive/deptrac analyse --config-file=deptrac.yaml -v --cache-file=.build/.deptrac.cache --formatter graphviz-image --output ../assets/deptrac.svg
+.PHONY: lint-deptrac-gv
 
 lint-composer: ## Normalize composer.json and composer.lock files
 	$(APP_RUNNER) .phive/composer-normalize normalize
@@ -273,6 +297,14 @@ lint-audit: ## Runs security checks for composer dependencies
 #
 # Testing
 # ------------------------------------------------------------------------------------
+infect: ## Runs mutation tests with infection/infection
+	$(APP_COMPOSER) infect
+.PHONY: infect
+
+infect-ci: ## Runs infection – mutation testing framework with github output (CI mode)
+	$(APP_COMPOSER) infect:ci
+.PHONY: lint-infect-ci
+
 test: ## Run project php-unit and pest tests
 	$(APP_COMPOSER) test
 .PHONY: test
@@ -281,14 +313,15 @@ test-cc: ## Run project php-unit and pest tests in coverage mode and build repor
 	$(APP_COMPOSER) test:cc
 .PHONY: test-cc
 
-api-docs: ## Generate openapi docs specification file
-	$(APP_EXEC) php artisan open-docs:generate
-.PHONY: api-docs
+api-docs-public: ## Generate openapi docs specification file for public api
+	$(APP_EXEC) php artisan open-docs:generate public
+.PHONY: api-docs-public
 
+api-docs-admin: ## Generate openapi docs specification file for admin api
+	$(APP_EXEC) php artisan open-docs:generate admin
+.PHONY: api-docs-admin
 
-
-
-
+#
 # Database Commands
 # ------------------------------------------------------------------------------------
 db-wipe: ## Wipe database
@@ -299,7 +332,11 @@ db-refresh: ## Delete migration files, wipe database, create new migrations, run
 	$(APP_EXEC) php artisan migrate:fresh
 .PHONY: db-refresh
 
+db-migrate: ## Run all pending migrations
+	$(APP_EXEC) php artisan migrate
+.PHONY: db-migrate
 
+#
 # Deployer Commands
 # ------------------------------------------------------------------------------------
 dep-staging:
