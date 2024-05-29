@@ -7,6 +7,8 @@ on:  # yamllint disable-line rule:truthy
 
 name: 🚀 Deploy to staging
 
+concurrency: staging
+
 jobs:
   deployment:
     runs-on: ${{ matrix.os }}

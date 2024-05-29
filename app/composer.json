@@ -63,6 +63,7 @@
         "test": "php vendor/bin/pest",
         "test:cc": "XDEBUG_MODE=coverage php vendor/bin/pest --coverage-clover coverage.xml",
         "stan": "php vendor/bin/phpstan analyse --memory-limit=2G",
+        "stan:baseline": "php vendor/bin/phpstan analyse --generate-baseline --memory-limit=2G --allow-empty-baseline",
         "deptrac": "php vendor/bin/deptrac analyse --config-file=deptrac.yaml -v --cache-file=.build/.deptrac.cache",
         "deptrac:ci": "php vendor/bin/deptrac analyse --config-file=deptrac.yaml -v --cache-file=.build/.deptrac.cache --formatter github-actions",
         "deptrac:gv": "php vendor/bin/deptrac analyse --config-file=deptrac.yaml -v --cache-file=.build/.deptrac.cache --formatter graphviz-image --output ../assets/deptrac.svg"

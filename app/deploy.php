@@ -9,7 +9,6 @@ require 'contrib/slack.php';
 
 set('application', 'laravel-starter-tpl');
 set('repository', 'git@github.com:wayofdev/laravel-starter-tpl.git');
-set('base_deploy_path', '/home/ploi');
 
 set('composer_options', '--verbose --no-progress --no-interaction --optimize-autoloader');
 set('branch', function () {
@@ -17,6 +16,8 @@ set('branch', function () {
 
     return host($stage)->get('branch');
 });
+
+set('keep_releases', 3);
 
 function getDefaultEnv(mixed $variable, mixed $default = null)
 {
@@ -26,7 +27,7 @@ function getDefaultEnv(mixed $variable, mixed $default = null)
 
 host('staging')
     ->set('branch', getDefaultEnv('DEPLOYER_STAGING_BRANCH', 'develop'))
-    ->set('remote_user', getDefaultEnv('DEPLOYER_STAGING_REMOTE_USER', 'staging-crhev'))
+    ->set('remote_user', getDefaultEnv('DEPLOYER_STAGING_REMOTE_USER', 'staging-trpqg'))
     ->set('base_deploy_path', '/home/{{ remote_user }}')
     ->set('hostname', getDefaultEnv('DEPLOYER_STAGING_HOST', 'staging.laravel-starter-tpl.wayof.dev'))
     ->set('deploy_path', '{{ base_deploy_path }}/{{ hostname}}')
@@ -35,7 +36,7 @@ host('staging')
 
 host('prod')
     ->set('branch', getDefaultEnv('DEPLOYER_PROD_BRANCH', 'master'))
-    ->set('remote_user', getDefaultEnv('DEPLOYER_PROD_REMOTE_USER', 'prod-ibce8'))
+    ->set('remote_user', getDefaultEnv('DEPLOYER_PROD_REMOTE_USER', 'prod-hi2sb'))
     ->set('base_deploy_path', '/home/{{ remote_user }}')
     ->set('hostname', getDefaultEnv('DEPLOYER_PROD_HOST', 'prod.laravel-starter-tpl.wayof.dev'))
     ->set('deploy_path', '{{ base_deploy_path }}/{{ hostname }}')
