@@ -51,7 +51,7 @@ jobs:
         with:
           private-key: ${{ secrets.DEPLOYER_PRIVATE_KEY }}
           dep: deploy prod
-          deployer-version: 7.3.1
+          deployer-version: 7.4.0
           sub-directory: app
         env:
           DEPLOYER_STAGING_SLACK_WEBHOOK: ${{ secrets.DEPLOYER_STAGING_SLACK_WEBHOOK }}
