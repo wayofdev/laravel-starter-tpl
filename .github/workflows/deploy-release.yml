@@ -7,44 +7,65 @@ on:  # yamllint disable-line rule:truthy
 
 name: 🚀 Deploy to production
 
+env:
+  APP_RUNNER: 'cd app &&'
+
 concurrency: production
 
 jobs:
   deployment:
+    timeout-minutes: 8
     runs-on: ${{ matrix.os }}
     strategy:
-      fail-fast: true
       matrix:
-        os: ["ubuntu-22.04"]
-        php: ["8.3"]
+        os:
+          - ubuntu-latest
+        php-version:
+          - '8.3'
+        dependencies:
+          - locked
     environment:
       name: production
       url: https://prod.laravel-starter-tpl.wayof.dev
 
     steps:
+      - name: 🛠️ Setup PHP
+        uses: shivammathur/setup-php@2.30.4
+        with:
+          php-version: ${{ matrix.php-version }}
+          extensions: curl, libxml, mbstring, zip, fileinfo, decimal, pdo, pdo_mysql
+          ini-values: error_reporting=E_ALL
+          coverage: none
+
       - name: 📦 Check out the codebase
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.1.6
         with:
           fetch-depth: 0
 
-      - name: 🛠️ Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ matrix.php }}
-          extensions: curl, libxml, mbstring, zip, fileinfo, decimal
-          ini-values: error_reporting=E_ALL
-          tools: composer:v2
+      - name: 🛠️ Setup problem matchers
+        run: |
+          echo "::add-matcher::${{ runner.tool_cache }}/php.json"
 
-      - name: ♻️ Restore cached backend dependencies
-        id: cached-composer-dependencies
-        uses: actions/cache@v4
-        with:
-          path: vendor
-          key: vendor-${{ runner.os }}-${{ hashFiles('**/composer.lock') }}-${{ matrix.php }}
+      - name: 🤖 Validate composer.json and composer.lock
+        run: make validate-composer
 
-      - name: 📥 Install backend dependencies
-        if: steps.cached-composer-dependencies.outputs.cache-hit != 'true'
-        run: cd app && composer install
+      - name: 🔍 Get composer cache directory
+        uses: wayofdev/gh-actions/actions/composer/get-cache-directory@v3.1.0
+        with:
+          working-directory: app
+
+      - name: ♻️ Restore cached dependencies installed with composer
+        uses: actions/cache@v4.0.2
+        with:
+          path: ${{ env.COMPOSER_CACHE_DIR }}
+          key: php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('composer.lock') }}
+          restore-keys: php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-
+
+      - name: 📥 Install "${{ matrix.dependencies }}" dependencies with composer
+        uses: wayofdev/gh-actions/actions/composer/install@v3.1.0
+        with:
+          working-directory: app
+          dependencies: ${{ matrix.dependencies }}
 
       - name: 📤 Deploy production environment
         uses: deployphp/action@v1
@@ -54,14 +75,10 @@ jobs:
           deployer-version: 7.4.0
           sub-directory: app
         env:
-          DEPLOYER_STAGING_SLACK_WEBHOOK: ${{ secrets.DEPLOYER_STAGING_SLACK_WEBHOOK }}
-          DEPLOYER_STAGING_REMOTE_USER: ${{ secrets.DEPLOYER_STAGING_REMOTE_USER }}
-          DEPLOYER_STAGING_HOST: "staging.laravel-starter-tpl.wayof.dev"
-          DEPLOYER_STAGING_BRANCH: "develop"
           DEPLOYER_PROD_SLACK_WEBHOOK: ${{ secrets.DEPLOYER_PROD_SLACK_WEBHOOK }}
           DEPLOYER_PROD_REMOTE_USER: ${{ secrets.DEPLOYER_PROD_REMOTE_USER }}
-          DEPLOYER_PROD_HOST: "prod.laravel-starter-tpl.wayof.dev"
-          DEPLOYER_PROD_BRANCH: "master"
+          DEPLOYER_PROD_HOST: prod.laravel-starter-tpl.wayof.dev
+          DEPLOYER_PROD_BRANCH: master
 
       - name: 📦 Create sentry release
         uses: getsentry/action-release@v1
