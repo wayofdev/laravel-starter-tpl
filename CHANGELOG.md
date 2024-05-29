@@ -1,5 +1,30 @@
 # Changelog
 
+## [2.1.0](https://github.com/wayofdev/laravel-starter-tpl/compare/v2.0.0...v2.1.0) (2024-05-29)
+
+
+### Features
+
+* add support for infection and psalm ([15ca1e3](https://github.com/wayofdev/laravel-starter-tpl/commit/15ca1e3e2782570fb6839d916d3f3bc3161878ff))
+
+
+### Documentation
+
+* lint readme using markdownlint ([767de29](https://github.com/wayofdev/laravel-starter-tpl/commit/767de292c2c6c3fac1f013313d09489e352486fd))
+* lint readme using markdownlint ([7d69f84](https://github.com/wayofdev/laravel-starter-tpl/commit/7d69f841f5b05cd0d0b0699792c47c79fead9593))
+
+
+### Continuous Integration
+
+* add markdown lint config ([eba75f1](https://github.com/wayofdev/laravel-starter-tpl/commit/eba75f13b66e673289a45109de5c878238a81801))
+* add support for phive ([bb77426](https://github.com/wayofdev/laravel-starter-tpl/commit/bb774269068ed98d35c3a7dc1bd4f7797d21455e))
+* **composer-require-checker:** lint project files ([bb77426](https://github.com/wayofdev/laravel-starter-tpl/commit/bb774269068ed98d35c3a7dc1bd4f7797d21455e))
+* **docker-compose:** add healthcheck for pgsql database ([bb77426](https://github.com/wayofdev/laravel-starter-tpl/commit/bb774269068ed98d35c3a7dc1bd4f7797d21455e))
+* fix phpstan errors ([5ef9399](https://github.com/wayofdev/laravel-starter-tpl/commit/5ef9399c3b451a0b45e06177066755eaf06b2137))
+* update github files ([c043be8](https://github.com/wayofdev/laravel-starter-tpl/commit/c043be891946a76e1174a42e5543c691c2fbefca))
+* update Makefile with latest commands ([bb77426](https://github.com/wayofdev/laravel-starter-tpl/commit/bb774269068ed98d35c3a7dc1bd4f7797d21455e))
+* updating workflows ([13d84c8](https://github.com/wayofdev/laravel-starter-tpl/commit/13d84c8b0f216167b6e6e924445035250770726d))
+
 ## [2.0.0](https://github.com/wayofdev/laravel-starter-tpl/compare/v1.7.0...v2.0.0) (2024-05-29)
 
 
