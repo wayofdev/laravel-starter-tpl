@@ -9,6 +9,9 @@ use League\Fractal\TransformerAbstract;
 
 final class CategoryTransformer extends TransformerAbstract
 {
+    /**
+     * @return array<string, mixed>
+     */
     public function transform(Category $category): array
     {
         return [

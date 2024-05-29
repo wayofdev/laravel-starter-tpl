@@ -69,7 +69,7 @@ services:
       - database-data:/var/lib/postgresql/data:cached
 
   redis:
-    image: redis:7.2.4-alpine3.19
+    image: redis:7.2.5-alpine3.19
     container_name: ${COMPOSE_PROJECT_NAME}-redis
     restart: on-failure
     networks:

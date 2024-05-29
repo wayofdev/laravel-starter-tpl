@@ -167,19 +167,23 @@ lint-yaml: ## Lints yaml files inside project
 .PHONY: lint-yaml
 
 lint-php: ## Lints php files inside project using php-cs-fixer
-	$(APP_COMPOSER) run-script cs:fix
+	$(APP_COMPOSER) cs:fix
 .PHONY: lint-php
 
 lint-diff: ## Shows diff of php-cs-fixer
-	$(APP_COMPOSER) run-script cs:diff
+	$(APP_COMPOSER) cs:diff
 .PHONY: lint-diff
 
 lint-stan:
-	$(APP_COMPOSER) run-script stan
+	$(APP_COMPOSER) stan
 .PHONY: lint-stan
 
+lint-stan-baseline: ## Runs phpstan to update its baseline
+	$(APP_COMPOSER) stan:baseline
+.PHONY: lint-stan-baseline
+
 lint-deps:
-	$(APP_COMPOSER) run-script deptrac
+	$(APP_COMPOSER) deptrac
 .PHONY: lint-deps
 
 test: ## Run project php-unit and pest tests
