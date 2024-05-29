@@ -291,8 +291,12 @@ lint-composer: ## Normalize composer.json and composer.lock files
 .PHONY: lint-composer
 
 lint-audit: ## Runs security checks for composer dependencies
-	$(APP_COMPOSER) audit
+	$(APP_COMPOSER) audit --ansi
 .PHONY: lint-security
+
+validate-composer: ## Validates composer.json and composer.lock files
+	$(APP_COMPOSER) validate
+.PHONY: validate-composer
 
 #
 # Testing
