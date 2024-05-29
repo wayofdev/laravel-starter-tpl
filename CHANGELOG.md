@@ -1,5 +1,27 @@
 # Changelog
 
+## [2.2.0](https://github.com/wayofdev/laravel-starter-tpl/compare/v2.1.0...v2.2.0) (2024-05-29)
+
+
+### Features
+
+* add coding standards workflow ([ba25a67](https://github.com/wayofdev/laravel-starter-tpl/commit/ba25a67fb65cccefccbd1b9805382e30ed42d3e6))
+* add security workflow ([6db4610](https://github.com/wayofdev/laravel-starter-tpl/commit/6db46107df4c1e9f57ea3018c4e6073e135f56ca))
+* add stan workflow ([236ca95](https://github.com/wayofdev/laravel-starter-tpl/commit/236ca957ba820aace9104c6be8afd173e59f7cc9))
+* update deployment workflows ([c67f6d0](https://github.com/wayofdev/laravel-starter-tpl/commit/c67f6d074ae15d95faed453e4de15122b0dee3e6))
+* update deployment workflows ([44014c7](https://github.com/wayofdev/laravel-starter-tpl/commit/44014c7ba95bcc3640e1846b55bc1b88a3cc8dcd))
+
+
+### Bug Fixes
+
+* phpstan errors with query builder filters ([3d07f67](https://github.com/wayofdev/laravel-starter-tpl/commit/3d07f67bcf17c7f8a7ca348511473f9b1483fc5b))
+
+
+### Continuous Integration
+
+* update composer ([f600aaa](https://github.com/wayofdev/laravel-starter-tpl/commit/f600aaa38d56eb2ee8774626cf2d750804969df2))
+* update default version to php 8.3 ([2c77b3a](https://github.com/wayofdev/laravel-starter-tpl/commit/2c77b3a34b2cdca853b179241303c8d88f92a66e))
+
 ## [2.1.0](https://github.com/wayofdev/laravel-starter-tpl/compare/v2.0.0...v2.1.0) (2024-05-29)
 
 
