@@ -1,5 +1,23 @@
 # Changelog
 
+## [2.4.0](https://github.com/wayofdev/laravel-starter-tpl/compare/v2.3.0...v2.4.0) (2024-06-11)
+
+
+### Features
+
+* split tests into functional and arch ([c5b7931](https://github.com/wayofdev/laravel-starter-tpl/commit/c5b793199e36d3d99077dd1ba736927dbad76b5f))
+
+
+### Documentation
+
+* update README ([f41cc33](https://github.com/wayofdev/laravel-starter-tpl/commit/f41cc332ad0434c1d90d77af39706f4cf57fd3d3))
+* update README.md ([8698ed7](https://github.com/wayofdev/laravel-starter-tpl/commit/8698ed7a9371aae34f65cb737972b653ff75c8a9))
+
+
+### Continuous Integration
+
+* add mutation testing job ([670b7d9](https://github.com/wayofdev/laravel-starter-tpl/commit/670b7d986b9ba50e5428cba8366e3a84b0ca543a))
+
 ## [2.3.0](https://github.com/wayofdev/laravel-starter-tpl/compare/v2.2.0...v2.3.0) (2024-06-11)
 
 
