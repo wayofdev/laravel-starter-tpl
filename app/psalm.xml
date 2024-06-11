@@ -22,6 +22,7 @@
         <directory name="tests/"/>
         <directory name="routes/"/>
         <ignoreFiles>
+            <directory name="tests/src/Arch/"/>
             <directory name="vendor/"/>
         </ignoreFiles>
         <file name=".php-cs-fixer.dist.php"/>

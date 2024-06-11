@@ -308,13 +308,24 @@ infect-ci: ## Runs infection – mutation testing framework with github output (
 	$(APP_COMPOSER) infect:ci
 .PHONY: lint-infect-ci
 
-test: ## Run project php-unit and pest tests
+test: ## Run project Functional tests using pest
 	$(APP_COMPOSER) test
 .PHONY: test
+
+test-arch: ## Run project architecture tests using pest
+	$(APP_COMPOSER) test:arch
+.PHONY: test-arch
+
+test-all: test test-arch ## Run all project tests
+.PHONY: test-all
 
 test-cc: ## Run project php-unit and pest tests in coverage mode and build report
 	$(APP_COMPOSER) test:cc
 .PHONY: test-cc
+
+test-pgsql: ## Run project tests with postgresql
+	$(APP_COMPOSER) test:pgsql
+.PHONY: test-pgsql
 
 api-docs-public: ## Generate openapi docs specification file for public api
 	$(APP_EXEC) php artisan open-docs:generate public
