@@ -282,7 +282,7 @@ lint-deptrac-ci: ## Runs deptrac – static analysis tool with github output (CI
 .PHONY: lint-deptrac-ci
 
 lint-deptrac-gv: ## Runs deptrac – static analysis tool and generates graphviz image
-	$(APP_RUNNER) .phive/deptrac analyse --config-file=deptrac.yaml -v --cache-file=.build/.deptrac.cache --formatter graphviz-image --output ../assets/deptrac.svg
+	$(APP_RUNNER) .phive/deptrac analyse --config-file=deptrac.yaml -v --cache-file=.build/.deptrac.cache --formatter graphviz-image --output ../.github/assets/deptrac.svg
 .PHONY: lint-deptrac-gv
 
 lint-composer: ## Normalize composer.json and composer.lock files
