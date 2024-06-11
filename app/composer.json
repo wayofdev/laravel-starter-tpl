@@ -79,7 +79,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Tests\\": "tests/src/"
         }
     },
     "config": {
@@ -123,11 +123,11 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ],
-        "cs:diff": "php vendor/bin/php-cs-fixer fix --dry-run -v --diff",
-        "cs:fix": "php vendor/bin/php-cs-fixer fix -v",
-        "deptrac": "php vendor/bin/deptrac analyse --config-file=deptrac.yaml -v --cache-file=.build/.deptrac.cache",
-        "deptrac:ci": "php vendor/bin/deptrac analyse --config-file=deptrac.yaml -v --cache-file=.build/.deptrac.cache --formatter github-actions",
-        "deptrac:gv": "php vendor/bin/deptrac analyse --config-file=deptrac.yaml -v --cache-file=.build/.deptrac.cache --formatter graphviz-image --output ../assets/deptrac.svg",
+        "cs:diff": "php-cs-fixer fix --dry-run -v --diff",
+        "cs:fix": "php-cs-fixer fix -v",
+        "deptrac": "deptrac analyse --config-file=deptrac.yaml -v --cache-file=.build/.deptrac.cache",
+        "deptrac:ci": "deptrac analyse --config-file=deptrac.yaml -v --cache-file=.build/.deptrac.cache --formatter github-actions",
+        "deptrac:gv": "deptrac analyse --config-file=deptrac.yaml -v --cache-file=.build/.deptrac.cache --formatter graphviz-image --output ../.github/assets/deptrac.svg",
         "infect": [
             "Composer\\Config::disableProcessTimeout",
             "@putenv XDEBUG_MODE=coverage",
@@ -138,21 +138,31 @@
             "@putenv XDEBUG_MODE=coverage",
             "php -d memory_limit=2G vendor/bin/roave-infection-static-analysis-plugin --threads=2 --ansi --logger-github --ignore-msi-with-no-mutations --only-covered"
         ],
-        "psalm": "php vendor/bin/psalm --show-info=true",
-        "psalm:baseline": "php vendor/bin/psalm --set-baseline=psalm-baseline.xml",
-        "psalm:ci": "php vendor/bin/psalm --output-format=github --shepherd --show-info=false --stats --threads=4",
-        "stan": "php vendor/bin/phpstan analyse --memory-limit=2G",
-        "stan:baseline": "php vendor/bin/phpstan analyse --generate-baseline --memory-limit=2G --allow-empty-baseline",
-        "stan:ci": "php vendor/bin/phpstan analyse --memory-limit=2G --error-format=github",
+        "psalm": "psalm --show-info=true",
+        "psalm:baseline": "psalm --set-baseline=psalm-baseline.xml",
+        "psalm:ci": "psalm --output-format=github --shepherd --show-info=false --stats --threads=4",
+        "stan": "phpstan analyse --memory-limit=2G",
+        "stan:baseline": "phpstan analyse --generate-baseline --memory-limit=2G --allow-empty-baseline",
+        "stan:ci": "phpstan analyse --memory-limit=2G --error-format=github",
         "test": [
             "@putenv XDEBUG_MODE=coverage",
             "@putenv DB_CONNECTION=memory",
-            "php vendor/bin/pest --color=always"
+            "pest --color=always"
+        ],
+        "test:arch": [
+            "@putenv XDEBUG_MODE=coverage",
+            "@putenv DB_CONNECTION=memory",
+            "pest --color=always --configuration pest.xml.dist"
         ],
         "test:cc": [
             "@putenv XDEBUG_MODE=coverage",
             "@putenv DB_CONNECTION=memory",
-            "php vendor/bin/pest --coverage --coverage-clover=.build/phpunit/logs/clover.xml --color=always"
+            "pest --coverage --coverage-clover=.build/phpunit/logs/clover.xml --color=always"
+        ],
+        "test:pgsql": [
+            "@putenv XDEBUG_MODE=coverage",
+            "@putenv DB_CONNECTION=pgsql",
+            "pest --color=always"
         ]
     }
 }

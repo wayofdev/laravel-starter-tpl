@@ -282,7 +282,7 @@ lint-deptrac-ci: ## Runs deptrac – static analysis tool with github output (CI
 .PHONY: lint-deptrac-ci
 
 lint-deptrac-gv: ## Runs deptrac – static analysis tool and generates graphviz image
-	$(APP_RUNNER) .phive/deptrac analyse --config-file=deptrac.yaml -v --cache-file=.build/.deptrac.cache --formatter graphviz-image --output ../assets/deptrac.svg
+	$(APP_RUNNER) .phive/deptrac analyse --config-file=deptrac.yaml -v --cache-file=.build/.deptrac.cache --formatter graphviz-image --output ../.github/assets/deptrac.svg
 .PHONY: lint-deptrac-gv
 
 lint-composer: ## Normalize composer.json and composer.lock files
@@ -308,13 +308,24 @@ infect-ci: ## Runs infection – mutation testing framework with github output (
 	$(APP_COMPOSER) infect:ci
 .PHONY: lint-infect-ci
 
-test: ## Run project php-unit and pest tests
+test: ## Run project Functional tests using pest
 	$(APP_COMPOSER) test
 .PHONY: test
+
+test-arch: ## Run project architecture tests using pest
+	$(APP_COMPOSER) test:arch
+.PHONY: test-arch
+
+test-all: test test-arch ## Run all project tests
+.PHONY: test-all
 
 test-cc: ## Run project php-unit and pest tests in coverage mode and build report
 	$(APP_COMPOSER) test:cc
 .PHONY: test-cc
+
+test-pgsql: ## Run project tests with postgresql
+	$(APP_COMPOSER) test:pgsql
+.PHONY: test-pgsql
 
 api-docs-public: ## Generate openapi docs specification file for public api
 	$(APP_EXEC) php artisan open-docs:generate public

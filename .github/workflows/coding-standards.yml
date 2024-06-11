@@ -111,7 +111,7 @@ jobs:
         run: make validate-composer
 
       - name: 🔍 Get composer cache directory
-        uses: wayofdev/gh-actions/actions/composer/get-cache-directory@v3.1.0
+        uses: wayofdev/gh-actions/actions/composer/get-cache-directory@v3.1.1
         with:
           working-directory: app
 
@@ -123,7 +123,7 @@ jobs:
           restore-keys: php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-
 
       - name: 📥 Install "${{ matrix.dependencies }}" dependencies with composer
-        uses: wayofdev/gh-actions/actions/composer/install@v3.1.0
+        uses: wayofdev/gh-actions/actions/composer/install@v3.1.1
         with:
           working-directory: app
           dependencies: ${{ matrix.dependencies }}
@@ -180,7 +180,7 @@ jobs:
         run: make validate-composer
 
       - name: 🔍 Get composer cache directory
-        uses: wayofdev/gh-actions/actions/composer/get-cache-directory@v3.1.0
+        uses: wayofdev/gh-actions/actions/composer/get-cache-directory@v3.1.1
         with:
           working-directory: app
 
@@ -192,7 +192,7 @@ jobs:
           restore-keys: php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-
 
       - name: 📥 Install "${{ matrix.dependencies }}" dependencies with composer
-        uses: wayofdev/gh-actions/actions/composer/install@v3.1.0
+        uses: wayofdev/gh-actions/actions/composer/install@v3.1.1
         with:
           working-directory: app
           dependencies: ${{ matrix.dependencies }}

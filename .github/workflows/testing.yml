@@ -11,6 +11,9 @@ name: 🧪 Testing (SQLite)
 env:
   # Disable docker support in Makefile
   APP_RUNNER: 'cd app &&'
+  APP_NAME: laravel
+  SHARED_SERVICES_NAMESPACE: ss
+  COMPOSE_PROJECT_NAME: laravel-starter-tpl
 
 jobs:
   code-coverage:
@@ -49,7 +52,7 @@ jobs:
         run: make validate-composer
 
       - name: 🔍 Get composer cache directory
-        uses: wayofdev/gh-actions/actions/composer/get-cache-directory@v3.1.0
+        uses: wayofdev/gh-actions/actions/composer/get-cache-directory@v3.1.1
         with:
           working-directory: app
 
@@ -61,7 +64,7 @@ jobs:
           restore-keys: php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-
 
       - name: 📥 Install "${{ matrix.dependencies }}" dependencies with composer
-        uses: wayofdev/gh-actions/actions/composer/install@v3.1.0
+        uses: wayofdev/gh-actions/actions/composer/install@v3.1.1
         with:
           working-directory: app
           dependencies: ${{ matrix.dependencies }}
@@ -70,10 +73,6 @@ jobs:
         run: |
           make env
           cp -rf .env app/.env
-        env:
-          APP_NAME: laravel
-          SHARED_SERVICES_NAMESPACE: ss
-          COMPOSE_PROJECT_NAME: laravel-starter-tpl
 
       - name: 🔑 Generate secret application key
         working-directory: app
@@ -89,3 +88,133 @@ jobs:
           files: app/.build/phpunit/logs/clover.xml
           token: ${{ secrets.CODECOV_TOKEN }}
           verbose: true
+
+  arch-testing:
+    timeout-minutes: 4
+    runs-on: ${{ matrix.os }}
+    concurrency:
+      cancel-in-progress: true
+      group: arch-testing-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}-${{ matrix.php-version }}-${{ matrix.dependencies }}
+    strategy:
+      fail-fast: true
+      matrix:
+        os:
+          - ubuntu-latest
+        php-version:
+          - '8.3'
+        dependencies:
+          - locked
+    steps:
+      - name: 📦 Check out the codebase
+        uses: actions/checkout@v4.1.6
+
+      - name: 🛠️ Setup PHP
+        uses: shivammathur/setup-php@2.30.5
+        with:
+          php-version: ${{ matrix.php-version }}
+          extensions: mbstring, pdo, pdo_sqlite
+          ini-values: error_reporting=E_ALL
+          coverage: xdebug
+
+      - name: 🛠️ Setup problem matchers
+        run: echo "::add-matcher::${{ runner.tool_cache }}/php.json"
+
+      - name: 🤖 Validate composer.json and composer.lock
+        run: make validate-composer
+
+      - name: 🔍 Get composer cache directory
+        uses: wayofdev/gh-actions/actions/composer/get-cache-directory@v3.1.1
+        with:
+          working-directory: app
+
+      - name: ♻️ Restore cached dependencies installed with composer
+        uses: actions/cache@v4.0.2
+        with:
+          path: ${{ env.COMPOSER_CACHE_DIR }}
+          key: php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('composer.lock') }}
+          restore-keys: php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-
+
+      - name: 📥 Install "${{ matrix.dependencies }}" dependencies with composer
+        uses: wayofdev/gh-actions/actions/composer/install@v3.1.1
+        with:
+          working-directory: app
+          dependencies: ${{ matrix.dependencies }}
+
+      - name: 🛠️ Prepare environment
+        run: |
+          make env
+          cp -rf .env app/.env
+
+      - name: 🔑 Generate secret application key
+        working-directory: app
+        run: php artisan key:generate
+
+      - name: 🧪 Run architecture tests using pestphp/pest
+        working-directory: app
+        run: composer test:arch
+
+  mutation-testing:
+    timeout-minutes: 16
+    runs-on: ${{ matrix.os }}
+    concurrency:
+      cancel-in-progress: true
+      group: mutation-testing-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+    strategy:
+      fail-fast: true
+      matrix:
+        os:
+          - ubuntu-latest
+        php-version:
+          - '8.3'
+        dependencies:
+          - locked
+    steps:
+      - name: 📦 Check out the codebase
+        uses: actions/checkout@v4.1.6
+
+      - name: 🛠️ Setup PHP
+        uses: shivammathur/setup-php@2.30.5
+        with:
+          php-version: ${{ matrix.php-version }}
+          extensions: mbstring, pdo, pdo_sqlite
+          ini-values: error_reporting=E_ALL
+          coverage: xdebug
+
+      - name: 🛠️ Setup problem matchers
+        run: echo "::add-matcher::${{ runner.tool_cache }}/php.json"
+
+      - name: 🤖 Validate composer.json and composer.lock
+        run: make validate-composer
+
+      - name: 🔍 Get composer cache directory
+        uses: wayofdev/gh-actions/actions/composer/get-cache-directory@v3.1.1
+        with:
+          working-directory: app
+
+      - name: ♻️ Restore cached dependencies installed with composer
+        uses: actions/cache@v4.0.2
+        with:
+          path: ${{ env.COMPOSER_CACHE_DIR }}
+          key: php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('composer.lock') }}
+          restore-keys: php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-
+
+      - name: 📥 Install "${{ matrix.dependencies }}" dependencies with composer
+        uses: wayofdev/gh-actions/actions/composer/install@v3.1.1
+        with:
+          working-directory: app
+          dependencies: ${{ matrix.dependencies }}
+
+      - name: 🛠️ Prepare environment
+        run: |
+          make env
+          cp -rf .env app/.env
+
+      - name: 🔑 Generate secret application key
+        working-directory: app
+        run: php artisan key:generate
+
+      - name: 🧪 Run mutation testing using Xdebug and infection/infection
+        working-directory: app
+        run: composer infect:ci
+        env:
+          STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}

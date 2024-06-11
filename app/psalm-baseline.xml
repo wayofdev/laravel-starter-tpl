@@ -210,7 +210,7 @@
       <code><![CDATA[$item]]></code>
     </MixedAssignment>
   </file>
-  <file src="tests/Bridge/Laravel/Admin/Category/Controllers/CategoryControllerTest.php">
+  <file src="tests/src/Functional/Bridge/Laravel/Admin/Category/Controllers/CategoryControllerTest.php">
     <MissingClosureParamType>
       <code><![CDATA[$json]]></code>
       <code><![CDATA[$json]]></code>
@@ -238,7 +238,7 @@
       <code><![CDATA[$category->uuid]]></code>
     </MixedOperand>
   </file>
-  <file src="tests/CreatesApplication.php">
+  <file src="tests/src/Functional/CreatesApplication.php">
     <MixedAssignment>
       <code><![CDATA[$app]]></code>
     </MixedAssignment>
@@ -249,16 +249,5 @@
       <code><![CDATA[bootstrap]]></code>
       <code><![CDATA[make]]></code>
     </MixedMethodCall>
-  </file>
-  <file src="tests/Pest.php">
-    <InternalMethod>
-      <code><![CDATA[in]]></code>
-    </InternalMethod>
-    <InvalidScope>
-      <code><![CDATA[$this]]></code>
-    </InvalidScope>
-    <MissingClosureReturnType>
-      <code><![CDATA[function () {]]></code>
-    </MissingClosureReturnType>
   </file>
 </files>

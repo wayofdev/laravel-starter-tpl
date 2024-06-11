@@ -9,4 +9,6 @@ parameters:
         - config/
         - routes/
     checkModelProperties: true
+    excludePaths:
+        - tests/src/Arch
     tmpDir: .build/phpstan/

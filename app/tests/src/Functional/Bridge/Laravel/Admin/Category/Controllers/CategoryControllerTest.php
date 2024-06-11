@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Bridge\Laravel\Admin\Category\Controllers;
+namespace Tests\Functional\Bridge\Laravel\Admin\Category\Controllers;
 
 use Domain\Category\Models\Category;
 use Illuminate\Testing\Fluent\AssertableJson;
-use Tests\TestCase;
+use Tests\Functional\TestCase;
 
 final class CategoryControllerTest extends TestCase
 {

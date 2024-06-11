@@ -4,7 +4,3 @@ parameters:
 			message: "#^Method Domain\\\\Product\\\\Models\\\\Product\\:\\:category\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
 			count: 1
 			path: src/Domain/Product/Models/Product.php
-		-
-			message: "#^Undefined variable\\: \\$this$#"
-			count: 1
-			path: tests/Pest.php
