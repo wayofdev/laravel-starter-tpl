@@ -1,5 +1,27 @@
 # Changelog
 
+## [2.3.0](https://github.com/wayofdev/laravel-starter-tpl/compare/v2.2.0...v2.3.0) (2024-06-11)
+
+
+### Features
+
+* add code-coverage workflow ([14a994a](https://github.com/wayofdev/laravel-starter-tpl/commit/14a994a950e686a8979b85130ee52c1ad900feab))
+* add code-coverage workflow ([96b9163](https://github.com/wayofdev/laravel-starter-tpl/commit/96b9163b3d3c577f508bc0607dcdf5ba1be86d57))
+* add dependency-analysis workflow ([606751d](https://github.com/wayofdev/laravel-starter-tpl/commit/606751d68a450488a603855c2b3555d4bc02bc7b))
+
+
+### Bug Fixes
+
+* default Laravel namespace conflict ([06406d2](https://github.com/wayofdev/laravel-starter-tpl/commit/06406d2d6c3587a2b500544de7ba7dd4884e8869))
+
+
+### Continuous Integration
+
+* add psalm static analysis workflow ([48db701](https://github.com/wayofdev/laravel-starter-tpl/commit/48db701fe408050ef6d5a33d9f85e2d90518fedf))
+* fix psalm errors ([12f981c](https://github.com/wayofdev/laravel-starter-tpl/commit/12f981c1a238c96ddb9aeaf5ec08a9a58e67cb51))
+* update dev files ([3330474](https://github.com/wayofdev/laravel-starter-tpl/commit/3330474f89c30d281c61544f5987f74a3ef07013))
+* use memory connection by default in testing ([0f31045](https://github.com/wayofdev/laravel-starter-tpl/commit/0f31045fade8d11d5798bee172a1623d1402f6ef))
+
 ## [2.2.0](https://github.com/wayofdev/laravel-starter-tpl/compare/v2.1.0...v2.2.0) (2024-05-29)
 
 
