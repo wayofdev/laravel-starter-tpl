@@ -12,7 +12,7 @@ services:
     links:
       - database
     external_links:
-      - "rabbitmq.${PROJECT_SERVICES_NAMESPACE}.alias:rabbitmq"
+      - "rabbitmq.${COMPOSE_PROJECT_NAME}.alias:rabbitmq"
     environment:
       APP_NAME: ${APP_NAME}
       COMPOSER_AUTH: ${COMPOSER_AUTH}

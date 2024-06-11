@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laravel\Providers\Domain;
+namespace Bridge\Laravel\Providers\Domain;
 
 use Domain\Product\Exceptions\ProductNotFoundException;
 use Domain\Product\Models\Product;

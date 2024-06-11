@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laravel\Providers;
+namespace Bridge\Laravel\Providers;
 
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;

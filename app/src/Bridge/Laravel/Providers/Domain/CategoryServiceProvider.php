@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laravel\Providers\Domain;
+namespace Bridge\Laravel\Providers\Domain;
 
 use Domain\Category\Exceptions\CategoryNotFoundException;
 use Domain\Category\Models\Category;
