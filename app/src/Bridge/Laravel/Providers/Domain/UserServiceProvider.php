@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laravel\Providers\Domain;
+namespace Bridge\Laravel\Providers\Domain;
 
 use Domain\User\Exceptions\UserNotFoundException;
 use Domain\User\Models\User;

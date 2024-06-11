@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laravel;
+namespace Bridge\Laravel;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as BaseConsoleKernel;

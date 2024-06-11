@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laravel\Console\Commands;
+namespace Bridge\Laravel\Console\Commands;
 
 use Illuminate\Console\Command;
 

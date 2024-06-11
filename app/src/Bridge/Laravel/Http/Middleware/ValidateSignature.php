@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laravel\Http\Middleware;
+namespace Bridge\Laravel\Http\Middleware;
 
 use Illuminate\Routing\Middleware\ValidateSignature as Middleware;
 

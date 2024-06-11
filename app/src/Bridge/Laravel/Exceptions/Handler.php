@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laravel\Exceptions;
+namespace Bridge\Laravel\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;

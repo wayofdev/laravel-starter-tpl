@@ -70,10 +70,10 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
+            "Bridge\\Laravel\\": "src/Bridge/Laravel/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
             "Domain\\": "src/Domain/",
-            "Laravel\\": "src/Bridge/Laravel/",
             "Support\\": "src/Support/"
         }
     },

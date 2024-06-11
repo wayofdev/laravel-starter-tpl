@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laravel;
+namespace Bridge\Laravel;
 
 use Illuminate\Foundation\Http\Kernel;
 
