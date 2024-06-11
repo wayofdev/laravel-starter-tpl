@@ -24,7 +24,7 @@
 <p align="center">
     <strong>Quality</strong><br>
     <a href="https://app.codecov.io/gh/wayofdev/laravel-starter-tpl" target="_blank"><img alt="Codecov" src="https://img.shields.io/codecov/c/github/wayofdev/laravel-starter-tpl?style=flat-square&logo=codecov"></a>
-    <a href="https://dashboard.stryker-mutator.io/reports/github.com/wayofdev/laravel-starter-tpl/develop" target="_blank"><img alt="Mutation testing badge" src="https://img.shields.io/endpoint?style=flat-square&label=mutation%20score&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fwayofdev%2Flaravel-starter-tpl%2Fdevelop"></a>
+    <a href="https://dashboard.stryker-mutator.io/reports/github.com/wayofdev/laravel-starter-tpl/develop" target="_blank"><img alt="Mutation testing badge" src="https://img.shields.io/endpoint?style=flat-square&label=mutation%20score&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fwayofdev%2Flaravel-starter-tpl%2Fmaster"></a>
     <a href=""><img src="https://img.shields.io/badge/phpstan%20level-8%20of%209-brightgreen?style=flat-square" alt="PHP Stan Level 8 of 9"></a>
 </p>
 <p align="center">
@@ -134,17 +134,59 @@ To use this repository, you need to meet the following requirements:
 > [!Note]
 > You should configure, set up, and run the [docker-shared-services](https://github.com/wayofdev/docker-shared-services) repository to ensure system-wide TLS and DNS support.
 
+### → Docker Shared Services
+
+Check full instructions in [docker-shared-services](https://github.com/wayofdev/docker-shared-services) repository.
+
+1. **Create shared project directory:**
+
+   ```bash
+   mkdir -p ~/projects/infra && cd ~/projects/infra
+   ```
+
+2. **Clone `docker-shared-services` repository:**
+
+    ```bash
+    git clone \
+    git@github.com:wayofdev/docker-shared-services.git \
+    ~/projects/infra/docker-shared-services && \
+    cd ~/projects/infra/docker-shared-services
+   ```
+
+3. **Create `.env` file:**
+
+    ```bash
+    make env
+    ```
+
+4. **Install root certificate** and generate default project certs:
+
+    ```bash
+    make cert-install
+    ```
+
+5. **Run shared services:**
+
+    ```bash
+    make up
+    ```
+
+### → Laravel Starter Template
+
 1. **Clone** repository:
 
    After forking or creating generating repository from template, you can clone it to your local machine. In this example we will use `laravel-starter-tpl` repository as starting point.
 
    ```bash
-   git clone git@github.com:wayofdev/laravel-starter-tpl.git
+   git clone \
+     git@github.com:wayofdev/laravel-starter-tpl.git \
+     ~/projects/laravel-starter-tpl && \
+   cd ~/projects/laravel-starter-tpl
    ```
 
 2. **Generate** `.env` file
 
-   Generate .env file from .env.example file using Makefile command:
+   Generate `.env` file from `.env.example` file using `Makefile` command:
 
    ```bash
    $ make env \
@@ -177,6 +219,8 @@ To use this repository, you need to meet the following requirements:
    $ make prepare
    $ make up
    ```
+
+4. **Open** your browser and navigate to `https://laravel-starter-tpl.docker` to see Laravel welcome page.
 
 <br>
 
