@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laravel\Admin\Category\Transformers;
+namespace Bridge\Laravel\Admin\Category\Transformers;
 
 use Domain\Category\Models\Category;
 use League\Fractal\TransformerAbstract;

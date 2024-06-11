@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Laravel\Http\Middleware;
+namespace Bridge\Laravel\Http\Middleware;
 
+use Bridge\Laravel\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Laravel\Providers\RouteServiceProvider;
 use Symfony\Component\HttpFoundation\Response;
 
 final class RedirectIfAuthenticated

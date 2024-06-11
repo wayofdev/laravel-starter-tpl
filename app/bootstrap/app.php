@@ -11,7 +11,7 @@
 |
 */
 
-$app = (new Laravel\Application(
+$app = (new Bridge\Laravel\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 ));
 
@@ -28,17 +28,17 @@ $app = (new Laravel\Application(
 
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,
-    Laravel\HttpKernel::class
+    Bridge\Laravel\HttpKernel::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
-    Laravel\ConsoleKernel::class
+    Bridge\Laravel\ConsoleKernel::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
-    Laravel\Exceptions\Handler::class
+    Bridge\Laravel\Exceptions\Handler::class
 );
 
 /*

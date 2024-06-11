@@ -70,10 +70,10 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
+            "Bridge\\Laravel\\": "src/Bridge/Laravel/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
             "Domain\\": "src/Domain/",
-            "Laravel\\": "src/Bridge/Laravel/",
             "Support\\": "src/Support/"
         }
     },
@@ -146,10 +146,12 @@
         "stan:ci": "php vendor/bin/phpstan analyse --memory-limit=2G --error-format=github",
         "test": [
             "@putenv XDEBUG_MODE=coverage",
+            "@putenv DB_CONNECTION=memory",
             "php vendor/bin/pest --color=always"
         ],
         "test:cc": [
             "@putenv XDEBUG_MODE=coverage",
+            "@putenv DB_CONNECTION=memory",
             "php vendor/bin/pest --coverage --coverage-clover=.build/phpunit/logs/clover.xml --color=always"
         ]
     }

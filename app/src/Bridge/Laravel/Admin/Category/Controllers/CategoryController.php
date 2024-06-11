@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Laravel\Admin\Category\Controllers;
+namespace Bridge\Laravel\Admin\Category\Controllers;
 
+use Bridge\Laravel\Admin\Category\Queries\IndexQuery;
+use Bridge\Laravel\Admin\Category\Transformers\CategoryTransformer;
+use Bridge\Laravel\Http\Controller;
 use Domain\Category\Models\Category;
 use Illuminate\Http\JsonResponse;
-use Laravel\Admin\Category\Queries\IndexQuery;
-use Laravel\Admin\Category\Transformers\CategoryTransformer;
-use Laravel\Http\Controller;
 use Spatie\RouteAttributes\Attributes\Resource;
 
 #[Resource(

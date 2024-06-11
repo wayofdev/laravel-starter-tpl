@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Laravel\Public\Network\Controllers;
+namespace Bridge\Laravel\Public\Network\Controllers;
 
-use Laravel\Http\Controller;
+use Bridge\Laravel\Http\Controller;
 use Spatie\RouteAttributes\Attributes\Resource;
 
 #[Resource(

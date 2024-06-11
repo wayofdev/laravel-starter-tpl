@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laravel\Providers;
+namespace Bridge\Laravel\Providers;
 
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -19,7 +19,7 @@ final class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    public const string HOME = '/home';
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.

@@ -13,7 +13,7 @@ services:
     links:
       - database
     external_links:
-      - 'rabbitmq.${PROJECT_SERVICES_NAMESPACE}.alias:rabbitmq'
+      - 'rabbitmq.${COMPOSE_PROJECT_NAME}.alias:rabbitmq'
     volumes:
       - ./app:/app:rw,cached
       - ./.env:/app/.env

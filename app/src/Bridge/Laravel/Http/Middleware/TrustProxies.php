@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laravel\Http\Middleware;
+namespace Bridge\Laravel\Http\Middleware;
 
 use Illuminate\Http\Middleware\TrustProxies as Middleware;
 use Symfony\Component\HttpFoundation\Request;

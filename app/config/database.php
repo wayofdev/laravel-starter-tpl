@@ -23,6 +23,14 @@ return [
      * is supported by Laravel. You're free to add / remove connections.
      */
     'connections' => [
+        'memory' => [
+            'driver' => 'sqlite',
+            'url' => env('DB_URL'),
+            'database' => ':memory:',
+            'prefix' => '',
+            'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
+        ],
+
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => env('DB_URL'),

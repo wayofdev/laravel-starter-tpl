@@ -99,7 +99,6 @@ To use this repository, you need to meet the following requirements:
    $ make env \
        APP_NAME=laravel \
        SHARED_SERVICES_NAMESPACE=ss \
-       PROJECT_SERVICES_NAMESPACE=wod \
        COMPOSE_PROJECT_NAME=laravel-starter-tpl
    ```
 
@@ -111,7 +110,6 @@ To use this repository, you need to meet the following requirements:
    $ make env \
        APP_NAME=laravel \
        SHARED_SERVICES_NAMESPACE=ss \
-       PROJECT_SERVICES_NAMESPACE=wod \
        COMPOSE_PROJECT_NAME=laravel-starter-tpl \
        FORCE=true
    ```

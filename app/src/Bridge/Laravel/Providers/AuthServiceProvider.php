@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laravel\Providers;
+namespace Bridge\Laravel\Providers;
 
 // use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
