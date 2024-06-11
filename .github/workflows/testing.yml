@@ -5,6 +5,9 @@ on:  # yamllint disable-line rule:truthy
     branches:
       - master
       - develop
+  push:
+    branches:
+      - master
 
 name: 🧪 Testing (SQLite)
 
