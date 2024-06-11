@@ -12,8 +12,8 @@
 <p align="center">
     <strong>Build</strong><br>
     <a href="https://actions-badge.atrox.dev/wayofdev/laravel-starter-tpl/goto" target="_blank"><img alt="Build Status" src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fwayofdev%2Flaravel-starter-tpl%2Fbadge&style=flat-square&label=github%20actions"/></a>
-    <a href="https://github.com/wayofdev/laravel-starter-tpl/actions/workflows/deploy-staging.yml?query=workflow%3ADeploy" target="_blank"><img alt="Deploy to Staging Status" src="https://github.com/wayofdev/laravel-starter-tpl/actions/workflows/deploy-staging.yml/badge.svg?style=flat-square"/></a>
-    <a href="https://github.com/wayofdev/laravel-starter-tpl/actions/workflows/deploy-release.yml?query=workflow%3ADeploy" target="_blank"><img alt="Deploy to Production Status" src="https://github.com/wayofdev/laravel-starter-tpl/actions/workflows/deploy-release.yml/badge.svg?style=flat-square"/></a>
+    <a href="https://github.com/wayofdev/laravel-starter-tpl/actions/workflows/deploy-staging.yml?query=workflow%3ADeploy" target="_blank"><img alt="Deploy to Staging Status" src="https://img.shields.io/github/actions/workflow/status/wayofdev/laravel-starter-tpl/deploy-staging.yml?branch=develop&style=flat-square&label=deploy%20to%20staging&logo=github"/></a>
+    <a href="https://github.com/wayofdev/laravel-starter-tpl/actions/workflows/deploy-release.yml?query=workflow%3ADeploy" target="_blank"><img alt="Deploy to Production Status" src="https://img.shields.io/github/actions/workflow/status/wayofdev/laravel-starter-tpl/deploy-release.yml?style=flat-square&label=deploy%20to%20prod&logo=github"/></a>
 </p>
 <p align="center">
     <strong>Project</strong><br>
