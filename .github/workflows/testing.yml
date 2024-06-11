@@ -9,7 +9,7 @@ on:  # yamllint disable-line rule:truthy
     branches:
       - master
 
-name: 🧪 Testing (SQLite)
+name: 🧪 Testing
 
 env:
   # Disable docker support in Makefile
