@@ -127,7 +127,7 @@
         "cs:fix": "php-cs-fixer fix -v",
         "deptrac": "deptrac analyse --config-file=deptrac.yaml -v --cache-file=.build/.deptrac.cache",
         "deptrac:ci": "deptrac analyse --config-file=deptrac.yaml -v --cache-file=.build/.deptrac.cache --formatter github-actions",
-        "deptrac:gv": "deptrac analyse --config-file=deptrac.yaml -v --cache-file=.build/.deptrac.cache --formatter graphviz-image --output ../assets/deptrac.svg",
+        "deptrac:gv": "deptrac analyse --config-file=deptrac.yaml -v --cache-file=.build/.deptrac.cache --formatter graphviz-image --output ../.github/assets/deptrac.svg",
         "infect": [
             "Composer\\Config::disableProcessTimeout",
             "@putenv XDEBUG_MODE=coverage",
