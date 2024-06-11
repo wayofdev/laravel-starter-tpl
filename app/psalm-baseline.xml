@@ -46,7 +46,6 @@
     <PropertyNotSetInConstructor>
       <code><![CDATA[IndexQuery]]></code>
       <code><![CDATA[IndexQuery]]></code>
-      <code><![CDATA[IndexQuery]]></code>
     </PropertyNotSetInConstructor>
   </file>
   <file src="src/Bridge/Laravel/Admin/Category/Transformers/CategoryTransformer.php">
@@ -150,16 +149,6 @@
       <code><![CDATA[User|null]]></code>
     </UnnecessaryVarAnnotation>
   </file>
-  <file src="src/Bridge/Laravel/Providers/EventServiceProvider.php">
-    <NonInvariantDocblockPropertyType>
-      <code><![CDATA[$listen]]></code>
-    </NonInvariantDocblockPropertyType>
-  </file>
-  <file src="src/Bridge/Laravel/Providers/RouteServiceProvider.php">
-    <RiskyTruthyFalsyComparison>
-      <code><![CDATA[$request->user()?->id]]></code>
-    </RiskyTruthyFalsyComparison>
-  </file>
   <file src="src/Bridge/Laravel/Public/Category/Controllers/CategoryController.php">
     <UnusedClass>
       <code><![CDATA[CategoryController]]></code>
@@ -167,7 +156,6 @@
   </file>
   <file src="src/Bridge/Laravel/Public/Category/Queries/IndexQuery.php">
     <PropertyNotSetInConstructor>
-      <code><![CDATA[IndexQuery]]></code>
       <code><![CDATA[IndexQuery]]></code>
       <code><![CDATA[IndexQuery]]></code>
     </PropertyNotSetInConstructor>
@@ -218,11 +206,8 @@
     </PossiblyUnusedMethod>
   </file>
   <file src="src/Support/Filters/FuzzyFilter.php">
-    <MissingTemplateParam>
-      <code><![CDATA[Filter]]></code>
-    </MissingTemplateParam>
     <MixedAssignment>
-      <code><![CDATA[$value]]></code>
+      <code><![CDATA[$item]]></code>
     </MixedAssignment>
   </file>
   <file src="tests/Bridge/Laravel/Admin/Category/Controllers/CategoryControllerTest.php">
@@ -379,14 +364,5 @@
       <code><![CDATA[setRules]]></code>
       <code><![CDATA[setRules]]></code>
     </UndefinedInterfaceMethod>
-  </file>
-  <file src="vendor/spatie/laravel-query-builder/src/QueryBuilder.php">
-    <LessSpecificReturnStatement>
-      <code><![CDATA[$this]]></code>
-      <code><![CDATA[$this]]></code>
-    </LessSpecificReturnStatement>
-    <MixedArgument>
-      <code><![CDATA[InvalidSubject::make($subject)]]></code>
-    </MixedArgument>
   </file>
 </files>

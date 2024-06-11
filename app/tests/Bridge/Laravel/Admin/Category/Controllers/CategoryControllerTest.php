@@ -10,7 +10,7 @@ use Tests\TestCase;
 
 final class CategoryControllerTest extends TestCase
 {
-    private const API_BASE_PATH = '/api/admin/categories';
+    private const string API_BASE_PATH = '/api/admin/categories';
 
     /**
      * @test
