@@ -22,7 +22,6 @@ BUILDER_PARAMS ?= docker run --rm -i \
 	--env-file ./.env \
 	--env APP_NAME=$(APP_NAME) \
 	--env SHARED_SERVICES_NAMESPACE=$(SHARED_SERVICES_NAMESPACE) \
-	--env PROJECT_SERVICES_NAMESPACE=$(PROJECT_SERVICES_NAMESPACE) \
 	--env COMPOSE_PROJECT_NAME=$(COMPOSE_PROJECT_NAME) \
 	--env COMPOSER_AUTH="$(COMPOSER_AUTH)"
 
@@ -51,14 +50,14 @@ ACTION_LINT_RUNNER ?= $(DOCKER) run --rm $$(tty -s && echo "-it" || echo) \
 MARKDOWN_LINT_RUNNER ?= $(DOCKER) run --rm $$(tty -s && echo "-it" || echo) \
 	-v $(shell pwd):/app \
 	--workdir /app \
-	davidanson/markdownlint-cli2-rules:latest
+	davidanson/markdownlint-cli2-rules:latest \
+	--config ".github/.markdownlint.json"
 
 PHIVE_RUNNER ?= $(DOCKER_COMPOSE) run --rm --no-deps app
 
 EXPORT_VARS = '\
 	$${APP_NAME} \
 	$${COMPOSE_PROJECT_NAME} \
-	$${PROJECT_SERVICES_NAMESPACE} \
 	$${SHARED_SERVICES_NAMESPACE} \
 	$${COMPOSER_AUTH}'
 

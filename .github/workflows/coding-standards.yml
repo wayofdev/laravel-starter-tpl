@@ -16,6 +16,9 @@ jobs:
   commit-linting:
     timeout-minutes: 4
     runs-on: ubuntu-latest
+    concurrency:
+      cancel-in-progress: true
+      group: commit-linting-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
     permissions:
       contents: read
       pull-requests: read
@@ -28,12 +31,15 @@ jobs:
         with:
           configFile: ${{ github.workspace }}/.github/.commitlint.config.mjs
           failOnWarnings: false
-          failOnErrors: false
+          failOnErrors: true
           helpURL: 'https://github.com/conventional-changelog/commitlint/#what-is-commitlint'
 
   yaml-linting:
     timeout-minutes: 4
     runs-on: ubuntu-latest
+    concurrency:
+      cancel-in-progress: true
+      group: yaml-linting-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
     permissions:
       contents: read
       pull-requests: read
@@ -61,6 +67,7 @@ jobs:
       - name: 🧐 Lint Markdown files
         uses: DavidAnson/markdownlint-cli2-action@v16.0.0
         with:
+          config: '.github/.markdownlint.json'
           globs: |
             **/*.md
             !CHANGELOG.md
