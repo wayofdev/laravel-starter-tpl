@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\Bridge\Laravel;
+namespace Tests\Functional\Bridge\Laravel;
 
 // use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
+use Tests\Functional\TestCase;
 
 class ExampleTest extends TestCase
 {
