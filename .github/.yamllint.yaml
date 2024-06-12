@@ -5,7 +5,6 @@ extends: default
 ignore: |
     app/vendor
 
-# Overwrite above default rules
 rules:
   braces:
     # Defaults
