@@ -15,6 +15,7 @@ services:
     external_links:
       - 'rabbitmq.${COMPOSE_PROJECT_NAME}.alias:rabbitmq'
     volumes:
+      - ./.github/assets:/assets:rw,cached
       - ./app:/app:rw,cached
       - ./.env:/app/.env
       - ~/.composer:/.composer

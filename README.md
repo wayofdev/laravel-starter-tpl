@@ -122,9 +122,10 @@ This starter template includes several added, changed, and removed features:
 
 To use this repository, you need to meet the following requirements:
 
-* **macOS** Monterey+ or **Linux**
-* Docker 20.10 or newer
+* **Operating System**: macOS Monterey+, Linux, or Windows with WSL2.
+* **Docker**: Version 26.0.0 or newer. Installation guides:
   * [How To Install and Use Docker on Ubuntu 22.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04)
+  * [How To Install Docker Desktop on Mac](https://docs.docker.com/desktop/install/mac-install/)
 * **Cloned, configured and running** [docker-shared-services](https://github.com/wayofdev/docker-shared-services) to support system-wide DNS, routing, and TLS support via Traefik.
 
 <br>

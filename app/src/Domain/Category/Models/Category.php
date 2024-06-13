@@ -10,15 +10,4 @@ use Illuminate\Database\Eloquent\Model;
 
 final class Category extends Model
 {
-    use HasFactory;
-
-    public static function resolveFactoryName(): string
-    {
-        return CategoryFactory::class;
-    }
-
-    protected static function newFactory(): CategoryFactory
-    {
-        return CategoryFactory::new();
-    }
 }
