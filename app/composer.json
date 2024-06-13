@@ -75,6 +75,7 @@
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
             "Domain\\": "src/Domain/",
+            "Infrastructure\\": "src/Infrastructure/",
             "Support\\": "src/Support/"
         }
     },

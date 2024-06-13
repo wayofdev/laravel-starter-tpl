@@ -196,7 +196,7 @@
       <code><![CDATA[$hidden]]></code>
     </NonInvariantDocblockPropertyType>
   </file>
-  <file src="src/Support/Filters/FuzzyFilter.php">
+  <file src="src/Infrastructure/Filters/FuzzyFilter.php">
     <MixedAssignment>
       <code><![CDATA[$item]]></code>
     </MixedAssignment>
@@ -249,5 +249,10 @@
       <code><![CDATA[bootstrap]]></code>
       <code><![CDATA[make]]></code>
     </MixedMethodCall>
+  </file>
+  <file src="tests/src/Functional/Support/StringUtilsTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[it_converts_string]]></code>
+    </PossiblyUnusedMethod>
   </file>
 </files>
