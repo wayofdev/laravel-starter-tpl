@@ -274,7 +274,7 @@ lint-deps: ## Runs composer-require-checker – checks for dependencies that are
 .PHONY: lint-deps
 
 lint-deptrac: ## Runs deptrac – static analysis tool
-	$(APP_RUNNER) .phive/deptrac analyse --config-file=deptrac.yaml -vvv --cache-file=.build/.deptrac.cache
+	$(APP_RUNNER) .phive/deptrac analyse --config-file=deptrac.yaml -v --cache-file=.build/.deptrac.cache
 .PHONY: lint-deptrac
 
 lint-deptrac-ci: ## Runs deptrac – static analysis tool with github output (CI mode)

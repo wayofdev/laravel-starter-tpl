@@ -144,5 +144,4 @@ jobs:
         shell: bash
 
       - name: 🔬 Run deptrac
-        working-directory: app
         run: make lint-deptrac-ci
