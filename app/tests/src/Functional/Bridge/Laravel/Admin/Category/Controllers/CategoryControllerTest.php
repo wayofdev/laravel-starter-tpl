@@ -6,15 +6,14 @@ namespace Tests\Functional\Bridge\Laravel\Admin\Category\Controllers;
 
 use Domain\Category\Models\Category;
 use Illuminate\Testing\Fluent\AssertableJson;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\Functional\TestCase;
 
 final class CategoryControllerTest extends TestCase
 {
     private const string API_BASE_PATH = '/api/admin/categories';
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_gets_list_of_categories(): void
     {
         $category = Category::findOrFail(1);
@@ -48,9 +47,7 @@ final class CategoryControllerTest extends TestCase
             );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_gets_single_category(): void
     {
         $category = Category::findOrFail(1);

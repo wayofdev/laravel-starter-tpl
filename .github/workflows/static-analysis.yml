@@ -24,12 +24,12 @@ env:
   APP_RUNNER: 'cd app &&'
 
 jobs:
-  stan:
+  phpstan:
     timeout-minutes: 4
     runs-on: ${{ matrix.os }}
     concurrency:
       cancel-in-progress: true
-      group: stan-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+      group: phpstan-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
     strategy:
       fail-fast: true
       matrix:
@@ -103,7 +103,7 @@ jobs:
           php-version: ${{ matrix.php-version }}
           extensions: none, ctype, dom, json, mbstring, simplexml, tokenizer, xml, xmlwriter, pdo, pdo_mysql, curl, fileinfo, opcache, pcntl, posix
           ini-values: error_reporting=E_ALL
-          coverage: none
+          coverage: xdebug
 
       - name: 🛠️ Setup problem matchers
         run: echo "::add-matcher::${{ runner.tool_cache }}/php.json"

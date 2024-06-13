@@ -178,15 +178,9 @@
       <code><![CDATA[UserController]]></code>
     </UnusedClass>
   </file>
-  <file src="src/Domain/Category/Models/Category.php">
-    <PossiblyUnusedMethod>
-      <code><![CDATA[resolveFactoryName]]></code>
-    </PossiblyUnusedMethod>
-  </file>
   <file src="src/Domain/Product/Models/Product.php">
     <PossiblyUnusedMethod>
       <code><![CDATA[category]]></code>
-      <code><![CDATA[resolveFactoryName]]></code>
     </PossiblyUnusedMethod>
   </file>
   <file src="src/Domain/Shared/StringEnum.php">
@@ -201,11 +195,8 @@
       <code><![CDATA[$casts]]></code>
       <code><![CDATA[$hidden]]></code>
     </NonInvariantDocblockPropertyType>
-    <PossiblyUnusedMethod>
-      <code><![CDATA[resolveFactoryName]]></code>
-    </PossiblyUnusedMethod>
   </file>
-  <file src="src/Support/Filters/FuzzyFilter.php">
+  <file src="src/Infrastructure/Filters/FuzzyFilter.php">
     <MixedAssignment>
       <code><![CDATA[$item]]></code>
     </MixedAssignment>
@@ -237,6 +228,15 @@
     <MixedOperand>
       <code><![CDATA[$category->uuid]]></code>
     </MixedOperand>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[it_gets_list_of_categories]]></code>
+      <code><![CDATA[it_gets_single_category]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="tests/src/Functional/Bridge/Laravel/ExampleTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[the_application_returns_a_successful_response]]></code>
+    </PossiblyUnusedMethod>
   </file>
   <file src="tests/src/Functional/CreatesApplication.php">
     <MixedAssignment>
@@ -249,5 +249,10 @@
       <code><![CDATA[bootstrap]]></code>
       <code><![CDATA[make]]></code>
     </MixedMethodCall>
+  </file>
+  <file src="tests/src/Functional/Support/StringUtilsTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[it_converts_string]]></code>
+    </PossiblyUnusedMethod>
   </file>
 </files>

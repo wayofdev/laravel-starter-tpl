@@ -122,9 +122,10 @@ This starter template includes several added, changed, and removed features:
 
 To use this repository, you need to meet the following requirements:
 
-* **macOS** Monterey+ or **Linux**
-* Docker 20.10 or newer
+* **Operating System**: macOS Monterey+, Linux, or Windows with WSL2.
+* **Docker**: Version 26.0.0 or newer. Installation guides:
   * [How To Install and Use Docker on Ubuntu 22.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04)
+  * [How To Install Docker Desktop on Mac](https://docs.docker.com/desktop/install/mac-install/)
 * **Cloned, configured and running** [docker-shared-services](https://github.com/wayofdev/docker-shared-services) to support system-wide DNS, routing, and TLS support via Traefik.
 
 <br>
@@ -221,6 +222,28 @@ Check full instructions in [docker-shared-services](https://github.com/wayofdev/
    ```
 
 4. **Open** your browser and navigate to `https://laravel-starter-tpl.docker` to see Laravel welcome page.
+
+<br>
+
+## 🧰 Project Architecture
+
+The project architecture of `wayofdev/laravel-starter-tpl` follows a structured approach with distinct layers:
+
+* **Domain:** Contains core business logic and entities.
+* **Bridge:** Connects the domain layer with external systems or services.
+* **Infrastructure:** Handles interactions with external systems, such as databases, APIs, or file systems.
+* **Support:** Provides general-purpose helper classes that assist various parts of the application.
+* **DatabaseSeeders:** Handles database seeding logic.
+* **DatabaseFactories:** Manages database factory definitions.
+* **Tests:** Contains test cases for various layers of the application.
+
+Each layer has defined dependencies, ensuring a clear separation of concerns and facilitating maintainability and scalability.
+
+For more information check [deptrac.yaml](https://github.com/wayofdev/laravel-starter-tpl/blob/develop/app/deptrac.yaml) located in repository `app` folder.
+
+### → Architecture Diagram
+
+![Architecture Diagram](.github/assets/deptrac.svg)
 
 <br>
 
