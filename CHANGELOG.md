@@ -1,5 +1,38 @@
 # Changelog
 
+## [2.5.0](https://github.com/wayofdev/laravel-starter-tpl/compare/v2.4.0...v2.5.0) (2024-06-13)
+
+
+### Features
+
+* deptrac and infra layer ([3a90d44](https://github.com/wayofdev/laravel-starter-tpl/commit/3a90d44cccafabf28e53aa7d8997366ad945f895))
+
+
+### Bug Fixes
+
+* stryker dashboard mutation score ([3360705](https://github.com/wayofdev/laravel-starter-tpl/commit/33607052de36ac39f48e39ed2ed0b7fec7a5f4aa))
+* stryker dashboard mutation score ([4faa023](https://github.com/wayofdev/laravel-starter-tpl/commit/4faa023efd6e2b260ef5269bc0581a85ef2f3fd5))
+
+
+### Documentation
+
+* add contributing guidelines ([6f37090](https://github.com/wayofdev/laravel-starter-tpl/commit/6f37090efedac308856a01e62e81f5dde6558236))
+* update readme.md ([6f8f7b4](https://github.com/wayofdev/laravel-starter-tpl/commit/6f8f7b42bb1781c9c50e5d40dab163564e4b6920))
+
+
+### Dependencies
+
+* **deps:** update googleapis/release-please-action action to v4.1.3 ([2a5014e](https://github.com/wayofdev/laravel-starter-tpl/commit/2a5014eb425060d5fa13994f4c6e51ee8bc72d8c))
+* **deps:** update shivammathur/setup-php action to v2.30.5 ([3c7535c](https://github.com/wayofdev/laravel-starter-tpl/commit/3c7535c2040c178479aabc52b81b54e6bd7704d1))
+
+
+### Continuous Integration
+
+* add deptrac support ([ef7afdd](https://github.com/wayofdev/laravel-starter-tpl/commit/ef7afddb58fe09bfb3b0fae65606174d6295707a))
+* add rector ([a3b7dd4](https://github.com/wayofdev/laravel-starter-tpl/commit/a3b7dd490853facdc24b6542ab663694183aff42))
+* add rector workflow ([3c1be89](https://github.com/wayofdev/laravel-starter-tpl/commit/3c1be8918b1cf9431c033d5f179e661b54345efe))
+* minor updates ([9b31ba3](https://github.com/wayofdev/laravel-starter-tpl/commit/9b31ba3510307ab2112a48d38de1ff90cdf9b81a))
+
 ## [2.4.0](https://github.com/wayofdev/laravel-starter-tpl/compare/v2.3.0...v2.4.0) (2024-06-11)
 
 
