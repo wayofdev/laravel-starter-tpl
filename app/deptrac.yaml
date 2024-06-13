@@ -21,6 +21,11 @@ deptrac:
         - type: directory
           value: src/Bridge/.*
 
+    - name: Infrastructure
+      collectors:
+        - type: directory
+          value: src/Infrastructure/.*
+
     - name: Support
       collectors:
         - type: directory
@@ -45,9 +50,12 @@ deptrac:
     Domain: ~
     Bridge:
       - Domain
+      - Infrastructure
+      - Support
+    Infrastructure:
+      - Domain
       - Support
     Support:
-      - Domain
     DatabaseSeeders:
       - DatabaseFactories
       - Domain
@@ -56,6 +64,7 @@ deptrac:
     Tests:
       - Domain
       - Bridge
+      - Infrastructure
       - Support
       - DatabaseSeeders
       - DatabaseFactories

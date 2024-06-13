@@ -6,9 +6,9 @@ namespace Bridge\Laravel\Public\Category\Queries;
 
 use Domain\Category\Models\Category;
 use Illuminate\Http\Request;
+use Infrastructure\Filters\FuzzyFilter;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
-use Support\Filters\FuzzyFilter;
 
 final class IndexQuery extends QueryBuilder
 {
