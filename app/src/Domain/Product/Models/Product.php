@@ -12,18 +12,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 final class Product extends Model
 {
-    use HasFactory;
-
-    public static function resolveFactoryName(): string
-    {
-        return ProductFactory::class;
-    }
-
-    protected static function newFactory(): ProductFactory
-    {
-        return ProductFactory::new();
-    }
-
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);

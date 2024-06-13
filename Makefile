@@ -274,7 +274,7 @@ lint-deps: ## Runs composer-require-checker – checks for dependencies that are
 .PHONY: lint-deps
 
 lint-deptrac: ## Runs deptrac – static analysis tool
-	$(APP_RUNNER) .phive/deptrac analyse --config-file=deptrac.yaml -v --cache-file=.build/.deptrac.cache
+	$(APP_RUNNER) .phive/deptrac analyse --config-file=deptrac.yaml -vvv --cache-file=.build/.deptrac.cache
 .PHONY: lint-deptrac
 
 lint-deptrac-ci: ## Runs deptrac – static analysis tool with github output (CI mode)
@@ -282,7 +282,7 @@ lint-deptrac-ci: ## Runs deptrac – static analysis tool with github output (CI
 .PHONY: lint-deptrac-ci
 
 lint-deptrac-gv: ## Runs deptrac – static analysis tool and generates graphviz image
-	$(APP_RUNNER) .phive/deptrac analyse --config-file=deptrac.yaml -v --cache-file=.build/.deptrac.cache --formatter graphviz-image --output ../.github/assets/deptrac.svg
+	$(APP_RUNNER) .phive/deptrac analyse --config-file=deptrac.yaml -v --cache-file=.build/.deptrac.cache --formatter graphviz-image --output /assets/deptrac.svg
 .PHONY: lint-deptrac-gv
 
 lint-composer: ## Normalize composer.json and composer.lock files
@@ -296,6 +296,14 @@ lint-audit: ## Runs security checks for composer dependencies
 validate-composer: ## Validates composer.json and composer.lock files
 	$(APP_COMPOSER) validate --ansi --strict
 .PHONY: validate-composer
+
+refactor: ## Runs rector – code refactoring tool
+	$(APP_COMPOSER) refactor
+.PHONY: refactor
+
+refactor-ci: ## Runs rector – code refactoring tool with github output (CI mode)
+	$(APP_COMPOSER) refactor:ci
+.PHONY: refactor-ci
 
 #
 # Testing
